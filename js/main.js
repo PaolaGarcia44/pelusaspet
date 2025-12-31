@@ -98,18 +98,6 @@ document.addEventListener('DOMContentLoaded', function() {
         observer.observe(card);
     });
 
-    // Loading indicator for buttons
-    function showButtonLoading(button) {
-        const originalContent = button.innerHTML;
-        button.innerHTML = '<span class="spinner"></span>';
-        button.disabled = true;
-        
-        return function() {
-            button.innerHTML = originalContent;
-            button.disabled = false;
-        };
-    }
-
     // Back to top button (optional enhancement)
     const backToTopBtn = document.createElement('button');
     backToTopBtn.innerHTML = '<i class="bi bi-arrow-up"></i>';
@@ -161,7 +149,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Search functionality (placeholder for future enhancement)
     console.log('PelusasPet website loaded successfully!');
-    console.log(`Products available: ${products.length}`);
 });
 
 // Utility function to format currency
@@ -177,14 +164,6 @@ window.addEventListener('resize', function() {
         // Reflow elements if needed
         console.log('Window resized');
     }, 250);
-});
-
-// Prevent context menu on images (optional)
-document.addEventListener('contextmenu', function(e) {
-    if (e.target.tagName === 'IMG') {
-        // Uncomment to prevent right-click on images
-        // e.preventDefault();
-    }
 });
 
 // Log page analytics (placeholder)

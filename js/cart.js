@@ -241,7 +241,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (checkoutBtn) {
         checkoutBtn.addEventListener('click', function() {
             if (cart.items.length === 0) {
-                alert('Tu carrito está vacío');
+                cart.showNotification('Tu carrito está vacío');
                 return;
             }
 
@@ -249,10 +249,13 @@ document.addEventListener('DOMContentLoaded', function() {
             const total = cart.getTotal();
             const itemCount = cart.getItemCount();
             
-            alert(`¡Gracias por tu compra!\n\nTotal de productos: ${itemCount}\nTotal a pagar: ${formatPrice(total)}\n\nEsta es una simulación. En una tienda real, aquí se procesaría el pago.`);
+            // Show success message
+            cart.showNotification(`¡Gracias por tu compra! Total: ${formatPrice(total)} (${itemCount} productos)`);
             
             // Clear cart after checkout
-            cart.clearCart();
+            setTimeout(() => {
+                cart.clearCart();
+            }, 1500);
             
             // Close modal
             const modal = bootstrap.Modal.getInstance(document.getElementById('cartModal'));
