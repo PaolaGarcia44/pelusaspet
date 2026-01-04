@@ -3,218 +3,100 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>PelusasPet | Marketplace Natural para Mascotas</title>
+  <title>PelusasPet | Cosmética Natural</title>
 
+  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
 
-  <style>
-    :root {
-      --verde: #6b8f71;
-      --beige: #f4efe9;
-      --marron: #4a3f35;
-    }
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: 'Montserrat', sans-serif;
-      background-color: var(--beige);
-      color: var(--marron);
-    }
-
-    header {
-      background-color: white;
-      padding: 20px 40px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-bottom: 1px solid #ddd;
-    }
-
-    header h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: 28px;
-      color: var(--verde);
-    }
-
-    nav a {
-      margin-left: 20px;
-      text-decoration: none;
-      color: var(--marron);
-      font-weight: 500;
-      cursor: pointer;
-    }
-
-    nav a.active {
-      border-bottom: 2px solid var(--verde);
-    }
-
-    .hero {
-      padding: 60px 40px;
-      text-align: center;
-    }
-
-    .hero h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: 42px;
-      margin-bottom: 15px;
-    }
-
-    .hero p {
-      font-size: 18px;
-      max-width: 700px;
-      margin: auto;
-    }
-
-    .section {
-      display: none;
-      padding: 40px;
-      max-width: 1200px;
-      margin: auto;
-    }
-
-    .section.active {
-      display: block;
-    }
-
-    .products {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 30px;
-    }
-
-    .card {
-      background-color: white;
-      border-radius: 8px;
-      padding: 20px;
-      text-align: center;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-    }
-
-    .card img {
-      width: 100%;
-      height: 180px;
-      object-fit: cover;
-      border-radius: 6px;
-    }
-
-    .card h3 {
-      margin: 15px 0 5px;
-      font-family: 'Playfair Display', serif;
-    }
-
-    .card p {
-      font-size: 14px;
-      margin-bottom: 10px;
-    }
-
-    .price {
-      font-weight: 600;
-      color: var(--verde);
-    }
-
-    footer {
-      background-color: white;
-      text-align: center;
-      padding: 20px;
-      margin-top: 60px;
-      font-size: 14px;
-    }
-  </style>
+  <!-- CSS -->
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
 <header>
-  <h1>PelusasPet</h1>
-  <nav>
-    <a class="tab active" data-tab="inicio">Inicio</a>
-    <a class="tab" data-tab="perros">Perros</a>
-    <a class="tab" data-tab="gatos">Gatos</a>
-    <a class="tab" data-tab="naturales">Naturales</a>
+  <div class="logo">
+    <img src="img/logo pelusaspet.png" alt="PelusasPet">
+  </div>
+
+  <nav id="menu">
+    <a class="tab active" data-tab="productos">Productos Premium</a>
+    <a class="tab" data-tab="nosotros">Sobre Nosotros</a>
+    <a class="tab" data-tab="casos">Casos Reales</a>
+    <a class="tab" data-tab="reconocimientos">Reconocimientos</a>
     <a class="tab" data-tab="contacto">Contacto</a>
   </nav>
+
+  <div class="icons">
+    <i class="fas fa-shopping-cart"></i>
+    <i class="fas fa-bars hamburger" id="hamburger"></i>
+  </div>
 </header>
 
 <section class="hero">
-  <h2>Bienestar natural para quienes más amas</h2>
-  <p>Productos artesanales, naturales y responsables para el cuidado de tus mascotas.</p>
+  <h1>Cuidado Premium Natural para quienes amas</h1>
+  <p>Productos artesanales, seguros y responsables de alta calidad que cuidan a tus mascotas como familia. Descubre la elegancia y el lujo en el bienestar de tus peludos.</p>
+  <div class="hero-badge">🌿 Premium · Seguro · Amor real</div>
 </section>
 
-<section id="inicio" class="section active">
-  <h2>Destacados</h2>
+<section id="productos" class="section active">
+  <h2>Productos Premium</h2>
+  <p>Nuestros productos premium están diseñados con ingredientes naturales de la más alta calidad, ofreciendo cuidado excepcional y lujo para tus mascotas.</p>
   <div class="products">
     <div class="card">
-      <img src="https://images.unsplash.com/photo-1601758125946-6ec2ef64daf8" />
-      <h3>Shampoo Natural</h3>
-      <p>Sin químicos agresivos, ideal para piel sensible.</p>
-      <span class="price">$32.000</span>
+      <img src="https://images.unsplash.com/photo-1601758123927-1c6a3b5f4f4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=60" alt="Champú Natural de Lavanda">
+      <h3>Champú Natural de Lavanda</h3>
+      <div class="price">$25.00</div>
+      <button>Añadir al Carrito</button>
     </div>
     <div class="card">
-      <img src="https://images.unsplash.com/photo-1583512603874-232d8eab3f4a" />
-      <h3>Galletas Artesanales</h3>
-      <p>Hechas con ingredientes 100% naturales.</p>
-      <span class="price">$18.000</span>
+      <img src="https://images.unsplash.com/photo-1517423440428-a5a00ad493e8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=60" alt="Collar de Cuero Ecológico">
+      <h3>Collar de Cuero Ecológico</h3>
+      <div class="price">$40.00</div>
+      <button>Añadir al Carrito</button>
+    </div>
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=60" alt="Juguete de Cuerda Orgánica">
+      <h3>Juguete de Cuerda Orgánica</h3>
+      <div class="price">$15.00</div>
+      <button>Añadir al Carrito</button>
     </div>
   </div>
 </section>
 
-<section id="perros" class="section">
-  <h2>Productos para Perros</h2>
-  <div class="products">
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1598133894008-61f7fdb8cc3a" />
-      <h3>Bálsamo para Patas</h3>
-      <p>Protección natural contra resequedad.</p>
-      <span class="price">$22.000</span>
-    </div>
-  </div>
+<section id="nosotros" class="section">
+  <h2>Sobre Nosotros</h2>
+  <p>En PelusasPet, somos apasionados por el bienestar de las mascotas. Nuestra misión es ofrecer productos naturales y premium que reflejen nuestro compromiso con la calidad, la seguridad y el amor por los animales.</p>
 </section>
 
-<section id="gatos" class="section">
-  <h2>Productos para Gatos</h2>
-  <div class="products">
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1592194996308-7b43878e84a6" />
-      <h3>Hierba Gatera Orgánica</h3>
-      <p>Estimulación y bienestar natural.</p>
-      <span class="price">$15.000</span>
-    </div>
-  </div>
+<section id="casos" class="section">
+  <h2>Casos Reales</h2>
+  <p>Descubre historias inspiradoras de mascotas que han experimentado transformaciones positivas gracias a nuestros productos naturales y cuidados excepcionales.</p>  
 </section>
 
-<section id="naturales" class="section">
-  <h2>Línea Natural</h2>
-  <p>Todos nuestros productos están libres de parabenos, sulfatos y crueldad animal.</p>
+<section id="reconocimientos" class="section">
+  <h2>Reconocimientos</h2>
+  <p>Hemos sido reconocidos por diversas organizaciones por nuestro compromiso con la calidad y el cuidado responsable de las mascotas.</p>
 </section>
 
 <section id="contacto" class="section">
   <h2>Contacto</h2>
-  <p>Email: contacto@pelusaspet.com</p>
-  <p>Instagram: @pelusaspet</p>
+  <p>¿Tienes preguntas o necesitas asesoría? No dudes en contactarnos. Estamos aquí para ayudarte a brindar el mejor cuidado a tu mascota.</p>
 </section>
 
+<!-- Botón de WhatsApp fijo -->
+<a href="https://wa.me/1234567890?text=Hola%20PelusasPet,%20me%20interesan%20sus%20productos" class="whatsapp-btn" target="_blank" rel="noopener noreferrer">
+  <i class="fab fa-whatsapp"></i>
+</a>
+
 <footer>
-  © 2025 PelusasPet · Amor natural para mascotas
+  <p>© 2023 PelusasPet | Marketplace Natural para Mascotas</p>
+  <p>Todos los derechos reservados</p>
 </footer>
 
-<script>
-  const tabs = document.querySelectorAll('.tab');
-  const sections = document.querySelectorAll('.section');
-
-  tabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-      tabs.forEach(t => t.classList.remove('active'));
-      sections.forEach(s => s.classList.remove('active'));
-
-      tab.classList.add('active');
-      document.getElementById(tab.dataset.tab).classList.add('active');
-    });
-  });
-</script>
+<script src="script.js"></script>
 
 </body>
 </html>
