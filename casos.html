@@ -1,0 +1,1325 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>PelusasPet | Casos Reales - Testimonios de Clientes</title>
+  <meta name="description" content="Historias reales de mascotas que han mejorado su calidad de vida con nuestros productos naturales. Testimonios verificados.">
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700;800&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="styles.css">
+
+  <style>
+    /* ESTILOS ESPECÍFICOS PARA PÁGINA DE CASOS REALES */
+    :root {
+      --morado-profundo: #5A216B;
+      --morado-vibrante: #8A2BE2;
+      --morado-suave: #D8BFD8;
+      --dorado-brillante: #FFD700;
+      --dorado-oscuro: #DAA520;
+      --rosa-suave: #fcfcfc;
+    }
+    
+    /* HERO CON FONDO ANIMADO ELEGANTE SIN IMAGEN */
+    .cases-hero {
+      position: relative;
+      min-height: 60vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 80px 30px;
+      color: white;
+      overflow: hidden;
+      background: linear-gradient(135deg, 
+        #3A1052 0%, 
+        var(--morado-profundo) 50%, 
+        #7B3A9B 100%);
+    }
+    
+    /* FONDO ANIMADO ELEGANTE - EFECTO DE FLUIDO MORADO */
+    .cases-hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 200%;
+      height: 200%;
+      background: 
+        radial-gradient(circle at 20% 30%, rgba(255, 215, 0, 0.25) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(255, 182, 193, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 40% 80%, rgba(90, 33, 107, 0.4) 0%, transparent 50%),
+        radial-gradient(circle at 60% 20%, rgba(138, 43, 226, 0.3) 0%, transparent 50%),
+        radial-gradient(circle at 30% 50%, rgba(216, 191, 216, 0.25) 0%, transparent 50%),
+        radial-gradient(circle at 70% 40%, rgba(255, 215, 0, 0.2) 0%, transparent 50%);
+      animation: fluidBackground 25s ease-in-out infinite alternate;
+      z-index: 1;
+    }
+    
+    /* EFECTO DE ONDAS SUTILES */
+    .cases-hero::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: 
+        radial-gradient(circle at 10% 20%, rgba(255, 255, 255, 0.05) 2px, transparent 2px),
+        radial-gradient(circle at 30% 80%, rgba(255, 255, 255, 0.03) 3px, transparent 3px),
+        radial-gradient(circle at 50% 40%, rgba(255, 255, 255, 0.04) 2px, transparent 2px),
+        radial-gradient(circle at 70% 60%, rgba(255, 255, 255, 0.02) 4px, transparent 4px),
+        radial-gradient(circle at 90% 30%, rgba(255, 255, 255, 0.05) 3px, transparent 3px);
+      background-size: 
+        400px 400px,
+        500px 500px,
+        600px 600px,
+        700px 700px,
+        800px 800px;
+      animation: floatParticles 30s linear infinite;
+      opacity: 0.4;
+      z-index: 1;
+    }
+    
+    /* EFECTO DE BRILLO MÓVIL ELEGANTE */
+    .cases-hero .shine-overlay {
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 50%;
+      height: 100%;
+      background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.15),
+        transparent
+      );
+      animation: elegantShine 10s ease-in-out infinite;
+      z-index: 2;
+    }
+    
+    /* ANIMACIONES */
+    @keyframes fluidBackground {
+      0% {
+        transform: translate(0, 0) scale(1) rotate(0deg);
+        opacity: 0.8;
+      }
+      33% {
+        transform: translate(-5%, -5%) scale(1.1) rotate(5deg);
+        opacity: 0.9;
+      }
+      66% {
+        transform: translate(5%, 5%) scale(0.9) rotate(-5deg);
+        opacity: 0.7;
+      }
+      100% {
+        transform: translate(0, 0) scale(1) rotate(0deg);
+        opacity: 0.8;
+      }
+    }
+    
+    @keyframes floatParticles {
+      0% {
+        background-position: 
+          0px 0px,
+          0px 0px,
+          0px 0px,
+          0px 0px,
+          0px 0px;
+      }
+      100% {
+        background-position: 
+          400px 400px,
+          500px 500px,
+          600px 600px,
+          700px 700px,
+          800px 800px;
+      }
+    }
+    
+    @keyframes elegantShine {
+      0% {
+        left: -50%;
+        opacity: 0;
+      }
+      20% {
+        opacity: 0.5;
+      }
+      50% {
+        left: 100%;
+        opacity: 0.8;
+      }
+      51% {
+        opacity: 0;
+      }
+      100% {
+        left: -50%;
+        opacity: 0;
+      }
+    }
+    
+    /* EFECTO DE GLOW EN EL TEXTO */
+    .hero-content h1 {
+      animation: textGlow 4s ease-in-out infinite alternate;
+    }
+    
+    @keyframes textGlow {
+      from {
+        text-shadow: 
+          0 0 15px rgba(255, 255, 255, 0.4),
+          0 0 25px rgba(255, 255, 255, 0.3),
+          0 0 35px rgba(255, 255, 255, 0.2),
+          2px 2px 10px rgba(0, 0, 0, 0.5);
+      }
+      to {
+        text-shadow: 
+          0 0 25px rgba(255, 255, 255, 0.6),
+          0 0 35px rgba(255, 255, 255, 0.4),
+          0 0 45px rgba(255, 255, 255, 0.3),
+          3px 3px 15px rgba(0, 0, 0, 0.6);
+      }
+    }
+    
+    .hero-content {
+      position: relative;
+      z-index: 3;
+      max-width: 800px;
+    }
+    
+    .cases-hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.5rem;
+      margin-bottom: 20px;
+      position: relative;
+    }
+    
+    /* EFECTO DE DESTELLOS ALREDEDOR DEL TEXTO */
+    .hero-content::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: 
+        radial-gradient(circle at 40% 40%, rgba(255, 215, 0, 0.2) 0%, transparent 70%),
+        radial-gradient(circle at 60% 60%, rgba(255, 182, 193, 0.15) 0%, transparent 70%);
+      animation: textShine 8s ease-in-out infinite;
+      z-index: -1;
+      border-radius: 50%;
+    }
+    
+    @keyframes textShine {
+      0%, 100% {
+        transform: scale(1) rotate(0deg);
+        opacity: 0.3;
+      }
+      50% {
+        transform: scale(1.1) rotate(180deg);
+        opacity: 0.5;
+      }
+    }
+    
+    .cases-hero p {
+      font-size: 1.3rem;
+      opacity: 0.95;
+      line-height: 1.6;
+      text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
+      animation: fadeInUp 1.5s ease-out 0.5s both;
+      position: relative;
+      z-index: 2;
+    }
+    
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 0.95;
+        transform: translateY(0);
+      }
+    }
+    
+    /* FILTROS DE TIPO DE CASO */
+    .case-filters {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 15px;
+      margin: 40px 0 30px;
+      padding: 0 20px;
+    }
+    
+    .filter-btn {
+      padding: 14px 28px;
+      background: var(--fondo-secundario);
+      border: 2px solid var(--borde);
+      border-radius: 30px;
+      color: var(--texto);
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.95rem;
+    }
+    
+    .filter-btn.active,
+    .filter-btn:hover {
+      background: var(--dorado-profundo);
+      border-color: var(--dorado-profundo);
+      color: var(--texto);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(255, 215, 0, 0.3);
+    }
+    
+    /* DISEÑO DE TESTIMONIOS - MANTENIENDO ESTRUCTURA DE PRODUCTOS */
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 35px;
+      margin-top: 40px;
+    }
+    
+    .testimonial-card {
+      background: var(--fondo-secundario);
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px var(--sombra);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      border: 2px solid transparent;
+      position: relative;
+    }
+    
+    .testimonial-card:hover {
+      transform: translateY(-15px);
+      box-shadow: 0 25px 50px var(--sombra-hover);
+      border-color: var(--dorado-profundo);
+    }
+    
+    .testimonial-badge {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      background: linear-gradient(135deg, var(--dorado-profundo), var(--dorado-brillante));
+      color: var(--morado-profundo);
+      padding: 8px 18px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+    }
+    
+    .testimonial-image {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    
+    .testimonial-card:hover .testimonial-image {
+      transform: scale(1.05);
+    }
+    
+    .testimonial-content {
+      padding: 25px;
+    }
+    
+    .testimonial-pet-type {
+      color: var(--morado);
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-bottom: 10px;
+      display: block;
+    }
+    
+    .testimonial-title {
+      color: var(--texto);
+      font-size: 1.4rem;
+      margin-bottom: 15px;
+      font-family: 'Playfair Display', serif;
+      min-height: 70px;
+    }
+    
+    .testimonial-quote {
+      color: var(--texto);
+      font-size: 0.95rem;
+      margin-bottom: 20px;
+      line-height: 1.6;
+      opacity: 0.8;
+      font-style: italic;
+      position: relative;
+      padding-left: 20px;
+    }
+    
+    .testimonial-quote::before {
+      content: '"';
+      position: absolute;
+      left: 0;
+      top: -10px;
+      font-size: 3rem;
+      color: var(--morado-suave);
+      font-family: serif;
+      line-height: 1;
+    }
+    
+    .testimonial-products {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 25px;
+    }
+    
+    .product-tag {
+      background: var(--fondo);
+      color: var(--morado);
+      padding: 6px 12px;
+      border-radius: 15px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    
+    .testimonial-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 20px;
+      border-top: 1px solid var(--borde);
+    }
+    
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+    
+    .author-avatar {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid var(--morado-suave);
+    }
+    
+    .author-info h4 {
+      color: var(--morado-profundo);
+      font-size: 1rem;
+      margin-bottom: 5px;
+    }
+    
+    .author-info p {
+      color: var(--texto);
+      font-size: 0.85rem;
+      opacity: 0.7;
+    }
+    
+    .testimonial-rating {
+      color: var(--dorado-oscuro);
+      font-size: 1.2rem;
+    }
+    
+    /* NUEVO: SECCIÓN DE ESTADÍSTICAS */
+    .stats-section {
+      background: linear-gradient(to bottom, rgba(216, 191, 216, 0.1), transparent);
+      padding: 80px 20px;
+      margin-top: 60px;
+    }
+    
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 30px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    
+    .stat-card {
+      text-align: center;
+      padding: 30px 20px;
+      background: var(--fondo-secundario);
+      border-radius: 20px;
+      box-shadow: 0 10px 30px var(--sombra);
+      transition: transform 0.3s ease;
+    }
+    
+    .stat-card:hover {
+      transform: translateY(-10px);
+    }
+    
+    .stat-number {
+      font-size: 3rem;
+      font-weight: 800;
+      color: var(--morado-vibrante);
+      margin-bottom: 10px;
+      font-family: 'Playfair Display', serif;
+    }
+    
+    .stat-label {
+      color: var(--texto);
+      font-size: 1rem;
+      opacity: 0.9;
+    }
+    
+    /* CALL TO ACTION */
+    .testimonial-cta {
+      background: linear-gradient(135deg, var(--morado-profundo), var(--morado-vibrante));
+      color: white;
+      text-align: center;
+      padding: 60px 30px;
+      margin: 60px 0;
+      border-radius: 20px;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .testimonial-cta::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: 
+        radial-gradient(circle at 20% 80%, rgba(255, 215, 0, 0.2) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+      z-index: 1;
+    }
+    
+    .testimonial-cta-content {
+      position: relative;
+      z-index: 2;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    
+    .testimonial-cta h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2rem;
+      margin-bottom: 20px;
+    }
+    
+    .testimonial-cta p {
+      font-size: 1.1rem;
+      opacity: 0.9;
+      margin-bottom: 30px;
+      line-height: 1.6;
+    }
+    
+    .cta-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: linear-gradient(135deg, var(--dorado-brillante), var(--dorado-oscuro));
+      color: var(--morado-profundo);
+      padding: 16px 35px;
+      border-radius: 30px;
+      font-weight: 700;
+      font-size: 1.1rem;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 10px 25px rgba(218, 165, 32, 0.3);
+      border: none;
+      cursor: pointer;
+    }
+    
+    .cta-button:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 35px rgba(218, 165, 32, 0.5);
+    }
+    
+    /* ANIMACIONES */
+    @keyframes cardFadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .animate-in {
+      animation: cardFadeInUp 0.6s ease forwards;
+    }
+    
+    /* RESPONSIVE */
+    @media (max-width: 1024px) {
+      .cases-hero h1 {
+        font-size: 2.8rem;
+      }
+      
+      .testimonials-grid {
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 30px;
+      }
+      
+      .cases-hero::after {
+        background-size: 
+          300px 300px,
+          400px 400px,
+          500px 500px,
+          600px 600px,
+          700px 700px;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .cases-hero {
+        min-height: 50vh;
+        padding: 60px 20px;
+      }
+      
+      .cases-hero h1 {
+        font-size: 2.2rem;
+      }
+      
+      .cases-hero p {
+        font-size: 1.1rem;
+      }
+      
+      .case-filters {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .filter-btn {
+        width: 100%;
+        max-width: 300px;
+        justify-content: center;
+      }
+      
+      .testimonials-grid {
+        grid-template-columns: 1fr;
+        gap: 25px;
+      }
+      
+      .testimonial-card {
+        max-width: 400px;
+        margin: 0 auto;
+      }
+      
+      .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+      }
+      
+      .testimonial-title {
+        min-height: auto;
+      }
+      
+      .hero-content::before {
+        display: none;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .cases-hero h1 {
+        font-size: 1.8rem;
+      }
+      
+      .testimonial-title {
+        font-size: 1.2rem;
+      }
+      
+      .cases-hero::after {
+        display: none;
+      }
+      
+      .cases-hero .shine-overlay {
+        animation-duration: 15s;
+      }
+      
+      .stats-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .testimonial-cta h2 {
+        font-size: 1.6rem;
+      }
+      
+      .testimonial-cta p {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo">
+    <a href="index.html">
+      <img src="img/logo pelusaspet.png" alt="PelusasPet - Logo">
+    </a>
+  </div>
+
+  <!-- Menú de navegación principal (desktop) -->
+  <nav class="desktop-nav" id="menu">
+    <a href="index.html">
+      <i class="fas fa-home"></i> Inicio
+    </a>
+    <a href="productos.html">
+      <i class="fas fa-paw"></i> Productos
+    </a>
+    <a href="nosotros.html">
+      <i class="fas fa-users"></i> Nosotros
+    </a>
+    <a href="casos.html" class="active">
+      <i class="fas fa-heart"></i> Casos Reales
+    </a>
+    <a href="reconocimientos.html">
+      <i class="fas fa-award"></i> Reconocimientos
+    </a>
+  </nav>
+  
+  <div class="icons">
+    <!-- Carrito -->
+    <i class="fas fa-shopping-cart" title="Carrito de compras"></i>
+    
+    <!-- Hamburguesa (solo móvil) -->
+    <div class="hamburger-container">
+      <button class="hamburger" id="hamburger" aria-label="Menú">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- Menú móvil (overlay) -->
+<div class="mobile-menu" id="mobileMenu">
+  <br>
+  <div class="mobile-menu-header">
+    <div class="mobile-logo">
+    </div>
+    <button class="close-menu" id="closeMenu" aria-label="Cerrar menú">
+      <i class="fas fa-times"></i>
+    </button>
+  </div>
+  
+  <nav class="mobile-nav">
+    <a href="index.html">
+      <i class="fas fa-home"></i> Inicio
+    </a>
+    <a href="productos.html">
+      <i class="fas fa-paw"></i> Productos 
+    </a>
+    <a href="nosotros.html">
+      <i class="fas fa-users"></i> Sobre Nosotros
+    </a>
+    <a href="casos.html">
+      <i class="fas fa-heart"></i> Casos Reales
+    </a>
+    <a href="reconocimientos.html">
+      <i class="fas fa-award"></i> Reconocimientos
+    </a>
+  </nav>
+
+  <div class="mobile-social">
+    <a href="https://www.instagram.com/pelusas_pet?igsh=MXY2dXY3OXEwMGJ0aA==" target="_blank" class="instagram" title="Instagram">
+      <i class="fab fa-instagram"></i>
+    </a>
+    <a href="https://www.tiktok.com/@pelusaspet?_r=1&_t=ZS-92nusuMsm8m" target="_blank" class="tiktok" title="TikTok">
+      <i class="fab fa-tiktok"></i>
+    </a>
+    <a href="https://wa.me/573197622653?text=Hola%2C%20me%20interesan%20los%20productos%20de%20Pelusas%20Pet" target="_blank" class="whatsapp" title="WhatsApp">
+      <i class="fab fa-whatsapp"></i>
+    </a>
+  </div>
+</div>
+
+<!-- BOTONES FLOTANTES DE REDES SOCIALES -->
+<div class="floating-social whatsapp">
+  <a href="https://wa.me/573197622653?text=Hola%2C%20me%20interesan%20los%20productos%20de%20Pelusas%20Pet" 
+     class="floating-btn whatsapp" 
+     target="_blank" 
+     rel="noopener noreferrer">
+    <i class="fab fa-whatsapp"></i>
+    <span class="tooltip">¡Escríbenos por WhatsApp!</span>
+  </a>
+</div>
+
+<div class="floating-social instagram">
+  <a href="https://www.instagram.com/pelusas_pet?igsh=MXY2dXY3OXEwMGJ0aA==" 
+     class="floating-btn instagram" 
+     target="_blank" 
+     rel="noopener noreferrer">
+    <i class="fab fa-instagram"></i>
+    <span class="tooltip">Síguenos en Instagram</span>
+  </a>
+</div>
+
+<div class="floating-social tiktok">
+  <a href="https://www.tiktok.com/@pelusaspet?_r=1&_t=ZS-92nusuMsm8m" 
+     class="floating-btn tiktok" 
+     target="_blank" 
+     rel="noopener noreferrer">
+    <i class="fab fa-tiktok"></i>
+    <span class="tooltip">Visítanos en TikTok</span>
+  </a>
+</div>
+
+<!-- HERO DE CASOS REALES CON FONDO ANIMADO -->
+<section class="cases-hero">
+  <div class="shine-overlay"></div>
+  <div class="hero-content">
+    <h1>Casos Reales Transformadores</h1>
+    <p>Historias verificadas de mascotas que han recuperado su salud y felicidad con nuestros productos naturales.</p>
+  </div>
+</section>
+
+<section class="section active">
+  <h2>Testimonios Verificados</h2>
+  <p>Descubre cómo nuestros productos han cambiado la vida de cientos de mascotas y sus dueños.</p>
+  
+  <!-- FILTROS DE TIPO DE CASO -->
+  <div class="case-filters">
+    <button class="filter-btn active" data-filter="all">
+      <i class="fas fa-star"></i>
+      Todos los Casos
+    </button>
+    
+    <button class="filter-btn" data-filter="alergias">
+      <i class="fas fa-allergies"></i>
+      Alergias Cutáneas
+    </button>
+    
+    <button class="filter-btn" data-filter="estres">
+      <i class="fas fa-brain"></i>
+      Estrés y Ansiedad
+    </button>
+    
+    <button class="filter-btn" data-filter="articulaciones">
+      <i class="fas fa-bone"></i>
+      Problemas Articulares
+    </button>
+    
+    <button class="filter-btn" data-filter="pelaje">
+      <i class="fas fa-spa"></i>
+      Recuperación de Pelaje
+    </button>
+    
+    <button class="filter-btn" data-filter="veterinario">
+      <i class="fas fa-user-md"></i>
+      Recomendaciones Veterinarias
+    </button>
+  </div>
+  
+  <!-- GRID DE TESTIMONIOS -->
+  <div class="testimonials-grid" id="testimonialsGrid">
+    <!-- Los testimonios se cargan con JavaScript -->
+  </div>
+  
+  <!-- PAGINACIÓN (MANTENIENDO ESTRUCTURA DE PRODUCTOS) -->
+  <div class="pagination">
+    <button class="page-btn prev-btn">
+      <i class="fas fa-chevron-left"></i>
+    </button>
+    <button class="page-btn active">1</button>
+    <button class="page-btn">2</button>
+    <button class="page-btn">3</button>
+    <button class="page-btn next-btn">
+      <i class="fas fa-chevron-right"></i>
+    </button>
+  </div>
+</section>
+
+<!-- SECCIÓN DE ESTADÍSTICAS -->
+<section class="stats-section">
+  <h2 class="section-title">Nuestro Impacto en Números</h2>
+  <p class="section-subtitle">Resultados reales que nos llenan de orgullo y motivación</p>
+  
+  <div class="stats-grid">
+    <div class="stat-card animate-in">
+      <div class="stat-number">500+</div>
+      <div class="stat-label">Mascotas Transformadas</div>
+    </div>
+    
+    <div class="stat-card animate-in" style="animation-delay: 0.2s">
+      <div class="stat-number">98%</div>
+      <div class="stat-label">Satisfacción de Clientes</div>
+    </div>
+    
+    <div class="stat-card animate-in" style="animation-delay: 0.4s">
+      <div class="stat-number">40+</div>
+      <div class="stat-label">Veterinarios que Nos Recomiendan</div>
+    </div>
+    
+    <div class="stat-card animate-in" style="animation-delay: 0.6s">
+      <div class="stat-number">4.9★</div>
+      <div class="stat-label">Valoración Promedio</div>
+    </div>
+  </div>
+</section>
+
+<!-- CALL TO ACTION -->
+<section class="testimonial-cta animate-in" style="animation-delay: 0.8s">
+  <div class="testimonial-cta-content">
+    <h2>¿Tu mascota tiene una historia que contar?</h2>
+    <p>Comparte tu experiencia con PelusasPet y ayuda a otras mascotas a encontrar el bienestar que merecen.</p>
+    <button class="cta-button" onclick="shareExperience()">
+      <i class="fas fa-share-alt"></i>
+      <span>Compartir Mi Experiencia</span>
+    </button>
+  </div>
+</section>
+
+<footer>
+  <div style="text-align: center; margin-top: 40px;">
+    <h3>También puedes encontrarnos en:</h3>
+    <div style="display: flex; justify-content: center; gap: 20px; margin-top: 20px; font-size: 24px;">
+      <a href="https://wa.me/573197622653?text=Hola%2C%20me%20interesan%20los%20productos%20de%20Pelusas%20Pet" target="_blank" style="color: var(--morado);">
+        <i class="fab fa-whatsapp" title="whatsapp"></i>
+      </a>
+
+      <a href="https://www.instagram.com/pelusas_pet?igsh=MXY2dXY3OXEwMGJ0aA==" target="_blank" style="color: var(--morado);">
+        <i class="fab fa-instagram" title="Instagram"></i>
+      </a>
+
+      <a href="https://www.tiktok.com/@pelusaspet?_r=1&_t=ZS-92nusuMsm8m" target="_blank" style="color: var(--morado);">
+        <i class="fab fa-tiktok" title="tiktok"></i>
+      </a>
+    </div>
+  </div>
+  <br>
+  <p>© 2024 Pelusas Pet. Historias reales, resultados reales</p>
+  <p>Todos los derechos reservados</p>
+</footer>
+
+<script src="script.js"></script>
+<script>
+  // DATOS DE TESTIMONIOS
+  const testimonialsData = [
+    {
+      id: 1,
+      name: "Rocky - Golden Retriever",
+      category: "alergias",
+      petType: "Perro - Golden Retriever",
+      age: "4 años",
+      image: "https://images.unsplash.com/photo-1552053831-71594a27632d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      quote: "Mi perro Rocky sufría de alergias cutáneas desde cachorro. Habíamos probado todo tipo de champús medicinales sin resultados. Desde que usamos el Champú de Avena de PelusasPet, su piel se ha normalizado y su pelaje brilla como nunca. ¡Increíble!",
+      products: ["Champú de Avena", "Crema Antialergias"],
+      author: {
+        name: "Carlos Rodríguez",
+        avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80",
+        since: "Cliente desde 2021"
+      },
+      rating: 5,
+      badge: "Caso Destacado"
+    },
+    {
+      id: 2,
+      name: "Luna - Gato Siamés",
+      category: "estres",
+      petType: "Gato - Siamés",
+      age: "3 años",
+      image: "https://images.unsplash.com/photo-1513360371669-4adf3dd7dff8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      quote: "Mi gata Luna tenía problemas de estrés y se arrancaba el pelo. El collar calmante con feromonas naturales fue un cambio radical. Ahora es una gata tranquila y feliz. Además, el diseño es hermoso y a ella le encanta llevarlo.",
+      products: ["Collar Calmante", "Difusor de Feromonas"],
+      author: {
+        name: "María González",
+        avatar: "https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80",
+        since: "Cliente desde 2022"
+      },
+      rating: 5,
+      badge: "Recomendado"
+    },
+    {
+      id: 3,
+      name: "Thor - Labrador",
+      category: "articulaciones",
+      petType: "Perro - Labrador",
+      age: "12 años",
+      image: "https://images.unsplash.com/photo-1518717758536-85ae29035b6d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      quote: "Nuestro perro mayor, Thor, tiene artritis y dormía muy mal. La cama ortopédica con memory foam ha sido una bendición. Ahora descansa profundamente y se levanta sin rigidez. La calidad es excelente y se lava fácilmente.",
+      products: ["Cama Ortopédica", "Suplemento Articular"],
+      author: {
+        name: "Familia López",
+        avatar: "https://images.unsplash.com/photo-1507591064344-4c6ce005-128?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80",
+        since: "Clientes desde 2020"
+      },
+      rating: 5,
+      badge: "Mejoría Notable"
+    },
+    {
+      id: 4,
+      name: "Dr. Javier Ruiz",
+      category: "veterinario",
+      petType: "Recomendación Profesional",
+      age: "15 años de experiencia",
+      image: "https://images.unsplash.com/photo-1551601651-2a8555f1a136?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      quote: "Como veterinario, recomiendo PelusasPet a mis clientes. Los productos son naturales, seguros y realmente funcionan. He visto mejorías notables en casos de dermatitis, alergias y problemas de pelaje. La calidad es consistente.",
+      products: ["Línea Completa", "Productos Especializados"],
+      author: {
+        name: "Dr. Javier Ruiz",
+        avatar: "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80",
+        since: "Colaborador desde 2019"
+      },
+      rating: 5,
+      badge: "Recomendación Profesional"
+    },
+    {
+      id: 5,
+      name: "Milo - Bulldog Francés",
+      category: "alergias",
+      petType: "Perro - Bulldog Francés",
+      age: "2 años",
+      image: "https://images.unsplash.com/photo-1537151625747-768eb6cf92b2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      quote: "Milo tenía problemas en los pliegues de la piel que siempre estaban irritados. La crema antialergias de PelusasPet resolvió el problema en una semana. Ahora disfruta sin molestias y huele delicioso.",
+      products: ["Crema Antialergias", "Toallas Húmedas"],
+      author: {
+        name: "Andrea Martínez",
+        avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80",
+        since: "Cliente desde 2023"
+      },
+      rating: 4,
+      badge: "Recuperación Rápida"
+    },
+    {
+      id: 6,
+      name: "Simba - Gato Persa",
+      category: "pelaje",
+      petType: "Gato - Persa",
+      age: "5 años",
+      image: "https://images.unsplash.com/photo-1514888286974-6d03bdeacba8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      quote: "El pelaje de Simba siempre se enredaba y perdía mucho pelo. El acondicionador nutritivo y el cepillo especial hicieron maravillas. Ahora tiene un manto suave, brillante y sin nudos. ¡Estamos encantados!",
+      products: ["Acondicionador Nutritivo", "Cepillo Especial"],
+      author: {
+        name: "Laura Sánchez",
+        avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80",
+        since: "Cliente desde 2022"
+      },
+      rating: 5,
+      badge: "Transformación Total"
+    }
+  ];
+
+  // ESTADO DE LA APLICACIÓN
+  let currentFilter = 'all';
+  let currentPage = 1;
+  const testimonialsPerPage = 6;
+  let cartItems = [];
+
+  // INICIALIZAR
+  document.addEventListener('DOMContentLoaded', function() {
+    renderTestimonials();
+    setupCategoryFilters();
+    setupPagination();
+    loadCart();
+    
+    // Configurar animaciones
+    setTimeout(() => {
+      document.querySelectorAll('.animate-in').forEach((element, index) => {
+        setTimeout(() => {
+          element.style.opacity = '1';
+          element.style.transform = 'translateY(0)';
+        }, index * 100);
+      });
+    }, 100);
+  });
+
+  // RENDERIZAR TESTIMONIOS
+  function renderTestimonials() {
+    const testimonialsGrid = document.getElementById('testimonialsGrid');
+    testimonialsGrid.innerHTML = '';
+    
+    // Filtrar testimonios
+    const filteredTestimonials = currentFilter === 'all' 
+      ? testimonialsData 
+      : testimonialsData.filter(testimonial => testimonial.category === currentFilter);
+    
+    // Paginación
+    const startIndex = (currentPage - 1) * testimonialsPerPage;
+    const endIndex = startIndex + testimonialsPerPage;
+    const paginatedTestimonials = filteredTestimonials.slice(startIndex, endIndex);
+    
+    // Mostrar mensaje si no hay testimonios
+    if (paginatedTestimonials.length === 0) {
+      testimonialsGrid.innerHTML = `
+        <div class="no-products animate-in" style="grid-column: 1 / -1; text-align: center; padding: 60px 40px; color: var(--texto); font-size: 1.2rem;">
+          <i class="fas fa-search" style="font-size: 3rem; color: var(--morado-suave); margin-bottom: 20px; display: block;"></i>
+          <h3>No encontramos casos en esta categoría</h3>
+          <p>Prueba seleccionando otra categoría o vuelve a "Todos los Casos"</p>
+          <button class="filter-btn active" data-filter="all" style="margin-top: 30px;">
+            <i class="fas fa-redo"></i>
+            <span>Ver Todos los Casos</span>
+          </button>
+        </div>
+      `;
+      
+      // Reconfigurar botón
+      const resetBtn = document.querySelector('.no-products .filter-btn');
+      resetBtn.addEventListener('click', function() {
+        currentFilter = 'all';
+        currentPage = 1;
+        updateActiveFilter();
+        renderTestimonials();
+        updatePagination();
+      });
+      
+      return;
+    }
+    
+    // Crear cards de testimonios
+    paginatedTestimonials.forEach(testimonial => {
+      const testimonialCard = document.createElement('div');
+      testimonialCard.className = 'testimonial-card animate-in';
+      testimonialCard.dataset.category = testimonial.category;
+      
+      testimonialCard.innerHTML = `
+        ${testimonial.badge ? `
+          <div class="testimonial-badge">
+            <i class="fas fa-crown"></i>
+            ${testimonial.badge}
+          </div>
+        ` : ''}
+        
+        <img src="${testimonial.image}" alt="${testimonial.name}" class="testimonial-image">
+        
+        <div class="testimonial-content">
+          <span class="testimonial-pet-type">${testimonial.petType} • ${testimonial.age}</span>
+          <h3 class="testimonial-title">${testimonial.name}</h3>
+          <p class="testimonial-quote">${testimonial.quote}</p>
+          
+          <div class="testimonial-products">
+            ${testimonial.products.map(product => 
+              `<span class="product-tag">
+                <i class="fas fa-paw"></i>
+                ${product}
+              </span>`
+            ).join('')}
+          </div>
+          
+          <div class="testimonial-footer">
+            <div class="testimonial-author">
+              <img src="${testimonial.author.avatar}" alt="${testimonial.author.name}" class="author-avatar">
+              <div class="author-info">
+                <h4>${testimonial.author.name}</h4>
+                <p>${testimonial.author.since}</p>
+              </div>
+            </div>
+            <div class="testimonial-rating">
+              ${'★'.repeat(testimonial.rating)}${testimonial.rating < 5 ? '☆'.repeat(5 - testimonial.rating) : ''}
+            </div>
+          </div>
+        </div>
+      `;
+      
+      testimonialsGrid.appendChild(testimonialCard);
+    });
+  }
+
+  // CONFIGURAR FILTROS
+  function setupCategoryFilters() {
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    
+    filterButtons.forEach(button => {
+      button.addEventListener('click', function() {
+        currentFilter = this.dataset.filter;
+        currentPage = 1;
+        
+        // Actualizar UI
+        filterButtons.forEach(btn => btn.classList.remove('active'));
+        this.classList.add('active');
+        
+        renderTestimonials();
+        updatePagination();
+      });
+    });
+  }
+
+  function updateActiveFilter() {
+    document.querySelectorAll('.filter-btn').forEach(button => {
+      button.classList.remove('active');
+      if (button.dataset.filter === currentFilter) {
+        button.classList.add('active');
+      }
+    });
+  }
+
+  // CONFIGURAR PAGINACIÓN
+  function setupPagination() {
+    const prevBtn = document.querySelector('.prev-btn');
+    const nextBtn = document.querySelector('.next-btn');
+    const pageBtns = document.querySelectorAll('.page-btn:not(.prev-btn):not(.next-btn)');
+    
+    // Botón anterior
+    prevBtn.addEventListener('click', function() {
+      if (currentPage > 1) {
+        currentPage--;
+        renderTestimonials();
+        updatePagination();
+      }
+    });
+    
+    // Botón siguiente
+    nextBtn.addEventListener('click', function() {
+      const filteredTestimonials = currentFilter === 'all' 
+        ? testimonialsData 
+        : testimonialsData.filter(testimonial => testimonial.category === currentFilter);
+      
+      const totalPages = Math.ceil(filteredTestimonials.length / testimonialsPerPage);
+      
+      if (currentPage < totalPages) {
+        currentPage++;
+        renderTestimonials();
+        updatePagination();
+      }
+    });
+    
+    // Botones de página
+    pageBtns.forEach(btn => {
+      if (!btn.classList.contains('prev-btn') && !btn.classList.contains('next-btn')) {
+        btn.addEventListener('click', function() {
+          const pageNumber = parseInt(this.textContent);
+          if (!isNaN(pageNumber)) {
+            currentPage = pageNumber;
+            renderTestimonials();
+            updatePagination();
+          }
+        });
+      }
+    });
+  }
+
+  function updatePagination() {
+    const filteredTestimonials = currentFilter === 'all' 
+      ? testimonialsData 
+      : testimonialsData.filter(testimonial => testimonial.category === currentFilter);
+    
+    const totalPages = Math.ceil(filteredTestimonials.length / testimonialsPerPage);
+    
+    // Actualizar números de página
+    const pageBtns = document.querySelectorAll('.page-btn:not(.prev-btn):not(.next-btn)');
+    
+    // Mostrar solo 3 páginas máximo
+    let startPage = Math.max(1, currentPage - 1);
+    let endPage = Math.min(totalPages, startPage + 2);
+    
+    // Ajustar startPage si estamos al final
+    if (endPage === totalPages && totalPages > 3) {
+      startPage = Math.max(1, endPage - 2);
+    }
+    
+    const pageNumbers = [];
+    for (let i = startPage; i <= endPage; i++) {
+      pageNumbers.push(i);
+    }
+    
+    // Actualizar botones de página
+    pageBtns.forEach((btn, index) => {
+      if (index < pageNumbers.length) {
+        btn.textContent = pageNumbers[index];
+        btn.style.display = 'flex';
+        
+        if (pageNumbers[index] === currentPage) {
+          btn.classList.add('active');
+        } else {
+          btn.classList.remove('active');
+        }
+      } else {
+        btn.style.display = 'none';
+      }
+    });
+    
+    // Actualizar botones anterior/siguiente
+    const prevBtn = document.querySelector('.prev-btn');
+    const nextBtn = document.querySelector('.next-btn');
+    
+    prevBtn.disabled = currentPage === 1;
+    nextBtn.disabled = currentPage === totalPages;
+    
+    if (prevBtn.disabled) {
+      prevBtn.style.opacity = '0.5';
+      prevBtn.style.cursor = 'not-allowed';
+    } else {
+      prevBtn.style.opacity = '1';
+      prevBtn.style.cursor = 'pointer';
+    }
+    
+    if (nextBtn.disabled) {
+      nextBtn.style.opacity = '0.5';
+      nextBtn.style.cursor = 'not-allowed';
+    } else {
+      nextBtn.style.opacity = '1';
+      nextBtn.style.cursor = 'pointer';
+    }
+  }
+
+  // FUNCIÓN PARA COMPARTIR EXPERIENCIA
+  function shareExperience() {
+    const whatsappUrl = `https://wa.me/573197622653?text=Hola%20PelusasPet,%20quiero%20compartir%20mi%20experiencia%20con%20ustedes`;
+    window.open(whatsappUrl, '_blank');
+  }
+
+  // FUNCIONES DEL CARRITO (mantenidas para consistencia)
+  function loadCart() {
+    const savedCart = localStorage.getItem('pelusaspet_cart');
+    if (savedCart) {
+      try {
+        cartItems = JSON.parse(savedCart);
+      } catch (e) {
+        cartItems = [];
+      }
+    }
+  }
+
+  function updateCartIcon() {
+    const cartIcon = document.querySelector('.fa-shopping-cart');
+    const cartCount = cartItems.length;
+    
+    if (cartCount > 0) {
+      let badge = document.querySelector('.cart-badge');
+      if (!badge) {
+        badge = document.createElement('span');
+        badge.className = 'cart-badge';
+        cartIcon.parentElement.appendChild(badge);
+      }
+      badge.textContent = cartCount;
+    } else {
+      const badge = document.querySelector('.cart-badge');
+      if (badge) badge.remove();
+    }
+  }
+
+  // Inicializar icono del carrito
+  updateCartIcon();
+  
+  // Agregar estilos para el badge del carrito
+  const style = document.createElement('style');
+  style.textContent = `
+    .cart-badge {
+      position: absolute;
+      top: -8px;
+      right: -8px;
+      background: var(--dorado-profundo);
+      color: var(--morado-profundo);
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: bold;
+    }
+  `;
+  document.head.appendChild(style);
+</script>
+
+</body>
+</html>
