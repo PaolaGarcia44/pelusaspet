@@ -1,0 +1,518 @@
+/* carrito.css - Estilos específicos para carrito */
+.carrito-container {
+    max-width: 1200px;
+    margin: 100px auto 40px;
+    padding: 0 20px;
+}
+
+.carrito-container h1 {
+    color: var(--morado);
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 2.5em;
+}
+
+.carrito-container h1 i {
+    margin-right: 15px;
+    color: var(--dorado);
+}
+
+/* Grid principal */
+.carrito-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 30px;
+    margin-top: 20px;
+}
+
+@media (max-width: 900px) {
+    .carrito-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Columna productos */
+.carrito-productos {
+    background: white;
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: 0 5px 15px rgba(90, 33, 107, 0.1);
+}
+
+.carrito-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid var(--morado-claro);
+}
+
+.carrito-header h2 {
+    color: var(--morado);
+    font-size: 1.5em;
+}
+
+.btn-vaciar {
+    background: var(--rojo);
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.9em;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.btn-vaciar:hover {
+    background: #cc0000;
+    transform: translateY(-2px);
+}
+
+/* Lista de productos */
+.lista-carrito {
+    min-height: 200px;
+}
+
+.carrito-vacio {
+    text-align: center;
+    padding: 40px 20px;
+    color: var(--morado);
+}
+
+.carrito-vacio i {
+    font-size: 3.5em;
+    color: var(--dorado);
+    margin-bottom: 15px;
+}
+
+.carrito-vacio h3 {
+    font-size: 1.6em;
+    margin-bottom: 10px;
+    color: var(--morado);
+}
+
+.carrito-vacio p {
+    color: #666;
+    margin-bottom: 20px;
+    font-size: 0.95em;
+}
+
+.btn-comprar {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--morado), var(--morado-oscuro));
+    color: white;
+    padding: 10px 20px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9em;
+    transition: all 0.3s;
+    box-shadow: 0 4px 10px rgba(90, 33, 107, 0.2);
+    border: none;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.btn-comprar:hover {
+    background: linear-gradient(135deg, var(--morado-oscuro), var(--morado));
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(90, 33, 107, 0.3);
+}
+
+/* Items del carrito */
+.item-carrito {
+    display: flex;
+    align-items: center;
+    padding: 18px;
+    border-bottom: 1px solid #eee;
+    transition: all 0.3s;
+}
+
+.item-carrito:hover {
+    background: #f9f9f9;
+    border-radius: 10px;
+}
+
+.item-imagen {
+    width: 90px;
+    height: 90px;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-right: 15px;
+    flex-shrink: 0;
+    background: #f5f5f5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.item-imagen img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.item-info {
+    flex-grow: 1;
+}
+
+.item-info h4 {
+    color: var(--morado);
+    margin-bottom: 5px;
+    font-size: 1.1em;
+    font-weight: 600;
+}
+
+.item-precio {
+    color: var(--dorado);
+    font-weight: 700;
+    font-size: 1em;
+}
+
+.item-controls {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.cantidad-control {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--morado-claro);
+    padding: 4px 8px;
+    border-radius: 20px;
+}
+
+.btn-cantidad {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: white;
+    color: var(--morado);
+    border: none;
+    cursor: pointer;
+    font-size: 1em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.btn-cantidad:hover {
+    background: var(--morado);
+    color: white;
+    transform: scale(1.1);
+}
+
+.cantidad {
+    min-width: 25px;
+    text-align: center;
+    font-weight: 600;
+    color: var(--morado);
+}
+
+.btn-eliminar {
+    background: none;
+    border: none;
+    color: var(--rojo);
+    cursor: pointer;
+    font-size: 1.1em;
+    padding: 5px;
+    transition: all 0.3s;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-eliminar:hover {
+    background: #ffeeee;
+    color: #cc0000;
+    transform: scale(1.1);
+}
+
+/* Columna resumen */
+.carrito-resumen {
+    background: white;
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: 0 5px 15px rgba(90, 33, 107, 0.1);
+    height: fit-content;
+    position: sticky;
+    top: 120px;
+}
+
+.carrito-resumen h2 {
+    color: var(--morado);
+    margin-bottom: 25px;
+    font-size: 1.5em;
+    padding-bottom: 15px;
+    border-bottom: 2px solid var(--morado-claro);
+}
+
+.resumen-detalle {
+    margin-bottom: 30px;
+}
+
+.resumen-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 12px;
+    padding-bottom: 10px;
+    border-bottom: 1px dashed #ddd;
+}
+
+.resumen-item span:first-child {
+    color: #666;
+    font-size: 0.95em;
+}
+
+.resumen-item span:last-child {
+    font-weight: 600;
+    color: var(--morado);
+    font-size: 0.95em;
+}
+
+.envio-selector {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.envio-selector select {
+    padding: 10px 12px;
+    border: 2px solid var(--morado-claro);
+    border-radius: 8px;
+    font-family: 'Montserrat', sans-serif;
+    color: var(--morado);
+    background: white;
+    cursor: pointer;
+    font-size: 0.95em;
+}
+
+.envio-selector select:focus {
+    outline: none;
+    border-color: var(--dorado);
+}
+
+#costo-envio {
+    text-align: right;
+    font-weight: 700;
+    color: var(--dorado);
+    font-size: 1em;
+}
+
+.resumen-total {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 2px solid var(--morado);
+    font-size: 1.2em;
+    font-weight: 700;
+}
+
+.resumen-total span:first-child {
+    color: var(--morado);
+}
+
+.resumen-total span:last-child {
+    color: var(--dorado);
+}
+
+/* Información del cliente */
+.info-cliente {
+    margin-top: 30px;
+    padding-top: 25px;
+    border-top: 1px solid #eee;
+}
+
+.info-cliente h3 {
+    color: var(--morado);
+    margin-bottom: 20px;
+    font-size: 1.3em;
+}
+
+.info-cliente h3 i {
+    margin-right: 10px;
+    color: var(--dorado);
+}
+
+/* Formulario checkout */
+#formulario-checkout .form-group {
+    margin-bottom: 18px;
+}
+
+#formulario-checkout label {
+    display: block;
+    margin-bottom: 6px;
+    color: var(--morado);
+    font-weight: 600;
+    font-size: 0.9em;
+}
+
+#formulario-checkout input,
+#formulario-checkout textarea,
+#formulario-checkout select {
+    width: 100%;
+    padding: 10px 12px;
+    border: 2px solid var(--morado-claro);
+    border-radius: 8px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.95em;
+    transition: all 0.3s;
+}
+
+#formulario-checkout input:focus,
+#formulario-checkout textarea:focus,
+#formulario-checkout select:focus {
+    outline: none;
+    border-color: var(--dorado);
+    box-shadow: 0 0 0 3px rgba(218, 165, 32, 0.15);
+}
+
+#formulario-checkout .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+@media (max-width: 480px) {
+    #formulario-checkout .form-row {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Botón de pago */
+.btn-pagar {
+    width: 100%;
+    background: linear-gradient(135deg, var(--morado), var(--morado-oscuro));
+    color: white;
+    border: none;
+    padding: 15px;
+    border-radius: 10px;
+    font-size: 1em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    box-shadow: 0 4px 10px rgba(90, 33, 107, 0.2);
+}
+
+.btn-pagar:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(90, 33, 107, 0.3);
+    background: linear-gradient(135deg, var(--morado-oscuro), var(--morado));
+}
+
+.btn-pagar i {
+    font-size: 1.1em;
+}
+
+/* Notificaciones */
+.cart-notification {
+    position: fixed;
+    top: 100px;
+    right: 20px;
+    background: linear-gradient(135deg, var(--verde), #2E7D32);
+    color: white;
+    padding: 12px 20px;
+    border-radius: 8px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    z-index: 9999;
+    animation: notificacionEntrada 0.3s ease;
+    font-size: 0.9em;
+    max-width: 300px;
+}
+
+.cart-notification.hide {
+    animation: notificacionSalida 0.3s ease;
+}
+
+.cart-notification i {
+    font-size: 1.2em;
+}
+
+@keyframes notificacionEntrada {
+    from { transform: translateX(100%); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes notificacionSalida {
+    from { transform: translateX(0); opacity: 1; }
+    to { transform: translateX(100%); opacity: 0; }
+}
+
+/* Error checkout */
+.checkout-error {
+    background: linear-gradient(135deg, var(--rojo), #cc0000);
+    color: white;
+    padding: 12px 18px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    animation: notificacionEntrada 0.3s ease;
+    font-size: 0.9em;
+}
+
+.checkout-error i {
+    font-size: 1.2em;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .carrito-container {
+        margin: 90px auto 30px;
+        padding: 0 15px;
+    }
+    
+    .carrito-container h1 {
+        font-size: 2em;
+    }
+    
+    .carrito-productos,
+    .carrito-resumen {
+        padding: 20px;
+    }
+    
+    .item-carrito {
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+    
+    .item-imagen {
+        width: 70px;
+        height: 70px;
+    }
+    
+    .item-info h4 {
+        font-size: 1em;
+    }
+    
+    .carrito-vacio i {
+        font-size: 3em;
+    }
+    
+    .carrito-vacio h3 {
+        font-size: 1.4em;
+    }
+}

@@ -1,0 +1,23 @@
+# api/.htaccess
+Options -Indexes
+
+# Permitir CORS
+Header set Access-Control-Allow-Origin "*"
+Header set Access-Control-Allow-Methods "GET, POST, OPTIONS"
+Header set Access-Control-Allow-Headers "Content-Type"
+
+# Proteger archivos JSON
+<Files "*.json">
+    Order Deny,Allow
+    Deny from all
+</Files>
+
+# Redirigir errores
+ErrorDocument 404 /api/error.json
+
+# Para PHP
+<IfModule mod_php7.c>
+    php_flag display_errors off
+    php_value upload_max_filesize 10M
+    php_value post_max_size 10M
+</IfModule>

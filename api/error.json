@@ -1,0 +1,9 @@
+{
+    "error": true,
+    "message": "Endpoint no encontrado",
+    "endpoints_disponibles": [
+        "/api/enviar-email.php",
+        "/api/guardar-pedido.php",
+        "/api/notificacion-whatsapp.php"
+    ]
+}
