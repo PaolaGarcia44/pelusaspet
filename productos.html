@@ -17,101 +17,497 @@
     
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="img/favicon.ico">
-    
     <style>
-        .cart-icon-container {
-            position: relative;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-        }
-        
-        .cart-badge {
-            position: absolute;
-            top: -8px;
-            right: -8px;
-            background: #DAA520;
-            color: #5A216B;
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 12px;
-            font-weight: bold;
-            display: none;
-        }
-        
-        .productos-hero {
-            background: linear-gradient(135deg, var(--morado), var(--morado-oscuro));
-            color: white;
-            padding: 80px 20px;
-            text-align: center;
-            margin-top: 90px;
-        }
-        
-        .productos-hero h1 {
-            color: white;
-            font-size: 3em;
-            margin-bottom: 20px;
-        }
-        
-        .productos-hero p {
-            max-width: 800px;
-            margin: 0 auto;
-            font-size: 1.2em;
-            opacity: 0.9;
-        }
-        
-        .categorias {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin: 30px 0;
-            flex-wrap: wrap;
-        }
-        
-        .categoria-btn {
-            background: rgba(255, 255, 255, 0.1);
-            color: white;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            padding: 10px 20px;
-            border-radius: 25px;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-        
-        .categoria-btn:hover,
-        .categoria-btn.active {
-            background: var(--dorado);
-            color: var(--morado);
-            border-color: var(--dorado);
-        }
-        
-        .grid-productos {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 30px;
-            max-width: 1200px;
-            margin: 40px auto;
-            padding: 0 20px;
-        }
-        
-        @media (max-width: 768px) {
-            .productos-hero h1 {
-                font-size: 2.2em;
-            }
-            
-            .grid-productos {
-                grid-template-columns: 1fr;
-                gap: 20px;
-            }
-        }
-    </style>
+  :root {
+    --morado-profundo: #5A216B;
+    --morado-oscuro: #4A1A5A;
+    --morado-medio: #6A2B7B;
+    --morado-claro: #8A4FA3;
+    --destello-dorado: #DAA520;
+    --destello-plateado: #C0C0C0;
+    --verde-menta: #98FB98;
+    --rosa-suave: #FFB6C1;
+}
+
+.cart-icon-container {
+    position: relative;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.cart-badge {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background: var(--destello-dorado);
+    color: var(--morado-profundo);
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: bold;
+    display: none;
+}
+
+/* ========== EFECTO JARDÍN DE FLORES SUTILES ========== */
+.productos-hero {
+    background: linear-gradient(135deg, 
+                rgba(90, 33, 107, 0.95) 0%,
+                rgba(74, 26, 90, 0.92) 100%);
+    color: white;
+    padding: 120px 20px 90px;
+    text-align: center;
+    margin-top: 0;
+    position: relative;
+    overflow: hidden;
+    min-height: 600px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    isolation: isolate;
+}
+
+/* Fondo texturizado sutil */
+.productos-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+        radial-gradient(circle at 25% 25%, 
+            rgba(138, 79, 163, 0.15) 2%, 
+            transparent 10%),
+        radial-gradient(circle at 75% 75%, 
+            rgba(218, 165, 32, 0.1) 2%, 
+            transparent 10%),
+        radial-gradient(circle at 50% 50%, 
+            rgba(152, 251, 152, 0.08) 1%, 
+            transparent 8%);
+    background-size: 200px 200px, 300px 300px, 250px 250px;
+    z-index: 1;
+    pointer-events: none;
+    animation: textureMove 20s linear infinite;
+}
+
+@keyframes textureMove {
+    0% { background-position: 0 0, 0 0, 0 0; }
+    100% { background-position: 200px 200px, 300px 300px, 250px 250px; }
+}
+
+.productos-hero h1 {
+    color: white;
+    font-size: 4.2em;
+    margin-bottom: 25px;
+    position: relative;
+    z-index: 3;
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-shadow: 
+        0 2px 4px rgba(0, 0, 0, 0.3),
+        0 4px 12px rgba(0, 0, 0, 0.2);
+    animation: titleBloom 1.2s ease-out;
+    background: linear-gradient(135deg, 
+                rgba(255, 255, 255, 1) 0%,
+                rgba(255, 255, 255, 0.85) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    padding: 0 10px;
+}
+
+@keyframes titleBloom {
+    from {
+        opacity: 0;
+        transform: translateY(30px) scale(0.95);
+        filter: blur(5px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        filter: blur(0);
+    }
+}
+
+.productos-hero p {
+    max-width: 700px;
+    margin: 0 auto 50px;
+    font-size: 1.4em;
+    color: rgba(255, 255, 255, 0.9);
+    position: relative;
+    z-index: 3;
+    line-height: 1.7;
+    font-weight: 300;
+    font-family: 'Montserrat', sans-serif;
+    animation: textFadeIn 1s ease-out 0.4s both;
+    padding: 0 20px;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+@keyframes textFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Contenedor de flores elegantes */
+.floral-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+/* Pétalos flotantes */
+.petal {
+    position: absolute;
+    background: linear-gradient(135deg, 
+                rgba(255, 255, 255, 0.1), 
+                rgba(255, 255, 255, 0.05));
+    border-radius: 50% 50% 50% 0;
+    transform: rotate(45deg);
+    animation: petalFloat 20s infinite linear;
+    opacity: 0;
+    filter: blur(0.5px);
+    backdrop-filter: blur(2px);
+}
+
+/* Estilos de pétalos */
+.petal.lavender {
+    background: linear-gradient(135deg, 
+                rgba(138, 79, 163, 0.15), 
+                rgba(90, 33, 107, 0.1));
+    box-shadow: 
+        inset 0 0 10px rgba(138, 79, 163, 0.2),
+        0 0 15px rgba(138, 79, 163, 0.1);
+}
+
+.petal.gold {
+    background: linear-gradient(135deg, 
+                rgba(218, 165, 32, 0.15), 
+                rgba(255, 215, 0, 0.1));
+    box-shadow: 
+        inset 0 0 10px rgba(218, 165, 32, 0.2),
+        0 0 15px rgba(218, 165, 32, 0.1);
+}
+
+.petal.mint {
+    background: linear-gradient(135deg, 
+                rgba(152, 251, 152, 0.15), 
+                rgba(152, 251, 152, 0.1));
+    box-shadow: 
+        inset 0 0 10px rgba(152, 251, 152, 0.2),
+        0 0 15px rgba(152, 251, 152, 0.1);
+}
+
+/* Animación de pétalos flotantes */
+@keyframes petalFloat {
+    0% {
+        opacity: 0;
+        transform: 
+            rotate(45deg)
+            translateY(100vh) 
+            rotate(0deg)
+            scale(0.5);
+    }
+    10% {
+        opacity: 0.3;
+    }
+    90% {
+        opacity: 0.3;
+    }
+    100% {
+        opacity: 0;
+        transform: 
+            rotate(45deg)
+            translateY(-100px) 
+            rotate(360deg)
+            scale(1);
+    }
+}
+
+/* Flores completas */
+.flower {
+    position: absolute;
+    animation: flowerBloom 15s infinite ease-in-out;
+    opacity: 0;
+}
+
+/* Flores de lavanda */
+.flower.lavender .petal {
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    background: rgba(138, 79, 163, 0.15);
+    border-radius: 50%;
+    transform-origin: center;
+}
+
+.flower.lavender .petal:nth-child(1) { transform: rotate(0deg) translateX(25px); }
+.flower.lavender .petal:nth-child(2) { transform: rotate(60deg) translateX(25px); }
+.flower.lavender .petal:nth-child(3) { transform: rotate(120deg) translateX(25px); }
+.flower.lavender .petal:nth-child(4) { transform: rotate(180deg) translateX(25px); }
+.flower.lavender .petal:nth-child(5) { transform: rotate(240deg) translateX(25px); }
+.flower.lavender .petal:nth-child(6) { transform: rotate(300deg) translateX(25px); }
+
+.flower.lavender .center {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: rgba(218, 165, 32, 0.2);
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* Animación de floración */
+@keyframes flowerBloom {
+    0%, 100% {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+    50% {
+        opacity: 0.4;
+        transform: scale(1);
+    }
+}
+
+/* Líneas de polen sutiles */
+.pollen-line {
+    position: absolute;
+    height: 1px;
+    background: linear-gradient(90deg, 
+                transparent, 
+                rgba(218, 165, 32, 0.2), 
+                transparent);
+    animation: pollenDrift 10s infinite ease-in-out;
+    filter: blur(0.5px);
+}
+
+@keyframes pollenDrift {
+    0%, 100% {
+        opacity: 0;
+        transform: translateX(-100%);
+    }
+    50% {
+        opacity: 0.3;
+        transform: translateX(100%);
+    }
+}
+
+/* Olas suaves en la parte inferior */
+.floral-wave {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 150px;
+    background: 
+        linear-gradient(to top, 
+            rgba(138, 79, 163, 0.1), 
+            transparent);
+    mask-image: 
+        radial-gradient(circle at 50% 100%, 
+            black 30%, 
+            transparent 70%);
+    -webkit-mask-image: 
+        radial-gradient(circle at 50% 100%, 
+            black 30%, 
+            transparent 70%);
+    animation: waveRise 8s infinite ease-in-out;
+}
+
+@keyframes waveRise {
+    0%, 100% {
+        transform: translateY(0);
+        opacity: 0.3;
+    }
+    50% {
+        transform: translateY(-20px);
+        opacity: 0.5;
+    }
+}
+
+/* Contenedor de botones de categoría */
+.categorias {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin: 40px 0;
+    flex-wrap: wrap;
+    position: relative;
+    z-index: 3;
+    animation: categoriesAppear 1s ease-out 0.6s both;
+}
+
+@keyframes categoriesAppear {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.categoria-btn {
+    background: rgba(255, 255, 255, 0.08);
+    color: rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    padding: 14px 28px;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    font-weight: 500;
+    font-size: 1em;
+    backdrop-filter: blur(8px);
+    position: relative;
+    overflow: hidden;
+    font-family: 'Montserrat', sans-serif;
+    letter-spacing: 0.3px;
+}
+
+.categoria-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+                transparent, 
+                rgba(255, 255, 255, 0.1), 
+                transparent);
+    transition: left 0.6s;
+}
+
+.categoria-btn:hover::before {
+    left: 100%;
+}
+
+.categoria-btn:hover {
+    background: rgba(255, 255, 255, 0.15);
+    color: white;
+    border-color: rgba(255, 255, 255, 0.25);
+    transform: translateY(-3px);
+    box-shadow: 
+        0 10px 25px rgba(0, 0, 0, 0.15),
+        0 0 30px rgba(138, 79, 163, 0.1);
+}
+
+.categoria-btn.active {
+    background: linear-gradient(135deg, 
+                rgba(218, 165, 32, 0.9), 
+                rgba(255, 215, 0, 0.8));
+    color: var(--morado-profundo);
+    border: none;
+    box-shadow: 
+        0 10px 25px rgba(0, 0, 0, 0.2),
+        0 0 40px rgba(218, 165, 32, 0.3);
+    font-weight: 600;
+}
+
+/* Grid de productos */
+.grid-productos {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 35px;
+    max-width: 1300px;
+    margin: 60px auto;
+    padding: 0 30px;
+}
+
+/* Efecto de brillo adicional */
+@keyframes ambientBloom {
+    0%, 100% {
+        opacity: 0.2;
+        filter: blur(30px);
+    }
+    50% {
+        opacity: 0.4;
+        filter: blur(20px);
+    }
+}
+
+.productos-hero::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, 
+                rgba(138, 79, 163, 0.15) 0%,
+                rgba(152, 251, 152, 0.1) 25%,
+                rgba(218, 165, 32, 0.08) 50%,
+                transparent 70%);
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    animation: ambientBloom 10s ease-in-out infinite;
+    border-radius: 50%;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .productos-hero {
+        padding: 90px 20px 60px;
+        min-height: 500px;
+    }
+    
+    .productos-hero h1 {
+        font-size: 2.8em;
+    }
+    
+    .productos-hero p {
+        font-size: 1.2em;
+    }
+    
+    .categoria-btn {
+        padding: 12px 22px;
+        font-size: 0.9em;
+    }
+    
+    .grid-productos {
+        grid-template-columns: 1fr;
+        gap: 25px;
+        padding: 0 20px;
+        margin: 40px auto;
+    }
+    
+    /* Reducir cantidad de elementos florales en móviles */
+    .petal:nth-child(n+15),
+    .flower:nth-child(n+4),
+    .pollen-line:nth-child(n+8) {
+        display: none;
+    }
+    
+    .productos-hero::after {
+        width: 250px;
+        height: 250px;
+    }
+}
+</style>
 </head>
 <body>
-    <!-- HEADER IDÉNTICO -->
+    <!-- HEADER -->
     <header>
         <div class="logo">
             <a href="index.html">
@@ -226,26 +622,52 @@
     
     <!-- HERO PRODUCTOS -->
     <section class="productos-hero">
+        <!-- Contenedor de partículas -->
+        <div class="particles-container">
+            <!-- 20 partículas doradas y moradas -->
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+        </div>
+        
         <h1>Nuestros Productos</h1>
         <p>Descubre nuestra línea completa de productos 100% naturales para el cuidado y bienestar de tu mascota.</p>
         
         <div class="categorias">
             <button class="categoria-btn active" data-categoria="todos">Todos</button>
-            <button class="categoria-btn" data-categoria="shampoos">Shampoos</button>
+            <button class="categoria-btn" data-categoria="shampoo">Shampoo</button>
             <button class="categoria-btn" data-categoria="cremas">Cremas</button>
-            <button class="categoria-btn" data-categoria="accesorios">Accesorios</button>
-            <button class="categoria-btn" data-categoria="cuidado">Cuidado Especial</button>
+            <button class="categoria-btn" data-categoria="perfumes">Perfumes</button>
+            <button class="categoria-btn" data-categoria="kits">Kits</button>
+            <button class="categoria-btn" data-categoria="otros">Otros</button>
         </div>
     </section>
     
     <!-- PRODUCTOS -->
     <div class="grid-productos">
         <!-- Producto 1 -->
-        <div class="card" data-categoria="shampoos">
+        <div class="card" data-categoria="shampoo">
             <img src="img/shampoo-romero.webp" alt="Shampoo de Romero y Avena">
             <h3>Shampoo de Romero y Avena</h3>
             <p>Alivia la picazón, hidrata profundamente y fortalece el pelo de forma 100% natural.</p>
-            <div class="price">$29.900</div>
+            <div class="price">$0</div>
             <button onclick="agregarAlCarrito('shampoo-romero')" class="add-to-cart-btn">
                 <i class="fas fa-cart-plus"></i> Añadir al Carrito
             </button>
@@ -257,7 +679,7 @@
             <h3>Crema Hidratante Vitaminas</h3>
             <h4>A, E y F</h4>
             <p>Repara y protege la piel seca o irritada de tu mascota. Ideal para uso diario.</p>
-            <div class="price">$34.900</div>
+            <div class="price">$0</div>
             <button onclick="agregarAlCarrito('crema-hidratante')" class="add-to-cart-btn">
                 <i class="fas fa-cart-plus"></i> Añadir al Carrito
             </button>
@@ -268,63 +690,96 @@
             <img src="img/antihongos.webp" alt="Crema Antialergias">
             <h3>Crema Antialergias</h3>
             <p>Alivia alergias y protege la piel sensible de tu mascota. Ingredientes naturales.</p>
-            <div class="price">$27.900</div>
+            <div class="price">$0</div>
             <button onclick="agregarAlCarrito('crema-antialergias')" class="add-to-cart-btn">
-                <i class="fas fa-cart-plus"></i> Añadir al Carrito
+                <i class=" fas fa-cart-plus"></i> Añadir al Carrito
             </button>
         </div>
         
         <!-- Producto 4 -->
-        <div class="card" data-categoria="shampoos">
-            <img src="img/default-product.jpg" alt="Shampoo Antipulgas Natural">
-            <h3>Shampoo Antipulgas Natural</h3>
-            <p>Elimina pulgas y garrapatas de forma natural sin químicos agresivos.</p>
-            <div class="price">$32.900</div>
-            <button onclick="agregarAlCarrito('shampoo-antipulgas')" class="add-to-cart-btn">
+        <div class="card" data-categoria="perfumes">
+            <img src="img/locion-floral.webp" alt="Perfume Natural">
+            <h3>Perfume Floral</h3>
+            <p>Perfume floral natural de lavanda. Fragancia suave y duradera, especialmente formulado para ser no irritante y respetar la piel sensible de tu mascota.</p>
+            <div class="price">$0</div>
+            <button onclick="agregarAlCarrito('perfume-floral')" class="add-to-cart-btn">
                 <i class="fas fa-cart-plus"></i> Añadir al Carrito
             </button>
         </div>
         
-        <!-- Producto 5 -->
-        <div class="card" data-categoria="cuidado">
-            <img src="img/default-product.jpg" alt="Perfume Natural">
-            <h3>Perfume Natural Lavanda</h3>
-            <p>Fragancia suave de lavanda que dura todo el día. No irrita la piel.</p>
-            <div class="price">$24.900</div>
-            <button onclick="agregarAlCarrito('perfume-lavanda')" class="add-to-cart-btn">
+        <!-- Producto 5-->
+        <div class="card" data-categoria="otros">
+            <img src="img/sensorial.webp" alt="Estimulante Sensorial">
+            <h3>Estimulante Sensorial</h3>
+            <p>Promueve el bienestar emocional de tu mascota. Reduce ansiedad, estimula positivamente los sentidos y ayuda en casos de estrés o cambios de ambiente.</p>
+            <div class="price">$0</div>
+            <button onclick="agregarAlCarrito('estimulante-sensorial')" class="add-to-cart-btn">
                 <i class="fas fa-cart-plus"></i> Añadir al Carrito
             </button>
         </div>
         
         <!-- Producto 6 -->
-        <div class="card" data-categoria="accesorios">
-            <img src="img/default-product.jpg" alt="Collar Antipulgas">
-            <h3>Collar Antipulgas Natural</h3>
-            <p>Protege a tu mascota hasta por 3 meses. Aroma a citronella.</p>
-            <div class="price">$18.900</div>
-            <button onclick="agregarAlCarrito('collar-antipulgas')" class="add-to-cart-btn">
+        <div class="card" data-categoria="otros">
+            <img src="img/antipulgas.webp" alt="Antipulgas Natural">
+            <h3>Antipulgas Natural</h3>
+            <p>Protege a tu mascota de pulgas y garrapatas de forma natural. Seguro y efectivo.</p>
+            <div class="price">$0</div>
+            <button onclick="agregarAlCarrito('antipulgas-natural')" class="add-to-cart-btn">
                 <i class="fas fa-cart-plus"></i> Añadir al Carrito
             </button>
         </div>
         
         <!-- Producto 7 -->
-        <div class="card" data-categoria="cremas">
-            <img src="img/default-product.jpg" alt="Crema para Almohadillas">
-            <h3>Crema para Almohadillas</h3>
-            <p>Hidrata y protege las patitas de tu mascota. Ideal para perros activos.</p>
-            <div class="price">$22.900</div>
-            <button onclick="agregarAlCarrito('crema-almohadillas')" class="add-to-cart-btn">
+        <div class="card" data-categoria="perfumes">
+            <img src="img/perfume-manzana.webp" alt="Perfume Natural">
+            <h3>Perfume Manzana Verde</h3>
+            <p>Perfume natural de manzana verde. Fragancia fresca y duradera, especialmente formulado para ser no irritante y respetar la piel sensible de tu mascota.</p>
+            <div class="price">$0</div>
+            <button onclick="agregarAlCarrito('perfume-manzana-verde')" class="add-to-cart-btn">
                 <i class="fas fa-cart-plus"></i> Añadir al Carrito
             </button>
         </div>
         
         <!-- Producto 8 -->
-        <div class="card" data-categoria="cuidado">
-            <img src="img/default-product.jpg" alt="Spray Relajante">
-            <h3>Spray Relajante Natural</h3>
-            <p>Calma la ansiedad durante viajes o tormentas. Con extracto de manzanilla.</p>
-            <div class="price">$26.900</div>
-            <button onclick="agregarAlCarrito('spray-relajante')" class="add-to-cart-btn">
+        <div class="card" data-categoria="perfumes">
+            <img src="img/locion-kiwi.webp" alt="Perfume Natural">
+            <h3>Perfume Kiwi</h3>
+            <p>Perfume natural de kiwi. Fragancia fresca y duradera, especialmente formulado para ser no irritante y respetar la piel sensible de tu mascota.</p>
+            <div class="price">$0</div>
+            <button onclick="agregarAlCarrito('perfume-kiwi')" class="add-to-cart-btn">
+                <i class="fas fa-cart-plus"></i> Añadir al Carrito
+            </button>
+        </div>
+        
+        <!-- Producto 9 -->
+        <div class="card" data-categoria="kits">
+            <img src="img/combo-zeus.webp" alt="Combo Zeus">
+            <h3>Combo Zeus</h3>
+            <p>Peludos con piel sensible o problemas en su piel para restaurar y recuperar su piel.</p>
+            <div class="price">$0</div>
+            <button onclick="agregarAlCarrito('combo-zeus')" class="add-to-cart-btn">
+                <i class="fas fa-cart-plus"></i> Añadir al Carrito
+            </button>
+        </div>
+        
+        <!-- Producto 10 -->
+        <div class="card" data-categoria="kits">
+            <img src="img/combo-rocky.webp" alt="Combo Rocky">
+            <h3>Combo Rocky</h3>
+            <p>Peludos para tener una piel hidratada y sana.</p>
+            <div class="price">$0</div>
+            <button onclick="agregarAlCarrito('combo-rocky')" class="add-to-cart-btn">
+                <i class="fas fa-cart-plus"></i> Añadir al Carrito
+            </button>
+        </div>
+        
+        <!-- Producto 11 -->
+        <div class="card" data-categoria="kits">
+            <img src="img/combo-scooby.webp" alt="Combo Scooby">
+            <h3>Combo Scooby</h3>
+            <p>Razas grandes para tener una piel sana e hidratada.</p>
+            <div class="price">$0</div>
+            <button onclick="agregarAlCarrito('combo-scooby')" class="add-to-cart-btn">
                 <i class="fas fa-cart-plus"></i> Añadir al Carrito
             </button>
         </div>
@@ -351,9 +806,9 @@
         <p>Todos los derechos reservados</p>
     </footer>
     
-    <!-- Scripts -->
+    <!-- SCRIPTS SIMPLIFICADOS Y UNIFICADOS -->
     <script src="js/script.js"></script>
-    
+    <script src="js/carrito-unificado.js"></script>
     <script>
         // Filtro de categorías
         document.addEventListener('DOMContentLoaded', function() {
@@ -380,77 +835,21 @@
                 });
             });
             
-            // Función para productos adicionales
-            window.agregarAlCarrito = function(productoId) {
-                // Extender la función del script.js
-                if (typeof window.agregarAlCarritoOriginal === 'function') {
-                    window.agregarAlCarritoOriginal(productoId);
-                } else {
-                    // Si no está definida, usar la función básica
-                    const productos = {
-                        'shampoo-antipulgas': { id: 'shampoo-antipulgas', name: 'Shampoo Antipulgas Natural', price: 32900 },
-                        'perfume-lavanda': { id: 'perfume-lavanda', name: 'Perfume Natural Lavanda', price: 24900 },
-                        'collar-antipulgas': { id: 'collar-antipulgas', name: 'Collar Antipulgas Natural', price: 18900 },
-                        'crema-almohadillas': { id: 'crema-almohadillas', name: 'Crema para Almohadillas', price: 22900 },
-                        'spray-relajante': { id: 'spray-relajante', name: 'Spray Relajante Natural', price: 26900 }
-                    };
-                    
-                    const producto = productos[productoId] || { id: productoId, name: 'Producto ' + productoId, price: 20000 };
-                    
-                    let carrito = JSON.parse(localStorage.getItem('pelusaspet_carrito')) || [];
-                    const itemExistente = carrito.find(item => item.id === productoId);
-                    
-                    if (itemExistente) {
-                        itemExistente.cantidad += 1;
-                    } else {
-                        carrito.push({
-                            ...producto,
-                            cantidad: 1
-                        });
-                    }
-                    
-                    localStorage.setItem('pelusaspet_carrito', JSON.stringify(carrito));
-                    
-                    // Actualizar badge
-                    const badge = document.querySelector('.cart-badge');
-                    if (badge) {
-                        const totalItems = carrito.reduce((sum, item) => sum + item.cantidad, 0);
-                        badge.textContent = totalItems;
-                        badge.style.display = totalItems > 0 ? 'flex' : 'none';
-                    }
-                    
-                    // Notificación
-                    const notificacion = document.createElement('div');
-                    notificacion.style.cssText = `
-                        position: fixed;
-                        top: 100px;
-                        right: 20px;
-                        background: linear-gradient(135deg, #4CAF50, #2E7D32);
-                        color: white;
-                        padding: 12px 20px;
-                        border-radius: 8px;
-                        box-shadow: 0 5px 20px rgba(0,0,0,0.3);
-                        display: flex;
-                        align-items: center;
-                        gap: 8px;
-                        z-index: 9999;
-                        animation: notificacionEntrada 0.3s ease;
-                    `;
-                    
-                    notificacion.innerHTML = `
-                        <i class="fas fa-check-circle"></i>
-                        <span><strong>${producto.name}</strong> añadido al carrito</span>
-                    `;
-                    
-                    document.body.appendChild(notificacion);
-                    
-                    setTimeout(() => {
-                        notificacion.style.animation = 'notificacionSalida 0.3s ease';
-                        setTimeout(() => notificacion.remove(), 300);
-                    }, 3000);
-                }
-            };
+            // Asegurar que la función agregarAlCarrito esté disponible
+            if (typeof window.agregarAlCarrito === 'undefined') {
+                console.warn('agregarAlCarrito no está definida. Usando función de respaldo.');
+                window.agregarAlCarrito = function(productoId) {
+                    console.log('Función de respaldo llamada para:', productoId);
+                    // Mostrar mensaje de error
+                    alert('El carrito no está disponible. Por favor, recarga la página.');
+                };
+            }
         });
+        
+        // DEBUG: Verificar que el carrito funciona
+        console.log('=== PRODUCTOS.HML INICIALIZADO ===');
+        console.log('Función agregarAlCarrito disponible:', typeof window.agregarAlCarrito !== 'undefined');
+        console.log('LocalStorage carrito:', localStorage.getItem('carrito'));
     </script>
 </body>
 </html>

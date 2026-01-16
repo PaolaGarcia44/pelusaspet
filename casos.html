@@ -18,242 +18,563 @@
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="img/favicon.ico">
     
-    <style>
-        .cart-icon-container {
-            position: relative;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
+   <style>
+    .cart-icon-container {
+        position: relative;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+    }
+    
+    .cart-badge {
+        position: absolute;
+        top: -8px;
+        right: -8px;
+        background: #DAA520;
+        color: #5A216B;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 12px;
+        font-weight: bold;
+        display: none;
+    }
+    
+    /* ========== EFECTO CORAZONES Y FLORES ANIMADAS ========== */
+    .casos-hero {
+        background: 
+            linear-gradient(135deg, 
+                rgba(90, 33, 107, 0.95) 0%,
+                rgba(106, 43, 123, 0.92) 50%,
+                rgba(138, 79, 163, 0.9) 100%);
+        color: white;
+        padding: 140px 20px 100px;
+        text-align: center;
+        margin-top: 0;
+        position: relative;
+        overflow: hidden;
+        min-height: 600px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    /* Fondo con corazones flotantes */
+    .casos-hero::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-image: 
+            url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path fill="rgba(255, 182, 193, 0.1)" d="M50,85 C30,70 15,55 15,35 C15,20 27,10 40,10 C47,10 53,14 57,20 C61,14 67,10 74,10 C87,10 99,20 99,35 C99,55 84,70 64,85 L50,85 Z"/></svg>'),
+            url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path fill="rgba(255, 215, 0, 0.08)" d="M50,20 C60,10 75,5 85,15 C95,25 90,40 80,50 C70,60 50,70 50,70 C50,70 30,60 20,50 C10,40 5,25 15,15 C25,5 40,10 50,20 Z"/></svg>'),
+            url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path fill="rgba(218, 165, 32, 0.05)" d="M50,10 C70,5 90,15 95,35 C100,55 85,75 65,85 C45,95 25,85 15,65 C5,45 15,25 35,15 C40,12 45,10 50,10 Z"/></svg>');
+        background-size: 60px 60px, 80px 80px, 100px 100px;
+        background-position: 10% 20%, 80% 40%, 40% 70%;
+        z-index: 1;
+        pointer-events: none;
+        animation: floatingHearts 20s linear infinite;
+        opacity: 0.3;
+    }
+
+    @keyframes floatingHearts {
+        0% {
+            background-position: 
+                10% 20%,
+                80% 40%,
+                40% 70%;
+            opacity: 0.2;
         }
-        
-        .cart-badge {
-            position: absolute;
-            top: -8px;
-            right: -8px;
-            background: #DAA520;
-            color: #5A216B;
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 12px;
-            font-weight: bold;
-            display: none;
+        25% {
+            background-position: 
+                15% 25%,
+                85% 45%,
+                45% 75%;
+            opacity: 0.3;
         }
-        
+        50% {
+            background-position: 
+                20% 30%,
+                90% 50%,
+                50% 80%;
+            opacity: 0.4;
+        }
+        75% {
+            background-position: 
+                25% 35%,
+                95% 55%,
+                55% 85%;
+            opacity: 0.3;
+        }
+        100% {
+            background-position: 
+                10% 20%,
+                80% 40%,
+                40% 70%;
+            opacity: 0.2;
+        }
+    }
+
+    /* Partículas de amor flotantes */
+    .love-particle {
+        position: absolute;
+        color: rgba(255, 182, 193, 0.6);
+        font-size: 20px;
+        animation: loveFloat 15s infinite linear;
+        z-index: 1;
+        opacity: 0;
+    }
+
+    .love-particle.heart {
+        content: "❤";
+    }
+
+    .love-particle.paw {
+        content: "🐾";
+        font-size: 16px;
+    }
+
+    .love-particle.star {
+        content: "★";
+        color: rgba(255, 215, 0, 0.6);
+        font-size: 18px;
+    }
+
+    @keyframes loveFloat {
+        0% {
+            transform: translateY(100vh) rotate(0deg);
+            opacity: 0;
+        }
+        10% {
+            opacity: 0.6;
+        }
+        90% {
+            opacity: 0.6;
+        }
+        100% {
+            transform: translateY(-100px) rotate(360deg);
+            opacity: 0;
+        }
+    }
+
+    /* Efecto de olas suaves */
+    .love-waves {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 150px;
+        background: 
+            linear-gradient(to top, 
+                rgba(255, 182, 193, 0.1), 
+                transparent);
+        mask-image: 
+            url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120"><path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25"/><path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5"/><path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z"/></svg>');
+        -webkit-mask-image: 
+            url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120"><path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25"/><path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5"/><path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z"/></svg>');
+        mask-size: 1200px 150px;
+        -webkit-mask-size: 1200px 150px;
+        animation: wavesMove 20s linear infinite;
+        opacity: 0.3;
+        z-index: 1;
+    }
+
+    @keyframes wavesMove {
+        0% {
+            mask-position-x: 0;
+            -webkit-mask-position-x: 0;
+        }
+        100% {
+            mask-position-x: 1200px;
+            -webkit-mask-position-x: 1200px;
+        }
+    }
+
+    .casos-hero h1 {
+        color: white;
+        font-size: 4.5em;
+        margin-bottom: 25px;
+        position: relative;
+        z-index: 3;
+        font-family: 'Playfair Display', serif;
+        font-weight: 700;
+        text-shadow: 
+            0 2px 10px rgba(0, 0, 0, 0.3),
+            0 0 30px rgba(255, 182, 193, 0.2);
+        animation: titleGlow 2s ease-out;
+    }
+
+    @keyframes titleGlow {
+        0% {
+            opacity: 0;
+            transform: translateY(30px) scale(0.95);
+            filter: blur(5px);
+        }
+        100% {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+            filter: blur(0);
+        }
+    }
+
+    .casos-hero p {
+        max-width: 800px;
+        margin: 0 auto 50px;
+        font-size: 1.5em;
+        color: rgba(255, 255, 255, 0.9);
+        position: relative;
+        z-index: 3;
+        line-height: 1.7;
+        font-weight: 300;
+        font-family: 'Montserrat', sans-serif;
+        animation: textFloat 1s ease-out 0.3s both;
+        padding: 0 20px;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    }
+
+    @keyframes textFloat {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    /* Contenedor de corazones animados */
+    .hearts-container {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 2;
+        pointer-events: none;
+        overflow: hidden;
+    }
+
+    /* Posicionamiento de partículas de amor */
+    .love-particle:nth-child(1) { left: 10%; animation-delay: 0s; animation-duration: 18s; }
+    .love-particle:nth-child(2) { left: 25%; animation-delay: 2s; animation-duration: 22s; }
+    .love-particle:nth-child(3) { left: 40%; animation-delay: 4s; animation-duration: 20s; }
+    .love-particle:nth-child(4) { left: 60%; animation-delay: 1s; animation-duration: 25s; }
+    .love-particle:nth-child(5) { left: 75%; animation-delay: 3s; animation-duration: 19s; }
+    .love-particle:nth-child(6) { left: 90%; animation-delay: 5s; animation-duration: 21s; }
+    
+    /* Botón CTA especial */
+    .btn-inspirar {
+        display: inline-flex;
+        align-items: center;
+        gap: 15px;
+        background: linear-gradient(135deg, 
+                    rgba(255, 182, 193, 0.9), 
+                    rgba(218, 165, 32, 0.9));
+        color: var(--morado-profundo);
+        padding: 18px 40px;
+        border-radius: 50px;
+        font-weight: 600;
+        font-size: 1.2em;
+        text-decoration: none;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        position: relative;
+        z-index: 3;
+        overflow: hidden;
+        box-shadow: 
+            0 10px 30px rgba(0, 0, 0, 0.2),
+            0 0 40px rgba(255, 182, 193, 0.3);
+        border: 2px solid rgba(255, 255, 255, 0.3);
+    }
+
+    .btn-inspirar::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, 
+                    transparent, 
+                    rgba(255, 255, 255, 0.2), 
+                    transparent);
+        transition: left 0.6s;
+    }
+
+    .btn-inspirar:hover::before {
+        left: 100%;
+    }
+
+    .btn-inspirar:hover {
+        transform: translateY(-5px) scale(1.05);
+        box-shadow: 
+            0 15px 40px rgba(0, 0, 0, 0.3),
+            0 0 60px rgba(255, 182, 193, 0.4);
+    }
+
+    .btn-inspirar i {
+        font-size: 1.4em;
+        animation: heartbeat 1.5s infinite;
+    }
+
+    @keyframes heartbeat {
+        0%, 100% {
+            transform: scale(1);
+        }
+        50% {
+            transform: scale(1.2);
+        }
+    }
+    
+    /* Resto del CSS sin cambios */
+    .testimonios {
+        max-width: 1200px;
+        margin: 60px auto;
+        padding: 0 20px;
+    }
+    
+    .testimonio-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 30px;
+        margin-top: 40px;
+    }
+    
+    @media (max-width: 768px) {
         .casos-hero {
-            background: linear-gradient(135deg, var(--dorado), var(--dorado-claro));
-            color: var(--morado);
-            padding: 80px 20px;
-            text-align: center;
-            margin-top: 90px;
+            padding: 100px 20px 70px;
+            min-height: 500px;
         }
         
         .casos-hero h1 {
-            color: var(--morado);
-            font-size: 3.5em;
-            margin-bottom: 20px;
+            font-size: 3em;
         }
         
         .casos-hero p {
-            max-width: 800px;
-            margin: 0 auto;
-            font-size: 1.3em;
-        }
-        
-        .testimonios {
-            max-width: 1200px;
-            margin: 60px auto;
-            padding: 0 20px;
+            font-size: 1.2em;
         }
         
         .testimonio-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
+            grid-template-columns: 1fr;
         }
         
-        @media (max-width: 768px) {
-            .casos-hero h1 {
-                font-size: 2.5em;
-            }
-            
-            .testimonio-grid {
-                grid-template-columns: 1fr;
-            }
+        .love-particle:nth-child(n+4) {
+            display: none;
         }
-        
-        .testimonio-card {
-            background: white;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(90, 33, 107, 0.1);
-            transition: all 0.3s;
-        }
-        
-        .testimonio-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(90, 33, 107, 0.2);
-        }
-        
-        .testimonio-imagen {
-            height: 250px;
-            overflow: hidden;
-        }
-        
-        .testimonio-imagen img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s;
-        }
-        
-        .testimonio-card:hover .testimonio-imagen img {
-            transform: scale(1.1);
-        }
-        
-        .testimonio-contenido {
-            padding: 30px;
-        }
-        
-        .testimonio-header {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            margin-bottom: 20px;
-        }
-        
-        .testimonio-avatar {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            overflow: hidden;
-            border: 3px solid var(--dorado);
-        }
-        
-        .testimonio-avatar img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        
-        .testimonio-info h3 {
-            color: var(--morado);
-            margin-bottom: 5px;
-        }
-        
-        .testimonio-info p {
-            color: var(--gris);
-            font-size: 0.9em;
-        }
-        
-        .testimonio-texto {
-            color: var(--gris);
-            line-height: 1.8;
-            margin-bottom: 20px;
-            font-style: italic;
-        }
-        
-        .testimonio-productos {
-            background: var(--gris-claro);
-            padding: 15px;
-            border-radius: 10px;
-            margin-top: 20px;
-        }
-        
-        .testimonio-productos h4 {
-            color: var(--morado);
-            margin-bottom: 10px;
-            font-size: 1.1em;
-        }
-        
-        .producto-usado {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 8px;
-        }
-        
-        .producto-usado i {
-            color: var(--dorado);
-        }
-        
-        .estadisticas {
-            background: linear-gradient(135deg, var(--morado), var(--morado-oscuro));
-            color: white;
-            padding: 60px 20px;
-            margin-top: 60px;
-        }
-        
-        .estadisticas-contenido {
-            max-width: 1200px;
-            margin: 0 auto;
-            text-align: center;
-        }
-        
-        .estadisticas-contenido h2 {
-            color: white;
-            font-size: 2.5em;
-            margin-bottom: 40px;
-        }
-        
-        .grid-estadisticas {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 30px;
-        }
-        
-        .estadistica-item {
-            padding: 20px;
-        }
-        
-        .estadistica-numero {
-            font-size: 3em;
-            font-weight: bold;
-            color: var(--dorado);
-            margin-bottom: 10px;
-        }
-        
-        .estadistica-texto {
-            font-size: 1.1em;
-            opacity: 0.9;
-        }
-        
-        .cta-casos {
-            text-align: center;
-            padding: 60px 20px;
-            max-width: 800px;
-            margin: 60px auto;
-        }
-        
-        .cta-casos h2 {
-            font-size: 2.5em;
-            margin-bottom: 20px;
-        }
-        
-        .btn-testimonio {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            background: linear-gradient(135deg, var(--morado), var(--morado-oscuro));
-            color: white;
-            padding: 15px 30px;
-            border-radius: 30px;
-            font-weight: 600;
-            font-size: 1.1em;
-            margin-top: 30px;
-            text-decoration: none;
-            transition: all 0.3s;
-        }
-        
-        .btn-testimonio:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(90, 33, 107, 0.3);
-        }
-    </style>
+    }
+    
+    .testimonio-card {
+        background: white;
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(90, 33, 107, 0.1);
+        transition: all 0.3s;
+    }
+    
+    .testimonio-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 40px rgba(90, 33, 107, 0.2);
+    }
+    
+    .testimonio-imagen {
+        height: 250px;
+        overflow: hidden;
+    }
+    
+    .testimonio-imagen img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s;
+    }
+    
+    .testimonio-card:hover .testimonio-imagen img {
+        transform: scale(1.1);
+    }
+    
+    .testimonio-contenido {
+        padding: 30px;
+    }
+    
+    .testimonio-header {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        margin-bottom: 20px;
+    }
+    
+    .testimonio-avatar {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        overflow: hidden;
+        border: 3px solid var(--dorado);
+    }
+    
+    .testimonio-avatar img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    
+    .testimonio-info h3 {
+        color: var(--morado);
+        margin-bottom: 5px;
+    }
+    
+    .testimonio-info p {
+        color: var(--gris);
+        font-size: 0.9em;
+    }
+    
+    .testimonio-texto {
+        color: var(--gris);
+        line-height: 1.8;
+        margin-bottom: 20px;
+        font-style: italic;
+    }
+    
+    .testimonio-productos {
+        background: var(--gris-claro);
+        padding: 15px;
+        border-radius: 10px;
+        margin-top: 20px;
+    }
+    
+    .testimonio-productos h4 {
+        color: var(--morado);
+        margin-bottom: 10px;
+        font-size: 1.1em;
+    }
+    
+    .producto-usado {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 8px;
+    }
+    
+    .producto-usado i {
+        color: var(--dorado);
+    }
+    
+    .estadisticas {
+        background: linear-gradient(135deg, var(--morado), var(--morado-oscuro));
+        color: white;
+        padding: 60px 20px;
+        margin-top: 60px;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .estadisticas::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: 
+            radial-gradient(circle at 30% 20%, 
+                rgba(255, 182, 193, 0.1) 0%, 
+                transparent 50%),
+            radial-gradient(circle at 70% 80%, 
+                rgba(218, 165, 32, 0.08) 0%, 
+                transparent 50%);
+        animation: statsGlow 8s ease-in-out infinite alternate;
+    }
+
+    @keyframes statsGlow {
+        0% { opacity: 0.3; }
+        100% { opacity: 0.6; }
+    }
+    
+    .estadisticas-contenido {
+        max-width: 1200px;
+        margin: 0 auto;
+        text-align: center;
+        position: relative;
+        z-index: 2;
+    }
+    
+    .estadisticas-contenido h2 {
+        color: white;
+        font-size: 2.5em;
+        margin-bottom: 40px;
+    }
+    
+    .grid-estadisticas {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 30px;
+    }
+    
+    .estadistica-item {
+        padding: 20px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 15px;
+        backdrop-filter: blur(5px);
+        border: 1px solid rgba(255, 182, 193, 0.2);
+        transition: transform 0.3s;
+    }
+
+    .estadistica-item:hover {
+        transform: translateY(-5px);
+        border-color: rgba(255, 182, 193, 0.4);
+    }
+    
+    .estadistica-numero {
+        font-size: 3em;
+        font-weight: bold;
+        color: rgba(255, 182, 193, 0.9);
+        margin-bottom: 10px;
+        text-shadow: 0 0 10px rgba(255, 182, 193, 0.3);
+    }
+    
+    .estadistica-texto {
+        font-size: 1.1em;
+        opacity: 0.9;
+    }
+    
+    .cta-casos {
+        text-align: center;
+        padding: 60px 20px;
+        max-width: 800px;
+        margin: 60px auto;
+        position: relative;
+    }
+    
+    .cta-casos h2 {
+        font-size: 2.5em;
+        margin-bottom: 20px;
+    }
+    
+    .btn-testimonio {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        background: linear-gradient(135deg, var(--morado), var(--morado-oscuro));
+        color: white;
+        padding: 15px 30px;
+        border-radius: 30px;
+        font-weight: 600;
+        font-size: 1.1em;
+        margin-top: 30px;
+        text-decoration: none;
+        transition: all 0.3s;
+    }
+    
+    .btn-testimonio:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 20px rgba(90, 33, 107, 0.3);
+    }
+</style>
 </head>
 <body>
     <!-- HEADER IDÉNTICO -->
@@ -320,9 +641,7 @@
             <a href="reconocimientos.html">
                 <i class="fas fa-award"></i> Reconocimientos
             </a>
-            <a href="carrito.html">
-                <i class="fas fa-shopping-cart"></i> Carrito
-            </a>
+            
         </nav>
         
         <div class="mobile-social">
@@ -371,9 +690,14 @@
     
     <!-- HERO CASOS -->
     <section class="casos-hero">
+        <!-- Elementos decorativos animados -->
+        <div class="gold-decoration corner-left"></div>
+        <div class="gold-decoration corner-right"></div>
+        
         <h1>Historias que nos inspiran</h1>
         <p>Conoce las experiencias reales de familias que han transformado la vida de sus mascotas con nuestros productos naturales.</p>
     </section>
+    
     
     <!-- TESTIMONIOS -->
     <section class="testimonios">
@@ -386,7 +710,7 @@
             <!-- Testimonio 1 -->
             <div class="testimonio-card">
                 <div class="testimonio-imagen">
-                    <img src="img/perro-hero.png" alt="Max - Golden Retriever">
+                    <img src="img\leonel.png" alt="Max - Golden Retriever">
                 </div>
                 <div class="testimonio-contenido">
                     <div class="testimonio-header">
@@ -418,7 +742,7 @@
             <!-- Testimonio 2 -->
             <div class="testimonio-card">
                 <div class="testimonio-imagen">
-                    <img src="img/perroygato.jpg" alt="Luna - Gata siamesa">
+                    <img src="img\perla.png" alt="Luna - Gata siamesa">
                 </div>
                 <div class="testimonio-contenido">
                     <div class="testimonio-header">
@@ -450,7 +774,7 @@
             <!-- Testimonio 3 -->
             <div class="testimonio-card">
                 <div class="testimonio-imagen">
-                    <img src="img/default-product.jpg" alt="Rocky - Bulldog francés">
+                    <img src="img\pancho.png" alt="Rocky - Bulldog francés">
                 </div>
                 <div class="testimonio-contenido">
                     <div class="testimonio-header">
@@ -482,7 +806,7 @@
             <!-- Testimonio 4 -->
             <div class="testimonio-card">
                 <div class="testimonio-imagen">
-                    <img src="img/default-product.jpg" alt="Simba - Pastor alemán">
+                    <img src="img\pepito.png" alt="Simba - Pastor alemán">
                 </div>
                 <div class="testimonio-contenido">
                     <div class="testimonio-header">
@@ -526,10 +850,7 @@
                     <div class="estadistica-numero">98%</div>
                     <div class="estadistica-texto">Satisfacción de clientes</div>
                 </div>
-                <div class="estadistica-item">
-                    <div class="estadistica-numero">25</div>
-                    <div class="estadistica-texto">Refugios apoyados</div>
-                </div>
+               
                 <div class="estadistica-item">
                     <div class="estadistica-numero">100%</div>
                     <div class="estadistica-texto">Ingredientes naturales</div>
@@ -574,3 +895,14 @@
     <script src="js/script.js"></script>
 </body>
 </html>
+
+<!-- Scripts -->
+<script src="js/script.js"></script>
+<script src="js/carrito-unificado.js"></script>
+    // Inicializar cuando el DOM esté listo
+    document.addEventListener('DOMContentLoaded', function() {
+        if (window.inicializarCarrito) {
+            inicializarCarrito();
+        }
+    });
+</script>

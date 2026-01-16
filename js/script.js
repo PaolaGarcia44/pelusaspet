@@ -53,15 +53,16 @@ document.addEventListener('DOMContentLoaded', function() {
         console.warn('Elementos del menú móvil no encontrados');
     }
     
-    // ========== 2. SISTEMA DE CARRITO BÁSICO ==========
+    // ========== 2. SISTEMA DE CARRITO UNIFICADO ==========
     function actualizarBadgeCarrito() {
         const badge = document.querySelector('.cart-badge');
         if (badge) {
-            const carrito = JSON.parse(localStorage.getItem('pelusaspet_carrito')) || [];
+            // CLAVE UNIFICADA: 'carrito' (NO 'pelusaspet_carrito')
+            const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
             const totalItems = carrito.reduce((sum, item) => sum + (item.cantidad || 0), 0);
             badge.textContent = totalItems;
             badge.style.display = totalItems > 0 ? 'flex' : 'none';
-            console.log(`Badge actualizado: ${totalItems} items`);
+            console.log(`Badge actualizado: ${totalItems} items (clave: carrito)`);
         }
     }
     
@@ -77,39 +78,111 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // ========== 4. FUNCIÓN PARA AGREGAR AL CARRITO ==========
-    window.agregarAlCarrito = function(productoId) {
+    // ========== 4. FUNCIÓN PARA AGREGAR AL CARRITO (UNIFICADA) ==========
+    window.agregarAlCarritoOriginal = function(productoId) {
         console.log(`Agregando producto: ${productoId}`);
         
-        // Productos base (puedes expandir esto)
+        // CATÁLOGO COMPLETO DE PRODUCTOS (para index.html y productos.html)
         const productos = {
+            // Productos de index.html
             'shampoo-romero': {
                 id: 'shampoo-romero',
                 name: 'Shampoo de Romero y Avena',
                 price: 29900,
-                image: 'img/shampoo-romero.webp'
+                image: 'img/shampoo-romero.webp',
+                description: 'Alivia la picazón, hidrata profundamente y fortalece el pelo de forma 100% natural.'
             },
             'crema-hidratante': {
                 id: 'crema-hidratante',
-                name: 'Crema Hidratante Vitamina A, E y F',
+                name: 'Crema Hidratante Vitaminas A, E y F',
                 price: 34900,
-                image: 'img/crema-hidratante.webp'
+                image: 'img/crema-hidratante.webp',
+                description: 'Repara y protege la piel seca o irritada de tu mascota.'
             },
             'crema-antialergias': {
                 id: 'crema-antialergias',
                 name: 'Crema Antialergias',
                 price: 27900,
-                image: 'img/antihongos.webp'
+                image: 'img/antihongos.webp',
+                description: 'Alivia alergias y protege la piel sensible de tu mascota.'
+            },
+            
+            // Productos de productos.html
+            'shampoo-manzanilla': { 
+                id: 'shampoo-manzanilla', 
+                name: 'Shampoo Manzanilla', 
+                price: 29900, 
+                image: 'img/default.jpg',
+                description: 'Shampoo suave de manzanilla para pieles sensibles.'
+            },
+            'perfume-floral': { 
+                id: 'perfume-floral', 
+                name: 'Perfume Floral', 
+                price: 24900, 
+                image: 'img/locion-floral.webp',
+                description: 'Perfume floral natural de lavanda.'
+            },
+            'estimulante-sensorial': { 
+                id: 'estimulante-sensorial', 
+                name: 'Estimulante Sensorial', 
+                price: 32900, 
+                image: 'img/sensorial.webp',
+                description: 'Promueve el bienestar emocional de tu mascota.'
+            },
+            'antipulgas-natural': { 
+                id: 'antipulgas-natural', 
+                name: 'Antipulgas Natural', 
+                price: 26900, 
+                image: 'img/antipulgas.webp',
+                description: 'Protege a tu mascota de pulgas y garrapatas de forma natural.'
+            },
+            'perfume-manzana-verde': { 
+                id: 'perfume-manzana-verde', 
+                name: 'Perfume Manzana Verde', 
+                price: 24900, 
+                image: 'img/perfume-manzana.webp',
+                description: 'Perfume natural de manzana verde.'
+            },
+            'perfume-kiwi': { 
+                id: 'perfume-kiwi', 
+                name: 'Perfume Kiwi', 
+                price: 24900, 
+                image: 'img/locion-kiwi.webp',
+                description: 'Perfume natural de kiwi.'
+            },
+            'combo-zeus': { 
+                id: 'combo-zeus', 
+                name: 'Combo Zeus', 
+                price: 59900, 
+                image: 'img/combo-zeus.webp',
+                description: 'Para peludos con piel sensible o problemas en su piel.'
+            },
+            'combo-rocky': { 
+                id: 'combo-rocky', 
+                name: 'Combo Rocky', 
+                price: 54900, 
+                image: 'img/combo-rocky.webp',
+                description: 'Para peludos con piel normal.'
+            },
+            'combo-scooby': { 
+                id: 'combo-scooby', 
+                name: 'Combo Scooby', 
+                price: 64900, 
+                image: 'img/combo-scooby.webp',
+                description: 'Para razas grandes.'
             }
         };
         
-        const producto = productos[productoId];
-        if (!producto) {
-            console.error(`Producto ${productoId} no encontrado`);
-            return;
-        }
+        const producto = productos[productoId] || { 
+            id: productoId, 
+            name: 'Producto ' + productoId, 
+            price: 20000,
+            image: 'img/default.jpg',
+            description: 'Producto de calidad para tu mascota.'
+        };
         
-        let carrito = JSON.parse(localStorage.getItem('pelusaspet_carrito')) || [];
+        // USAR CLAVE UNIFICADA: 'carrito'
+        let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
         const itemExistente = carrito.find(item => item.id === productoId);
         
         if (itemExistente) {
@@ -121,8 +194,15 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }
         
-        localStorage.setItem('pelusaspet_carrito', JSON.stringify(carrito));
+        // GUARDAR CON CLAVE UNIFICADA: 'carrito'
+        localStorage.setItem('carrito', JSON.stringify(carrito));
         actualizarBadgeCarrito();
+        
+        // Disparar evento para sincronización
+        window.dispatchEvent(new StorageEvent('storage', {
+            key: 'carrito',
+            newValue: JSON.stringify(carrito)
+        }));
         
         // Mostrar notificación
         mostrarNotificacion(`${producto.name} añadido al carrito`);
@@ -139,7 +219,12 @@ document.addEventListener('DOMContentLoaded', function() {
                 boton.style.backgroundColor = '';
             }, 1500);
         }
+        
+        return carrito;
     };
+    
+    // Alias para compatibilidad
+    window.agregarAlCarrito = window.agregarAlCarritoOriginal;
     
     // ========== 5. FORMULARIO MAYORISTA ==========
     const wholesaleForm = document.getElementById('wholesaleForm');
@@ -225,6 +310,153 @@ ${formData.productos.length > 0 ? formData.productos.map(p => `• ${p}`).join('
         }, 3000);
     }
     
-    // ========== 7. INICIALIZACIÓN FINAL ==========
+    // ========== 7. SINCRONIZACIÓN ENTRE PESTAÑAS ==========
+    function configurarSincronizacionCarrito() {
+        console.log('Configurando sincronización entre pestañas...');
+        
+        // Función local para actualizar badge
+        function actualizarBadgeLocal() {
+            const badge = document.querySelector('.cart-badge');
+            if (badge) {
+                // CLAVE UNIFICADA: 'carrito'
+                const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+                const totalItems = carrito.reduce((sum, item) => sum + (item.cantidad || 0), 0);
+                badge.textContent = totalItems;
+                badge.style.display = totalItems > 0 ? 'flex' : 'none';
+                console.log(`Sincronización: Badge actualizado: ${totalItems} items`);
+            }
+        }
+        
+        // Escuchar cambios en localStorage de otras pestañas
+        window.addEventListener('storage', function(event) {
+            console.log('Evento storage detectado:', event.key);
+            
+            // CLAVE UNIFICADA: 'carrito'
+            if (event.key === 'carrito') {
+                console.log('Carrito modificado en otra pestaña');
+                
+                // Actualizar el badge del carrito
+                actualizarBadgeLocal();
+                
+                // Si estamos en la página del carrito, recargar la lista
+                if (window.location.pathname.includes('carrito')) {
+                    // Forzar recarga suave del carrito
+                    if (typeof renderizarCarrito === 'function') {
+                        console.log('Recargando carrito desde storage event...');
+                        // Recargar el carrito después de un breve delay
+                        setTimeout(() => {
+                            const carritoActual = JSON.parse(localStorage.getItem('carrito')) || [];
+                            console.log('Carrito actualizado:', carritoActual);
+                        }, 100);
+                    }
+                }
+            }
+        });
+        
+        // Actualizar periódicamente (cada segundo)
+        setInterval(actualizarBadgeLocal, 1000);
+        
+        console.log('Sincronización configurada ✓');
+    }
+    
+    // Configurar sincronización
+    configurarSincronizacionCarrito();
+    
+    // ========== 8. VERIFICAR Y CORREGIR HUELLITAS ==========
+    function verificarHuellitas() {
+        console.log('Verificando huellitas...');
+        
+        const footprintsTracker = document.querySelector('.footprints-tracker');
+        if (!footprintsTracker) {
+            console.warn('No se encontró .footprints-tracker en el HTML');
+            return;
+        }
+        
+        console.log('Footprints tracker encontrado ✓');
+        
+        const footprints = footprintsTracker.querySelectorAll('.footprint-track');
+        console.log(`Número de huellitas: ${footprints.length}`);
+    }
+    
+    // Verificar después de un breve delay
+    setTimeout(verificarHuellitas, 100);
+    
+    // ========== 9. MIGRAR DATOS VIEJOS (si existen) ==========
+    function migrarDatosCarritoViejo() {
+        const carritoViejo = localStorage.getItem('pelusaspet_carrito');
+        const carritoNuevo = localStorage.getItem('carrito');
+        
+        if (carritoViejo && !carritoNuevo) {
+            console.log('Migrando datos de pelusaspet_carrito a carrito...');
+            localStorage.setItem('carrito', carritoViejo);
+            localStorage.removeItem('pelusaspet_carrito');
+            console.log('Migración completada ✓');
+        } else if (carritoViejo && carritoNuevo) {
+            console.log('Eliminando clave vieja pelusaspet_carrito...');
+            localStorage.removeItem('pelusaspet_carrito');
+        }
+    }
+    
+    migrarDatosCarritoViejo();
+    
     console.log('Script.js inicializado correctamente');
 });
+
+// ========== 10. ESTILOS PARA NOTIFICACIÓN ==========
+const style = document.createElement('style');
+style.textContent = `
+    .cart-notification {
+        position: fixed;
+        top: 100px;
+        right: 20px;
+        background: linear-gradient(135deg, var(--morado), var(--morado-oscuro));
+        color: white;
+        padding: 15px 20px;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        z-index: 9999;
+        animation: slideIn 0.3s ease;
+        max-width: 350px;
+    }
+    
+    .cart-notification.hide {
+        animation: slideOut 0.3s ease forwards;
+    }
+    
+    @keyframes slideIn {
+        from {
+            transform: translateX(100%);
+            opacity: 0;
+        }
+        to {
+            transform: translateX(0);
+            opacity: 1;
+        }
+    }
+    
+    @keyframes slideOut {
+        from {
+            transform: translateX(0);
+            opacity: 1;
+        }
+        to {
+            transform: translateX(100%);
+            opacity: 0;
+        }
+    }
+    
+    .cart-notification i {
+        font-size: 1.2em;
+        color: var(--dorado);
+    }
+    
+    .cart-notification span {
+        font-size: 0.9em;
+        line-height: 1.4;
+    }
+`;
+
+document.head.appendChild(style);

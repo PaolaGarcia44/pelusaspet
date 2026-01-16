@@ -399,7 +399,34 @@
     
     <!-- Scripts -->
     <script src="js/script.js"></script>
-    <script src="js/cart-functions.js"></script>
+    <script src="js/carrito-unificado.js"></script>
     <script src="js/carrito-page.js"></script>
+    
+    // Inicializar cuando el DOM esté listo
+    document.addEventListener('DOMContentLoaded', function() {
+        if (window.inicializarCarrito) {
+            inicializarCarrito();
+        }
+    });
+</script>
+<!-- Script de debug -->
+<script>
+    // Debug del carrito - Solo consola, no visible en pantalla
+    console.log('=== DEBUG CARRITO ===');
+    console.log('localStorage carrito:', localStorage.getItem('carrito'));
+    
+    // Intentar parsear y mostrar detalles SOLO en consola
+    try {
+        const carrito = JSON.parse(localStorage.getItem('carrito') || '[]');
+        console.log('Número de productos:', carrito.length);
+        console.log('Detalles de productos:', carrito);
+        
+        // SOLO PARA DESARROLLO: Mostrar en consola
+        // La parte que crea el div en pantalla ha sido eliminada
+        
+    } catch (error) {
+        console.error('Error en debug:', error);
+    }
+</script>
 </body>
 </html>

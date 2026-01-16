@@ -18,316 +18,629 @@
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="img/favicon.ico">
     
-    <style>
-        .cart-icon-container {
-            position: relative;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
+  <style>
+    .cart-icon-container {
+        position: relative;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+    }
+    
+    .cart-badge {
+        position: absolute;
+        top: -8px;
+        right: -8px;
+        background: #DAA520;
+        color: #5A216B;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 12px;
+        font-weight: bold;
+        display: none;
+    }
+    
+    /* ========== EFECTO ESTRELLAS Y TROFEOS ANIMADOS ========== */
+    .reconocimientos-hero {
+        background: 
+            linear-gradient(135deg, 
+                rgba(90, 33, 107, 0.95) 0%,
+                rgba(74, 26, 90, 0.93) 50%,
+                rgba(106, 43, 123, 0.9) 100%),
+            url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><defs><pattern id="awardPattern" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M20,0 L25,15 L40,15 L28,25 L32,40 L20,30 L8,40 L12,25 L0,15 L15,15 Z" fill="rgba(218, 165, 32, 0.1)" /></pattern></defs><rect x="0" y="0" width="100" height="100" fill="url(%23awardPattern)"/></svg>');
+        color: white;
+        padding: 140px 20px 100px;
+        text-align: center;
+        margin-top: 0;
+        position: relative;
+        overflow: hidden;
+        min-height: 600px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    /* Efecto de constelación de estrellas */
+    .reconocimientos-hero::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: 
+            radial-gradient(circle at 20% 30%, 
+                rgba(218, 165, 32, 0.15) 0%, 
+                transparent 50%),
+            radial-gradient(circle at 80% 70%, 
+                rgba(255, 255, 255, 0.1) 0%, 
+                transparent 50%),
+            radial-gradient(circle at 50% 50%, 
+                rgba(255, 215, 0, 0.08) 0%, 
+                transparent 60%);
+        z-index: 1;
+        pointer-events: none;
+        animation: awardGlow 10s ease-in-out infinite alternate;
+        filter: blur(30px);
+    }
+
+    @keyframes awardGlow {
+        0% {
+            opacity: 0.3;
+            transform: scale(1);
         }
-        
-        .cart-badge {
-            position: absolute;
-            top: -8px;
-            right: -8px;
-            background: #DAA520;
-            color: #5A216B;
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 12px;
-            font-weight: bold;
-            display: none;
+        100% {
+            opacity: 0.6;
+            transform: scale(1.05);
         }
-        
+    }
+
+    /* Estrellas brillantes animadas */
+    .reconocimientos-hero::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-image: 
+            radial-gradient(3px 3px at 10% 20%, rgba(255, 215, 0, 0.8), transparent),
+            radial-gradient(2px 2px at 20% 40%, rgba(255, 255, 255, 0.6), transparent),
+            radial-gradient(4px 4px at 30% 60%, rgba(218, 165, 32, 0.7), transparent),
+            radial-gradient(3px 3px at 40% 80%, rgba(255, 215, 0, 0.8), transparent),
+            radial-gradient(2px 2px at 50% 10%, rgba(255, 255, 255, 0.6), transparent),
+            radial-gradient(3px 3px at 60% 30%, rgba(218, 165, 32, 0.7), transparent),
+            radial-gradient(2px 2px at 70% 50%, rgba(255, 215, 0, 0.8), transparent),
+            radial-gradient(4px 4px at 80% 70%, rgba(255, 255, 255, 0.6), transparent);
+        background-size: 300px 300px;
+        z-index: 1;
+        pointer-events: none;
+        animation: starsTwinkle 15s linear infinite, starsMove 30s linear infinite;
+        opacity: 0.5;
+    }
+
+    @keyframes starsTwinkle {
+        0%, 100% {
+            opacity: 0.3;
+        }
+        50% {
+            opacity: 0.8;
+        }
+    }
+
+    @keyframes starsMove {
+        0% {
+            background-position: 0 0;
+        }
+        100% {
+            background-position: 300px 300px;
+        }
+    }
+
+    /* Trophies flotantes animados */
+    .floating-trophy {
+        position: absolute;
+        font-size: 24px;
+        color: rgba(218, 165, 32, 0.6);
+        animation: trophyFloat 20s infinite ease-in-out;
+        z-index: 2;
+        text-shadow: 0 0 10px rgba(218, 165, 32, 0.3);
+    }
+
+    @keyframes trophyFloat {
+        0%, 100% {
+            transform: translateY(0) rotate(0deg);
+            opacity: 0.3;
+        }
+        50% {
+            transform: translateY(-50px) rotate(180deg);
+            opacity: 0.8;
+        }
+    }
+
+    /* Medallas giratorias */
+    .rotating-medal {
+        position: absolute;
+        width: 60px;
+        height: 60px;
+        background: radial-gradient(circle, 
+                    rgba(218, 165, 32, 0.3) 0%,
+                    rgba(255, 215, 0, 0.2) 50%,
+                    transparent 70%);
+        border-radius: 50%;
+        animation: medalSpin 15s infinite linear;
+        z-index: 2;
+        box-shadow: 
+            inset 0 0 20px rgba(218, 165, 32, 0.4),
+            0 0 30px rgba(218, 165, 32, 0.2);
+    }
+
+    @keyframes medalSpin {
+        0% {
+            transform: rotate(0deg) scale(1);
+        }
+        50% {
+            transform: rotate(180deg) scale(1.2);
+        }
+        100% {
+            transform: rotate(360deg) scale(1);
+        }
+    }
+
+    .reconocimientos-hero h1 {
+        color: white;
+        font-size: 4.5em;
+        margin-bottom: 30px;
+        position: relative;
+        z-index: 3;
+        font-family: 'Playfair Display', serif;
+        font-weight: 700;
+        text-shadow: 
+            0 2px 10px rgba(0, 0, 0, 0.3),
+            0 0 30px rgba(218, 165, 32, 0.3),
+            0 0 60px rgba(218, 165, 32, 0.1);
+        animation: titleGlitter 2s ease-out;
+    }
+
+    @keyframes titleGlitter {
+        0% {
+            opacity: 0;
+            transform: translateY(40px) scale(0.95);
+            filter: blur(10px);
+            text-shadow: 0 0 20px rgba(218, 165, 32, 0);
+        }
+        100% {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+            filter: blur(0);
+            text-shadow: 
+                0 2px 10px rgba(0, 0, 0, 0.3),
+                0 0 30px rgba(218, 165, 32, 0.3),
+                0 0 60px rgba(218, 165, 32, 0.1);
+        }
+    }
+
+    .reconocimientos-hero p {
+        max-width: 800px;
+        margin: 0 auto;
+        font-size: 1.5em;
+        opacity: 0.9;
+        position: relative;
+        z-index: 3;
+        animation: textShine 1s ease-out 0.3s both;
+        line-height: 1.6;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    }
+
+    @keyframes textShine {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    /* Contenedor de elementos decorativos */
+    .awards-container {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 2;
+        pointer-events: none;
+        overflow: hidden;
+    }
+
+    /* Posicionamiento de trofeos y medallas */
+    .floating-trophy:nth-child(1) { top: 20%; left: 15%; animation-delay: 0s; }
+    .floating-trophy:nth-child(2) { top: 40%; left: 75%; animation-delay: 5s; }
+    .floating-trophy:nth-child(3) { top: 70%; left: 25%; animation-delay: 10s; }
+    .floating-trophy:nth-child(4) { top: 30%; left: 60%; animation-delay: 15s; }
+
+    .rotating-medal:nth-child(5) { top: 15%; left: 80%; animation-delay: 0s; }
+    .rotating-medal:nth-child(6) { top: 60%; left: 15%; animation-delay: 7s; }
+    .rotating-medal:nth-child(7) { top: 80%; left: 70%; animation-delay: 14s; }
+
+    /* Efecto de rayos de luz */
+    .light-beam {
+        position: absolute;
+        height: 200px;
+        width: 2px;
+        background: linear-gradient(to bottom, 
+                    transparent, 
+                    rgba(218, 165, 32, 0.3), 
+                    transparent);
+        animation: beamRotate 8s infinite linear;
+        opacity: 0.4;
+        filter: blur(1px);
+    }
+
+    @keyframes beamRotate {
+        0% {
+            transform: rotate(0deg);
+        }
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+
+    .light-beam:nth-child(8) { top: 50%; left: 50%; transform-origin: center; animation-delay: 0s; }
+    .light-beam:nth-child(9) { top: 50%; left: 50%; transform-origin: center; animation-delay: 2s; animation-duration: 12s; }
+    .light-beam:nth-child(10) { top: 50%; left: 50%; transform-origin: center; animation-delay: 4s; animation-duration: 10s; }
+    
+    .certificaciones {
+        max-width: 1200px;
+        margin: 60px auto;
+        padding: 0 20px;
+    }
+    
+    .certificaciones h2 {
+        text-align: center;
+        font-size: 2.5em;
+        margin-bottom: 40px;
+        color: var(--morado);
+    }
+    
+    .grid-certificaciones {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+        margin-bottom: 60px;
+    }
+    
+    @media (max-width: 768px) {
         .reconocimientos-hero {
-            background: linear-gradient(135deg, var(--morado-oscuro), var(--morado));
-            color: white;
-            padding: 100px 20px;
-            text-align: center;
-            margin-top: 90px;
+            padding: 100px 20px 70px;
+            min-height: 500px;
         }
         
         .reconocimientos-hero h1 {
-            color: white;
-            font-size: 3.5em;
-            margin-bottom: 20px;
-        }
-        
-        .reconocimientos-hero p {
-            max-width: 800px;
-            margin: 0 auto;
-            font-size: 1.3em;
-            opacity: 0.9;
-        }
-        
-        .certificaciones {
-            max-width: 1200px;
-            margin: 60px auto;
-            padding: 0 20px;
-        }
-        
-        .certificaciones h2 {
-            text-align: center;
-            font-size: 2.5em;
-            margin-bottom: 40px;
-            color: var(--morado);
+            font-size: 3em;
         }
         
         .grid-certificaciones {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-bottom: 60px;
+            grid-template-columns: 1fr;
         }
         
-        @media (max-width: 768px) {
-            .reconocimientos-hero h1 {
-                font-size: 2.5em;
-            }
-            
-            .grid-certificaciones {
-                grid-template-columns: 1fr;
-            }
+        .floating-trophy:nth-child(n+3),
+        .rotating-medal:nth-child(n+6) {
+            display: none;
         }
-        
-        .certificacion-card {
-            background: white;
-            border-radius: 20px;
-            padding: 40px 30px;
-            text-align: center;
-            box-shadow: 0 10px 30px rgba(90, 33, 107, 0.1);
-            transition: all 0.3s;
-            border: 2px solid transparent;
-        }
-        
-        .certificacion-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(90, 33, 107, 0.2);
-            border-color: var(--dorado);
-        }
-        
-        .certificacion-icon {
-            width: 100px;
-            height: 100px;
-            margin: 0 auto 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(135deg, var(--morado-claro), var(--morado));
-            border-radius: 50%;
-            color: white;
-            font-size: 2.5em;
-        }
-        
-        .certificacion-card h3 {
-            color: var(--morado);
-            margin-bottom: 15px;
-            font-size: 1.5em;
-        }
-        
-        .certificacion-card p {
-            color: var(--gris);
-            line-height: 1.6;
-            margin-bottom: 20px;
-        }
-        
-        .certificacion-fecha {
-            color: var(--dorado);
-            font-weight: 600;
-            font-size: 0.9em;
-        }
-        
-        .premios {
-            background: var(--gris-claro);
-            padding: 60px 20px;
-            margin-top: 40px;
-        }
-        
-        .premios-contenido {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        .premios h2 {
-            text-align: center;
-            font-size: 2.5em;
-            margin-bottom: 40px;
-            color: var(--morado);
-        }
-        
-        .timeline-premios {
-            position: relative;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        
+    }
+    
+    .certificacion-card {
+        background: white;
+        border-radius: 20px;
+        padding: 40px 30px;
+        text-align: center;
+        box-shadow: 0 10px 30px rgba(90, 33, 107, 0.1);
+        transition: all 0.3s;
+        border: 2px solid transparent;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .certificacion-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 3px;
+        background: linear-gradient(90deg, 
+                    transparent, 
+                    var(--dorado), 
+                    transparent);
+        transition: left 0.6s;
+    }
+
+    .certificacion-card:hover::before {
+        left: 100%;
+    }
+    
+    .certificacion-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 40px rgba(90, 33, 107, 0.2);
+        border-color: var(--dorado);
+    }
+    
+    .certificacion-icon {
+        width: 100px;
+        height: 100px;
+        margin: 0 auto 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(135deg, var(--morado-claro), var(--morado));
+        border-radius: 50%;
+        color: white;
+        font-size: 2.5em;
+        transition: transform 0.3s;
+    }
+
+    .certificacion-card:hover .certificacion-icon {
+        transform: scale(1.1) rotate(15deg);
+    }
+    
+    .certificacion-card h3 {
+        color: var(--morado);
+        margin-bottom: 15px;
+        font-size: 1.5em;
+    }
+    
+    .certificacion-card p {
+        color: var(--gris);
+        line-height: 1.6;
+        margin-bottom: 20px;
+    }
+    
+    .certificacion-fecha {
+        color: var(--dorado);
+        font-weight: 600;
+        font-size: 0.9em;
+    }
+    
+    .premios {
+        background: var(--gris-claro);
+        padding: 60px 20px;
+        margin-top: 40px;
+    }
+    
+    .premios-contenido {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+    
+    .premios h2 {
+        text-align: center;
+        font-size: 2.5em;
+        margin-bottom: 40px;
+        color: var(--morado);
+    }
+    
+    .timeline-premios {
+        position: relative;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+    
+    .timeline-premios::before {
+        content: '';
+        position: absolute;
+        left: 50%;
+        top: 0;
+        bottom: 0;
+        width: 4px;
+        background: linear-gradient(to bottom, 
+                    var(--dorado), 
+                    var(--morado), 
+                    var(--dorado));
+        transform: translateX(-50%);
+        animation: timelineGlow 3s infinite alternate;
+    }
+
+    @keyframes timelineGlow {
+        0% { opacity: 0.7; }
+        100% { opacity: 1; }
+    }
+    
+    @media (max-width: 768px) {
         .timeline-premios::before {
-            content: '';
-            position: absolute;
-            left: 50%;
-            top: 0;
-            bottom: 0;
-            width: 4px;
-            background: var(--dorado);
-            transform: translateX(-50%);
+            left: 30px;
         }
-        
-        @media (max-width: 768px) {
-            .timeline-premios::before {
-                left: 30px;
-            }
-        }
-        
+    }
+    
+    .timeline-item {
+        position: relative;
+        margin-bottom: 40px;
+        display: flex;
+        align-items: center;
+    }
+    
+    @media (max-width: 768px) {
         .timeline-item {
-            position: relative;
-            margin-bottom: 40px;
-            display: flex;
-            align-items: center;
+            flex-direction: column;
+            align-items: flex-start;
+            padding-left: 60px;
         }
-        
-        @media (max-width: 768px) {
-            .timeline-item {
-                flex-direction: column;
-                align-items: flex-start;
-                padding-left: 60px;
-            }
-        }
-        
+    }
+    
+    .timeline-fecha {
+        flex: 0 0 150px;
+        text-align: right;
+        padding-right: 30px;
+        color: var(--dorado);
+        font-weight: 700;
+        font-size: 1.2em;
+    }
+    
+    @media (max-width: 768px) {
         .timeline-fecha {
-            flex: 0 0 150px;
-            text-align: right;
-            padding-right: 30px;
-            color: var(--dorado);
-            font-weight: 700;
-            font-size: 1.2em;
-        }
-        
-        @media (max-width: 768px) {
-            .timeline-fecha {
-                text-align: left;
-                padding-right: 0;
-                margin-bottom: 10px;
-            }
-        }
-        
-        .timeline-dot {
-            width: 20px;
-            height: 20px;
-            background: var(--morado);
-            border: 4px solid var(--dorado);
-            border-radius: 50%;
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 1;
-        }
-        
-        @media (max-width: 768px) {
-            .timeline-dot {
-                left: 21px;
-            }
-        }
-        
-        .timeline-contenido {
-            flex: 1;
-            background: white;
-            padding: 25px;
-            border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-            border-left: 4px solid var(--morado);
-        }
-        
-        @media (max-width: 768px) {
-            .timeline-contenido {
-                width: 100%;
-            }
-        }
-        
-        .timeline-contenido h3 {
-            color: var(--morado);
+            text-align: left;
+            padding-right: 0;
             margin-bottom: 10px;
         }
-        
-        .timeline-contenido p {
-            color: var(--gris);
-            line-height: 1.6;
+    }
+    
+    .timeline-dot {
+        width: 20px;
+        height: 20px;
+        background: var(--morado);
+        border: 4px solid var(--dorado);
+        border-radius: 50%;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 1;
+        box-shadow: 0 0 15px rgba(218, 165, 32, 0.3);
+        animation: dotPulse 2s infinite;
+    }
+
+    @keyframes dotPulse {
+        0%, 100% { transform: translateX(-50%) scale(1); }
+        50% { transform: translateX(-50%) scale(1.2); }
+    }
+    
+    @media (max-width: 768px) {
+        .timeline-dot {
+            left: 21px;
         }
-        
-        .alianzas {
-            max-width: 1200px;
-            margin: 60px auto;
-            padding: 0 20px;
+    }
+    
+    .timeline-contenido {
+        flex: 1;
+        background: white;
+        padding: 25px;
+        border-radius: 15px;
+        box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        border-left: 4px solid var(--morado);
+        transition: transform 0.3s;
+    }
+
+    .timeline-contenido:hover {
+        transform: translateX(10px);
+        box-shadow: 0 10px 30px rgba(90, 33, 107, 0.2);
+    }
+    
+    @media (max-width: 768px) {
+        .timeline-contenido {
+            width: 100%;
         }
-        
-        .alianzas h2 {
-            text-align: center;
-            font-size: 2.5em;
-            margin-bottom: 40px;
-            color: var(--morado);
-        }
-        
-        .grid-alianzas {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 30px;
-            align-items: center;
-        }
-        
-        .alianza-item {
-            text-align: center;
-            padding: 20px;
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            transition: all 0.3s;
-        }
-        
-        .alianza-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(90, 33, 107, 0.1);
-        }
-        
-        .alianza-imagen {
-            height: 80px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 15px;
-        }
-        
-        .alianza-imagen img {
-            max-height: 60px;
-            max-width: 150px;
-            object-fit: contain;
-        }
-        
-        .alianza-item h4 {
-            color: var(--morado);
-            font-size: 1.1em;
-        }
-        
-        .garantia-calidad {
-            background: linear-gradient(135deg, var(--dorado), var(--dorado-claro));
-            padding: 60px 20px;
-            text-align: center;
-            color: var(--morado);
-        }
-        
-        .garantia-calidad h2 {
-            font-size: 2.5em;
-            margin-bottom: 20px;
-        }
-        
-        .garantia-calidad p {
-            max-width: 800px;
-            margin: 0 auto 30px;
-            font-size: 1.2em;
-        }
-    </style>
+    }
+    
+    .timeline-contenido h3 {
+        color: var(--morado);
+        margin-bottom: 10px;
+    }
+    
+    .timeline-contenido p {
+        color: var(--gris);
+        line-height: 1.6;
+    }
+    
+    .alianzas {
+        max-width: 1200px;
+        margin: 60px auto;
+        padding: 0 20px;
+    }
+    
+    .alianzas h2 {
+        text-align: center;
+        font-size: 2.5em;
+        margin-bottom: 40px;
+        color: var(--morado);
+    }
+    
+    .grid-alianzas {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 30px;
+        align-items: center;
+    }
+    
+    .alianza-item {
+        text-align: center;
+        padding: 20px;
+        background: white;
+        border-radius: 15px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        transition: all 0.3s;
+    }
+    
+    .alianza-item:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(90, 33, 107, 0.1);
+    }
+    
+    .alianza-imagen {
+        height: 80px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 15px;
+    }
+    
+    .alianza-imagen img {
+        max-height: 60px;
+        max-width: 150px;
+        object-fit: contain;
+    }
+    
+    .alianza-item h4 {
+        color: var(--morado);
+        font-size: 1.1em;
+    }
+    
+    .garantia-calidad {
+        background: linear-gradient(135deg, var(--dorado), var(--dorado-claro));
+        padding: 60px 20px;
+        text-align: center;
+        color: var(--morado);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .garantia-calidad::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M50,10 C70,5 90,15 95,35 C100,55 85,75 65,85 C45,95 25,85 15,65 C5,45 15,25 35,15 C40,12 45,10 50,10 Z" fill="rgba(90, 33, 107, 0.1)"/></svg>');
+        background-size: 80px 80px;
+        opacity: 0.2;
+        animation: badgeFloat 20s linear infinite;
+    }
+
+    @keyframes badgeFloat {
+        0% { background-position: 0 0; }
+        100% { background-position: 100px 100px; }
+    }
+    
+    .garantia-calidad h2 {
+        font-size: 2.5em;
+        margin-bottom: 20px;
+        position: relative;
+        z-index: 2;
+    }
+    
+    .garantia-calidad p {
+        max-width: 800px;
+        margin: 0 auto 30px;
+        font-size: 1.2em;
+        position: relative;
+        z-index: 2;
+    }
+</style>
 </head>
 <body>
     <!-- HEADER IDÉNTICO -->
@@ -394,9 +707,7 @@
             <a href="reconocimientos.html" class="active">
                 <i class="fas fa-award"></i> Reconocimientos
             </a>
-            <a href="carrito.html">
-                <i class="fas fa-shopping-cart"></i> Carrito
-            </a>
+          
         </nav>
         
         <div class="mobile-social">
@@ -610,3 +921,14 @@
     <script src="js/script.js"></script>
 </body>
 </html>
+
+<!-- Scripts -->
+<script src="js/script.js"></script>
+<script src="js/carrito-unificado.js"></script>
+    // Inicializar cuando el DOM esté listo
+    document.addEventListener('DOMContentLoaded', function() {
+        if (window.inicializarCarrito) {
+            inicializarCarrito();
+        }
+    });
+</script>

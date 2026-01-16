@@ -930,7 +930,7 @@ footer p {
     margin-top: 10px;
 }
 
-/* ========== HUELLAS (CONTACTO) ========== */
+/* ========== EFECTO PARTÍCULAS DORADAS FLOTANTES ========== */
 .footprints-tracker {
     position: absolute;
     top: 0;
@@ -939,106 +939,997 @@ footer p {
     bottom: 0;
     overflow: hidden;
     pointer-events: none;
+    z-index: 1;
 }
 
+/* RESET - Elemento base */
 .footprint-track {
     position: absolute;
-    background: rgba(255, 255, 255, 0.1);
     border-radius: 50%;
-    animation: float 20s infinite linear;
+    background: rgba(218, 165, 32, 0.3);
+    animation: floatParticle 20s infinite linear;
+    box-shadow: 0 0 10px rgba(218, 165, 32, 0.5);
 }
 
-@keyframes float {
+/* ANIMACIÓN PRINCIPAL */
+@keyframes floatParticle {
     0% {
-        transform: translateY(0) rotate(0deg);
+        transform: translateY(100vh) translateX(0) scale(0.3);
         opacity: 0;
     }
     10% {
-        opacity: 0.3;
+        opacity: 0.4;
     }
     90% {
-        opacity: 0.3;
+        opacity: 0.4;
     }
     100% {
-        transform: translateY(-100vh) rotate(360deg);
+        transform: translateY(-100px) translateX(50px) scale(0.3);
         opacity: 0;
     }
 }
 
-/* Tamaños de huellas */
+/* ========== GRUPO 1: PARTÍCULAS GRANDES (Originales) ========== */
 .footprint-super-gigante {
-    width: 300px;
-    height: 300px;
+    width: 70px;
+    height: 70px;
+    left: 5%;
     animation-delay: 0s;
-    left: 10%;
+    animation-duration: 35s;
+    opacity: 0.15;
 }
 
 .footprint-giant {
-    width: 200px;
-    height: 200px;
+    width: 55px;
+    height: 55px;
+    right: 8%;
     animation-delay: 2s;
-    right: 15%;
+    animation-duration: 32s;
+    opacity: 0.2;
 }
 
 .footprint-enorme {
-    width: 180px;
-    height: 180px;
+    width: 60px;
+    height: 60px;
+    left: 12%;
     animation-delay: 4s;
-    left: 20%;
+    animation-duration: 38s;
+    opacity: 0.18;
 }
 
 .footprint-grande {
-    width: 150px;
-    height: 150px;
+    width: 45px;
+    height: 45px;
+    right: 15%;
     animation-delay: 6s;
-    right: 25%;
+    animation-duration: 34s;
+    opacity: 0.25;
 }
 
 .footprint-mediana {
-    width: 120px;
-    height: 120px;
+    width: 50px;
+    height: 50px;
+    left: 18%;
     animation-delay: 8s;
-    left: 30%;
+    animation-duration: 40s;
+    opacity: 0.22;
 }
 
 .footprint-grande2 {
-    width: 160px;
-    height: 160px;
+    width: 55px;
+    height: 55px;
+    right: 22%;
     animation-delay: 10s;
-    right: 35%;
+    animation-duration: 36s;
+    opacity: 0.2;
 }
 
 .footprint-mega {
-    width: 220px;
-    height: 220px;
+    width: 40px;
+    height: 40px;
+    left: 25%;
     animation-delay: 12s;
-    left: 40%;
+    animation-duration: 42s;
+    opacity: 0.28;
 }
 
 .footprint-colossal {
-    width: 250px;
-    height: 250px;
+    width: 58px;
+    height: 58px;
+    right: 28%;
     animation-delay: 14s;
-    right: 45%;
+    animation-duration: 37s;
+    opacity: 0.2;
 }
 
 .footprint-titanic {
-    width: 280px;
-    height: 280px;
+    width: 42px;
+    height: 42px;
+    left: 32%;
     animation-delay: 16s;
-    left: 50%;
+    animation-duration: 33s;
+    opacity: 0.25;
 }
 
 .footprint-massive {
-    width: 190px;
-    height: 190px;
+    width: 35px;
+    height: 35px;
+    right: 35%;
     animation-delay: 18s;
-    right: 55%;
+    animation-duration: 39s;
+    opacity: 0.3;
 }
 
 .footprint-huge {
-    width: 170px;
-    height: 170px;
+    width: 48px;
+    height: 48px;
+    left: 38%;
     animation-delay: 20s;
-    left: 60%;
+    animation-duration: 41s;
+    opacity: 0.2;
 }
+
+/* ========== GRUPO 2: PARTÍCULAS MEDIANAS ========== */
+.footprint-small-1 {
+    width: 25px;
+    height: 25px;
+    right: 5%;
+    animation-delay: 1s;
+    animation-duration: 25s;
+    opacity: 0.35;
+}
+
+.footprint-small-2 {
+    width: 22px;
+    height: 22px;
+    left: 7%;
+    animation-delay: 3s;
+    animation-duration: 27s;
+    opacity: 0.32;
+}
+
+.footprint-small-3 {
+    width: 28px;
+    height: 28px;
+    right: 10%;
+    animation-delay: 5s;
+    animation-duration: 23s;
+    opacity: 0.3;
+}
+
+.footprint-small-4 {
+    width: 24px;
+    height: 24px;
+    left: 15%;
+    animation-delay: 7s;
+    animation-duration: 29s;
+    opacity: 0.38;
+}
+
+.footprint-small-5 {
+    width: 20px;
+    height: 20px;
+    right: 18%;
+    animation-delay: 9s;
+    animation-duration: 26s;
+    opacity: 0.4;
+}
+
+.footprint-small-6 {
+    width: 26px;
+    height: 26px;
+    left: 22%;
+    animation-delay: 11s;
+    animation-duration: 28s;
+    opacity: 0.33;
+}
+
+.footprint-small-7 {
+    width: 23px;
+    height: 23px;
+    right: 25%;
+    animation-delay: 13s;
+    animation-duration: 31s;
+    opacity: 0.36;
+}
+
+.footprint-small-8 {
+    width: 19px;
+    height: 19px;
+    left: 28%;
+    animation-delay: 15s;
+    animation-duration: 24s;
+    opacity: 0.42;
+}
+
+.footprint-small-9 {
+    width: 27px;
+    height: 27px;
+    right: 32%;
+    animation-delay: 17s;
+    animation-duration: 30s;
+    opacity: 0.31;
+}
+
+.footprint-small-10 {
+    width: 21px;
+    height: 21px;
+    left: 35%;
+    animation-delay: 19s;
+    animation-duration: 27s;
+    opacity: 0.37;
+}
+
+/* ========== GRUPO 3: PARTÍCULAS PEQUEÑAS ========== */
+.footprint-tiny-1 {
+    width: 15px;
+    height: 15px;
+    right: 3%;
+    animation-delay: 0.5s;
+    animation-duration: 22s;
+    opacity: 0.45;
+}
+
+.footprint-tiny-2 {
+    width: 12px;
+    height: 12px;
+    left: 4%;
+    animation-delay: 1.5s;
+    animation-duration: 19s;
+    opacity: 0.48;
+}
+
+.footprint-tiny-3 {
+    width: 14px;
+    height: 14px;
+    right: 7%;
+    animation-delay: 2.5s;
+    animation-duration: 21s;
+    opacity: 0.46;
+}
+
+.footprint-tiny-4 {
+    width: 11px;
+    height: 11px;
+    left: 9%;
+    animation-delay: 3.5s;
+    animation-duration: 18s;
+    opacity: 0.5;
+}
+
+.footprint-tiny-5 {
+    width: 13px;
+    height: 13px;
+    right: 12%;
+    animation-delay: 4.5s;
+    animation-duration: 20s;
+    opacity: 0.47;
+}
+
+.footprint-tiny-6 {
+    width: 10px;
+    height: 10px;
+    left: 14%;
+    animation-delay: 5.5s;
+    animation-duration: 17s;
+    opacity: 0.52;
+}
+
+.footprint-tiny-7 {
+    width: 16px;
+    height: 16px;
+    right: 17%;
+    animation-delay: 6.5s;
+    animation-duration: 23s;
+    opacity: 0.44;
+}
+
+.footprint-tiny-8 {
+    width: 12px;
+    height: 12px;
+    left: 19%;
+    animation-delay: 7.5s;
+    animation-duration: 19s;
+    opacity: 0.49;
+}
+
+.footprint-tiny-9 {
+    width: 14px;
+    height: 14px;
+    right: 22%;
+    animation-delay: 8.5s;
+    animation-duration: 21s;
+    opacity: 0.46;
+}
+
+.footprint-tiny-10 {
+    width: 9px;
+    height: 9px;
+    left: 24%;
+    animation-delay: 9.5s;
+    animation-duration: 16s;
+    opacity: 0.55;
+}
+
+/* ========== GRUPO 4: PARTÍCULAS EXTRAS ========== */
+.footprint-extra-1 {
+    width: 18px;
+    height: 18px;
+    right: 40%;
+    animation-delay: 0.3s;
+    animation-duration: 26s;
+    opacity: 0.38;
+}
+
+.footprint-extra-2 {
+    width: 22px;
+    height: 22px;
+    left: 42%;
+    animation-delay: 1.3s;
+    animation-duration: 28s;
+    opacity: 0.35;
+}
+
+.footprint-extra-3 {
+    width: 14px;
+    height: 14px;
+    right: 45%;
+    animation-delay: 2.3s;
+    animation-duration: 24s;
+    opacity: 0.42;
+}
+
+.footprint-extra-4 {
+    width: 20px;
+    height: 20px;
+    left: 48%;
+    animation-delay: 3.3s;
+    animation-duration: 30s;
+    opacity: 0.33;
+}
+
+.footprint-extra-5 {
+    width: 16px;
+    height: 16px;
+    right: 52%;
+    animation-delay: 4.3s;
+    animation-duration: 27s;
+    opacity: 0.4;
+}
+
+.footprint-extra-6 {
+    width: 24px;
+    height: 24px;
+    left: 55%;
+    animation-delay: 5.3s;
+    animation-duration: 32s;
+    opacity: 0.31;
+}
+
+.footprint-extra-7 {
+    width: 19px;
+    height: 19px;
+    right: 58%;
+    animation-delay: 6.3s;
+    animation-duration: 29s;
+    opacity: 0.37;
+}
+
+.footprint-extra-8 {
+    width: 13px;
+    height: 13px;
+    left: 62%;
+    animation-delay: 7.3s;
+    animation-duration: 25s;
+    opacity: 0.43;
+}
+
+.footprint-extra-9 {
+    width: 21px;
+    height: 21px;
+    right: 65%;
+    animation-delay: 8.3s;
+    animation-duration: 31s;
+    opacity: 0.34;
+}
+
+.footprint-extra-10 {
+    width: 17px;
+    height: 17px;
+    left: 68%;
+    animation-delay: 9.3s;
+    animation-duration: 28s;
+    opacity: 0.39;
+}
+
+/* ========== EFECTO DE BRILLO EXTRA ========== */
+.footprint-track::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, 
+                rgba(255, 224, 130, 0.4) 0%, 
+                rgba(218, 165, 32, 0.2) 30%, 
+                transparent 70%);
+    transform: translate(-50%, -50%);
+    z-index: -1;
+    opacity: 0.5;
+    border-radius: 50%;
+}
+
+/* ========== ANIMACIÓN DE PULSO PARA ALGUNAS ========== */
+.footprint-small-1,
+.footprint-small-3,
+.footprint-small-5,
+.footprint-small-7,
+.footprint-small-9,
+.footprint-tiny-2,
+.footprint-tiny-4,
+.footprint-tiny-6,
+.footprint-tiny-8,
+.footprint-tiny-10 {
+    animation: floatParticle 20s infinite linear, pulse 4s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        box-shadow: 0 0 10px rgba(218, 165, 32, 0.5);
+    }
+    50% {
+        box-shadow: 0 0 20px rgba(218, 165, 32, 0.8), 
+                   0 0 30px rgba(255, 224, 130, 0.4);
+    }
+}
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 768px) {
+    .footprint-track {
+        animation-duration: 15s !important;
+    }
+    
+    /* Reducir tamaños en móviles */
+    [class*="footprint-"] {
+        width: calc(var(--size) * 0.7);
+        height: calc(var(--size) * 0.7);
+    }
+}
+
+/* ========== EFECTO DE MOVIMIENTO HORIZONTAL ALTERNATIVO ========== */
+.footprint-extra-1,
+.footprint-extra-3,
+.footprint-extra-5,
+.footprint-extra-7,
+.footprint-extra-9 {
+    animation-name: floatHorizontal;
+}
+
+@keyframes floatHorizontal {
+    0% {
+        transform: translateY(100vh) translateX(-50px) scale(0.3);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.4;
+        transform: translateY(80vh) translateX(-40px) scale(0.5);
+    }
+    90% {
+        opacity: 0.4;
+        transform: translateY(20vh) translateX(40px) scale(0.5);
+    }
+    100% {
+        transform: translateY(-100px) translateX(50px) scale(0.3);
+        opacity: 0;
+    }
+    
+}
+
+/* ========== DIENTES DE LEÓN FLOTANTES ========== */
+
+/* Dientes de león completos (con forma de esfera peluda) */
+.dandelion {
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+    animation: floatDandelion 35s infinite linear;
+    filter: blur(1px);
+    opacity: 0;
+}
+
+/* Semillas individuales de diente de león */
+.dandelion-seed {
+    position: absolute;
+    pointer-events: none;
+    animation: floatSeed 25s infinite linear;
+    opacity: 0;
+}
+
+/* Forma de semilla de diente de león */
+.dandelion-seed::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(ellipse at top,
+                rgba(255, 255, 255, 0.9) 0%,
+                rgba(255, 255, 255, 0.7) 30%,
+                rgba(218, 165, 32, 0.3) 60%,
+                transparent 80%);
+    border-radius: 50% 50% 50% 0;
+    transform: rotate(45deg);
+    filter: blur(0.5px);
+}
+
+.dandelion-seed::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: 50%;
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(to bottom,
+                transparent,
+                rgba(255, 255, 255, 0.8),
+                transparent);
+    transform: translateX(-50%);
+}
+
+/* Animación para dientes de león completos */
+@keyframes floatDandelion {
+    0% {
+        transform: 
+            translateY(100vh) 
+            translateX(calc(var(--start-x, 0px)))
+            rotate(0deg)
+            scale(0.3);
+        opacity: 0;
+    }
+    15% {
+        opacity: var(--opacity, 0.25);
+        transform: 
+            translateY(85vh) 
+            translateX(calc(var(--start-x, 0px) + 20px))
+            rotate(30deg)
+            scale(0.6);
+    }
+    50% {
+        opacity: var(--opacity, 0.25);
+        transform: 
+            translateY(50vh) 
+            translateX(calc(var(--start-x, 0px) + 40px))
+            rotate(90deg)
+            scale(0.9);
+    }
+    85% {
+        opacity: var(--opacity, 0.25);
+        transform: 
+            translateY(15vh) 
+            translateX(calc(var(--start-x, 0px) + 20px))
+            rotate(150deg)
+            scale(0.6);
+    }
+    100% {
+        transform: 
+            translateY(-100px) 
+            translateX(calc(var(--start-x, 0px)))
+            rotate(180deg)
+            scale(0.3);
+        opacity: 0;
+    }
+}
+
+/* Animación para semillas individuales (más flotante) */
+@keyframes floatSeed {
+    0% {
+        transform: 
+            translateY(100vh) 
+            translateX(calc(var(--seed-x, 0px)))
+            rotate(0deg)
+            scale(0.5);
+        opacity: 0;
+    }
+    20% {
+        opacity: var(--seed-opacity, 0.3);
+        transform: 
+            translateY(80vh) 
+            translateX(calc(var(--seed-x, 0px) + 30px))
+            rotate(45deg)
+            scale(0.7);
+    }
+    40% {
+        opacity: var(--seed-opacity, 0.3);
+        transform: 
+            translateY(60vh) 
+            translateX(calc(var(--seed-x, 0px) + 50px))
+            rotate(90deg)
+            scale(0.8);
+    }
+    60% {
+        opacity: var(--seed-opacity, 0.3);
+        transform: 
+            translateY(40vh) 
+            translateX(calc(var(--seed-x, 0px) + 30px))
+            rotate(135deg)
+            scale(0.7);
+    }
+    80% {
+        opacity: var(--seed-opacity, 0.3);
+        transform: 
+            translateY(20vh) 
+            translateX(calc(var(--seed-x, 0px) + 10px))
+            rotate(180deg)
+            scale(0.6);
+    }
+    100% {
+        transform: 
+            translateY(-50px) 
+            translateX(calc(var(--seed-x, 0px) - 10px))
+            rotate(225deg)
+            scale(0.5);
+        opacity: 0;
+    }
+}
+
+/* Efecto peludo para dientes de león */
+.dandelion::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 30% 30%, 
+            rgba(255, 255, 255, 0.8) 0%,
+            rgba(255, 255, 255, 0.6) 10%,
+            rgba(218, 165, 32, 0.2) 30%,
+            transparent 70%),
+        radial-gradient(circle at 70% 70%, 
+            rgba(255, 255, 255, 0.7) 0%,
+            rgba(255, 255, 255, 0.5) 15%,
+            rgba(218, 165, 32, 0.15) 40%,
+            transparent 80%),
+        radial-gradient(circle at 50% 50%, 
+            rgba(255, 255, 255, 0.9) 0%,
+            rgba(255, 255, 255, 0.4) 20%,
+            transparent 60%);
+    border-radius: 50%;
+    filter: blur(3px);
+}
+
+.dandelion::after {
+    content: '';
+    position: absolute;
+    top: -20%;
+    left: -20%;
+    right: -20%;
+    bottom: -20%;
+    background: radial-gradient(circle,
+                rgba(255, 255, 255, 0.4) 0%,
+                rgba(255, 255, 255, 0.2) 30%,
+                transparent 70%);
+    border-radius: 50%;
+    filter: blur(8px);
+    z-index: -1;
+    opacity: 0.5;
+}
+
+/* ========== POSICIONES Y TAMAÑOS PARA DIENTES DE LEÓN ========== */
+
+/* Dientes de león grandes */
+.dandelion-1 {
+    width: 80px;
+    height: 80px;
+    --start-x: -100px;
+    --opacity: 0.2;
+    left: 8%;
+    animation-delay: 0s;
+    animation-duration: 40s;
+}
+
+.dandelion-2 {
+    width: 70px;
+    height: 70px;
+    --start-x: 120px;
+    --opacity: 0.18;
+    right: 12%;
+    animation-delay: 8s;
+    animation-duration: 42s;
+}
+
+.dandelion-3 {
+    width: 65px;
+    height: 65px;
+    --start-x: -80px;
+    --opacity: 0.22;
+    left: 20%;
+    animation-delay: 16s;
+    animation-duration: 38s;
+}
+
+.dandelion-4 {
+    width: 75px;
+    height: 75px;
+    --start-x: 90px;
+    --opacity: 0.16;
+    right: 25%;
+    animation-delay: 24s;
+    animation-duration: 44s;
+}
+
+.dandelion-5 {
+    width: 60px;
+    height: 60px;
+    --start-x: -60px;
+    --opacity: 0.24;
+    left: 32%;
+    animation-delay: 32s;
+    animation-duration: 36s;
+}
+
+/* Dientes de león medianos */
+.dandelion-6 {
+    width: 45px;
+    height: 45px;
+    --start-x: 70px;
+    --opacity: 0.28;
+    right: 38%;
+    animation-delay: 4s;
+    animation-duration: 34s;
+}
+
+.dandelion-7 {
+    width: 50px;
+    height: 50px;
+    --start-x: -50px;
+    --opacity: 0.26;
+    left: 45%;
+    animation-delay: 12s;
+    animation-duration: 39s;
+}
+
+.dandelion-8 {
+    width: 40px;
+    height: 40px;
+    --start-x: 60px;
+    --opacity: 0.3;
+    right: 52%;
+    animation-delay: 20s;
+    animation-duration: 33s;
+}
+
+.dandelion-9 {
+    width: 55px;
+    height: 55px;
+    --start-x: -40px;
+    --opacity: 0.22;
+    left: 58%;
+    animation-delay: 28s;
+    animation-duration: 41s;
+}
+
+.dandelion-10 {
+    width: 35px;
+    height: 35px;
+    --start-x: 50px;
+    --opacity: 0.32;
+    right: 65%;
+    animation-delay: 36s;
+    animation-duration: 37s;
+}
+
+/* ========== SEMILLAS DE DIENTE DE LEÓN ========== */
+
+/* Semillas grandes */
+.seed-1 {
+    width: 25px;
+    height: 25px;
+    --seed-x: -30px;
+    --seed-opacity: 0.35;
+    left: 15%;
+    animation-delay: 2s;
+    animation-duration: 28s;
+}
+
+.seed-2 {
+    width: 22px;
+    height: 22px;
+    --seed-x: 40px;
+    --seed-opacity: 0.38;
+    right: 18%;
+    animation-delay: 6s;
+    animation-duration: 30s;
+}
+
+.seed-3 {
+    width: 28px;
+    height: 28px;
+    --seed-x: -35px;
+    --seed-opacity: 0.32;
+    left: 25%;
+    animation-delay: 10s;
+    animation-duration: 26s;
+}
+
+.seed-4 {
+    width: 20px;
+    height: 20px;
+    --seed-x: 45px;
+    --seed-opacity: 0.4;
+    right: 30%;
+    animation-delay: 14s;
+    animation-duration: 32s;
+}
+
+.seed-5 {
+    width: 24px;
+    height: 24px;
+    --seed-x: -25px;
+    --seed-opacity: 0.36;
+    left: 38%;
+    animation-delay: 18s;
+    animation-duration: 29s;
+}
+
+/* Semillas pequeñas */
+.seed-6 {
+    width: 15px;
+    height: 15px;
+    --seed-x: 35px;
+    --seed-opacity: 0.45;
+    right: 42%;
+    animation-delay: 1s;
+    animation-duration: 22s;
+}
+
+.seed-7 {
+    width: 18px;
+    height: 18px;
+    --seed-x: -20px;
+    --seed-opacity: 0.42;
+    left: 48%;
+    animation-delay: 5s;
+    animation-duration: 24s;
+}
+
+.seed-8 {
+    width: 12px;
+    height: 12px;
+    --seed-x: 30px;
+    --seed-opacity: 0.48;
+    right: 55%;
+    animation-delay: 9s;
+    animation-duration: 20s;
+}
+
+.seed-9 {
+    width: 16px;
+    height: 16px;
+    --seed-x: -15px;
+    --seed-opacity: 0.44;
+    left: 62%;
+    animation-delay: 13s;
+    animation-duration: 23s;
+}
+
+.seed-10 {
+    width: 14px;
+    height: 14px;
+    --seed-x: 25px;
+    --seed-opacity: 0.46;
+    right: 68%;
+    animation-delay: 17s;
+    animation-duration: 21s;
+}
+
+/* ========== EFECTO DE VUELO PARA SEMILLAS ========== */
+@keyframes seedFloat {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
+    }
+    25% {
+        transform: translateY(-5px) rotate(5deg);
+    }
+    50% {
+        transform: translateY(0) rotate(0deg);
+    }
+    75% {
+        transform: translateY(-3px) rotate(-5deg);
+    }
+}
+
+/* Aplicar movimiento de vuelo adicional */
+.seed-1,
+.seed-3,
+.seed-5,
+.seed-7,
+.seed-9 {
+    animation: floatSeed 25s infinite linear, 
+               seedFloat 3s ease-in-out infinite;
+}
+
+.seed-2,
+.seed-4,
+.seed-6,
+.seed-8,
+.seed-10 {
+    animation: floatSeed 25s infinite linear, 
+               seedFloat 4s ease-in-out infinite;
+}
+
+/* ========== ANIMACIÓN DE BRILLO PARA DIENTES DE LEÓN ========== */
+@keyframes dandelionGlow {
+    0%, 100% {
+        filter: blur(1px) brightness(1);
+    }
+    50% {
+        filter: blur(2px) brightness(1.2);
+    }
+}
+
+/* Aplicar brillo a algunos dientes de león */
+.dandelion-1,
+.dandelion-4,
+.dandelion-7,
+.dandelion-9 {
+    animation: floatDandelion 35s infinite linear, 
+               dandelionGlow 5s ease-in-out infinite;
+}
+
+/* ========== RESPONSIVE PARA DIENTES DE LEÓN ========== */
+@media (max-width: 768px) {
+    .dandelion {
+        animation-duration: 25s !important;
+    }
+    
+    .dandelion-seed {
+        animation-duration: 18s !important;
+    }
+    
+    /* Reducir tamaños */
+    .dandelion-1, .dandelion-2, .dandelion-3, 
+    .dandelion-4, .dandelion-5 {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .dandelion-6, .dandelion-7, .dandelion-8,
+    .dandelion-9, .dandelion-10 {
+        width: 25px;
+        height: 25px;
+    }
+    
+    .seed-1, .seed-2, .seed-3, .seed-4, .seed-5 {
+        width: 15px;
+        height: 15px;
+    }
+    
+    .seed-6, .seed-7, .seed-8, .seed-9, .seed-10 {
+        width: 10px;
+        height: 10px;
+    }
+}
+
+/* ========== MEZCLAR CON LAS PARTÍCULAS DORADAS ========== */
+/* Asegurar que todos los elementos estén en la misma capa */
+.footprint-track,
+.dandelion,
+.dandelion-seed {
+    z-index: 1;
+}
+
+/* Opcional: Añadir profundidad con diferentes z-index */
+.dandelion {
+    z-index: 2;
+}
+
+.dandelion-seed {
+    z-index: 3;
+}
+
+.footprint-track {
+    z-index: 1;
+}
+
