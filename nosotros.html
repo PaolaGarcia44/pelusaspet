@@ -43,22 +43,27 @@
             display: none;
         }
         
-        /* ========== EFECTO VÓRTICE PARA NOSOTROS HERO ========== */
+        /* ========== HERO NOSOTROS - MISMO ESTILO QUE CASOS.HTML ========== */
         .nosotros-hero {
-            background: linear-gradient(135deg, var(--morado), var(--morado-oscuro));
+            background: 
+                linear-gradient(135deg, 
+                    rgba(90, 33, 107, 0.95) 0%,
+                    rgba(106, 43, 123, 0.92) 50%,
+                    rgba(138, 79, 163, 0.9) 100%);
             color: white;
-            padding: 120px 20px 80px;
+            padding: 140px 20px 100px;
             text-align: center;
             margin-top: 0;
             position: relative;
             overflow: hidden;
-            min-height: 500px;
+            min-height: 600px;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
         }
 
+        /* Fondo con corazones flotantes - IGUAL QUE CASOS */
         .nosotros-hero::before {
             content: '';
             position: absolute;
@@ -66,52 +71,186 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: 
-                radial-gradient(circle at 30% 30%, rgba(218, 165, 32, 0.15) 0%, transparent 50%),
-                radial-gradient(circle at 70% 70%, rgba(90, 33, 107, 0.2) 0%, transparent 50%),
-                radial-gradient(circle at 50% 50%, transparent 30%, rgba(106, 43, 123, 0.3) 100%);
+            background-image: 
+                url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path fill="rgba(255, 182, 193, 0.1)" d="M50,85 C30,70 15,55 15,35 C15,20 27,10 40,10 C47,10 53,14 57,20 C61,14 67,10 74,10 C87,10 99,20 99,35 C99,55 84,70 64,85 L50,85 Z"/></svg>'),
+                url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path fill="rgba(255, 215, 0, 0.08)" d="M50,20 C60,10 75,5 85,15 C95,25 90,40 80,50 C70,60 50,70 50,70 C50,70 30,60 20,50 C10,40 5,25 15,15 C25,5 40,10 50,20 Z"/></svg>'),
+                url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path fill="rgba(218, 165, 32, 0.05)" d="M50,10 C70,5 90,15 95,35 C100,55 85,75 65,85 C45,95 25,85 15,65 C5,45 15,25 35,15 C40,12 45,10 50,10 Z"/></svg>');
+            background-size: 60px 60px, 80px 80px, 100px 100px;
+            background-position: 10% 20%, 80% 40%, 40% 70%;
             z-index: 1;
             pointer-events: none;
+            animation: floatingHearts 20s linear infinite;
+            opacity: 0.3;
+        }
+
+        @keyframes floatingHearts {
+            0% {
+                background-position: 
+                    10% 20%,
+                    80% 40%,
+                    40% 70%;
+                opacity: 0.2;
+            }
+            25% {
+                background-position: 
+                    15% 25%,
+                    85% 45%,
+                    45% 75%;
+                opacity: 0.3;
+            }
+            50% {
+                background-position: 
+                    20% 30%,
+                    90% 50%,
+                    50% 80%;
+                opacity: 0.4;
+            }
+            75% {
+                background-position: 
+                    25% 35%,
+                    95% 55%,
+                    55% 85%;
+                opacity: 0.3;
+            }
+            100% {
+                background-position: 
+                    10% 20%,
+                    80% 40%,
+                    40% 70%;
+                opacity: 0.2;
+            }
+        }
+
+        /* Partículas de amor flotantes - IGUAL QUE CASOS */
+        .love-particle {
+            position: absolute;
+            color: rgba(255, 182, 193, 0.6);
+            font-size: 20px;
+            animation: loveFloat 15s infinite linear;
+            z-index: 2;
+            opacity: 0;
+        }
+
+        .love-particle.heart {
+            content: "❤";
+        }
+
+        .love-particle.paw {
+            content: "🐾";
+            font-size: 16px;
+        }
+
+        .love-particle.star {
+            content: "★";
+            color: rgba(255, 215, 0, 0.6);
+            font-size: 18px;
+        }
+
+        @keyframes loveFloat {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.6;
+            }
+            90% {
+                opacity: 0.6;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Efecto de olas suaves - IGUAL QUE CASOS */
+        .love-waves {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 150px;
+            background: 
+                linear-gradient(to top, 
+                    rgba(255, 182, 193, 0.1), 
+                    transparent);
+            mask-image: 
+                url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120"><path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25"/><path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5"/><path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z"/></svg>');
+            -webkit-mask-image: 
+                url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120"><path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25"/><path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5"/><path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z"/></svg>');
+            mask-size: 1200px 150px;
+            -webkit-mask-size: 1200px 150px;
+            animation: wavesMove 20s linear infinite;
+            opacity: 0.3;
+            z-index: 1;
+        }
+
+        @keyframes wavesMove {
+            0% {
+                mask-position-x: 0;
+                -webkit-mask-position-x: 0;
+            }
+            100% {
+                mask-position-x: 1200px;
+                -webkit-mask-position-x: 1200px;
+            }
         }
 
         .nosotros-hero h1 {
             color: white;
-            font-size: 3.5em;
+            font-size: 4.5em;
             margin-bottom: 25px;
             position: relative;
             z-index: 3;
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
             text-shadow: 
                 0 2px 10px rgba(0, 0, 0, 0.3),
-                0 0 30px rgba(218, 165, 32, 0.2);
-            animation: textGlow 3s ease-in-out infinite alternate;
+                0 0 30px rgba(255, 182, 193, 0.2);
+            animation: titleGlow 2s ease-out;
         }
 
-        @keyframes textGlow {
-            from {
-                text-shadow: 
-                    0 2px 10px rgba(0, 0, 0, 0.3),
-                    0 0 30px rgba(218, 165, 32, 0.2);
+        @keyframes titleGlow {
+            0% {
+                opacity: 0;
+                transform: translateY(30px) scale(0.95);
+                filter: blur(5px);
             }
-            to {
-                text-shadow: 
-                    0 2px 20px rgba(0, 0, 0, 0.4),
-                    0 0 40px rgba(218, 165, 32, 0.3),
-                    0 0 60px rgba(218, 165, 32, 0.1);
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+                filter: blur(0);
             }
         }
 
         .nosotros-hero p {
             max-width: 800px;
-            margin: 0 auto 40px;
-            font-size: 1.3em;
-            opacity: 0.9;
+            margin: 0 auto 50px;
+            font-size: 1.5em;
+            color: rgba(255, 255, 255, 0.9);
             position: relative;
             z-index: 3;
-            line-height: 1.6;
+            line-height: 1.7;
+            font-weight: 300;
+            font-family: 'Montserrat', sans-serif;
+            animation: textFloat 1s ease-out 0.3s both;
+            padding: 0 20px;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
         }
 
-        /* Contenedor de partículas */
-        .particles-container {
+        @keyframes textFloat {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Contenedor de corazones animados */
+        .hearts-container {
             position: absolute;
             top: 0;
             left: 0;
@@ -122,358 +261,152 @@
             overflow: hidden;
         }
 
-        /* Partículas individuales */
-        .particle {
-            position: absolute;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--dorado), #FFD700);
-            box-shadow: 
-                0 0 15px var(--dorado),
-                0 0 30px rgba(218, 165, 32, 0.5);
-            animation: vortexFloat 20s infinite linear, particlePulse 2s ease-in-out infinite;
-            opacity: 0.7;
-            filter: blur(0.5px);
-        }
-
-        /* Partículas moradas */
-        .particle.purple {
-            background: linear-gradient(135deg, var(--morado-claro), #8A2BE2);
-            box-shadow: 
-                0 0 15px var(--morado-claro),
-                0 0 30px rgba(90, 33, 107, 0.5);
-        }
-
-        /* Animación del vórtice */
-        @keyframes vortexFloat {
-            0% {
-                transform: 
-                    translate(-50%, -50%) 
-                    rotate(0deg) 
-                    translateX(300px) 
-                    rotate(0deg);
-                opacity: 0;
-            }
-            10% {
-                opacity: 0.8;
-            }
-            90% {
-                opacity: 0.8;
-            }
-            100% {
-                transform: 
-                    translate(-50%, -50%) 
-                    rotate(360deg) 
-                    translateX(300px) 
-                    rotate(-360deg);
-                opacity: 0;
-            }
-        }
-
-        /* Animación alternativa */
-        @keyframes vortexFloatReverse {
-            0% {
-                transform: 
-                    translate(-50%, -50%) 
-                    rotate(0deg) 
-                    translateX(250px) 
-                    rotate(0deg);
-                opacity: 0;
-            }
-            10% {
-                opacity: 0.6;
-            }
-            90% {
-                opacity: 0.6;
-            }
-            100% {
-                transform: 
-                    translate(-50%, -50%) 
-                    rotate(-360deg) 
-                    translateX(250px) 
-                    rotate(360deg);
-                opacity: 0;
-            }
-        }
-
-        /* Animación de pulso para brillo */
-        @keyframes particlePulse {
-            0%, 100% {
-                box-shadow: 
-                    0 0 15px currentColor,
-                    0 0 30px rgba(218, 165, 32, 0.5);
-                transform: scale(1);
-            }
-            50% {
-                box-shadow: 
-                    0 0 25px currentColor,
-                    0 0 50px rgba(218, 165, 32, 0.8);
-                transform: scale(1.1);
-            }
-        }
-
-        /* Tamaños y posiciones de las partículas */
-        .particle:nth-child(1) { width: 8px; height: 8px; top: 50%; left: 50%; animation-delay: 0s; animation-duration: 25s; }
-        .particle:nth-child(2) { width: 12px; height: 12px; top: 50%; left: 50%; animation-delay: 1s; animation-duration: 22s; animation-name: vortexFloatReverse; }
-        .particle:nth-child(3) { width: 6px; height: 6px; top: 50%; left: 50%; animation-delay: 2s; animation-duration: 28s; }
-        .particle:nth-child(4) { width: 10px; height: 10px; top: 50%; left: 50%; animation-delay: 3s; animation-duration: 24s; animation-name: vortexFloatReverse; }
-        .particle:nth-child(5) { width: 14px; height: 14px; top: 50%; left: 50%; animation-delay: 4s; animation-duration: 30s; }
-        .particle:nth-child(6) { width: 9px; height: 9px; top: 50%; left: 50%; animation-delay: 5s; animation-duration: 26s; animation-name: vortexFloatReverse; }
-        .particle:nth-child(7) { width: 7px; height: 7px; top: 50%; left: 50%; animation-delay: 6s; animation-duration: 23s; }
-        .particle:nth-child(8) { width: 13px; height: 13px; top: 50%; left: 50%; animation-delay: 7s; animation-duration: 29s; animation-name: vortexFloatReverse; }
-        .particle:nth-child(9) { width: 11px; height: 11px; top: 50%; left: 50%; animation-delay: 8s; animation-duration: 27s; }
-        .particle:nth-child(10) { width: 15px; height: 15px; top: 50%; left: 50%; animation-delay: 9s; animation-duration: 32s; animation-name: vortexFloatReverse; }
-        .particle:nth-child(11) { width: 9px; height: 9px; top: 50%; left: 50%; animation-delay: 0.5s; animation-duration: 26s; animation-name: vortexFloatReverse; background: linear-gradient(135deg, var(--morado-claro), #8A2BE2); box-shadow: 0 0 15px var(--morado-claro), 0 0 30px rgba(90, 33, 107, 0.5); }
-        .particle:nth-child(12) { width: 12px; height: 12px; top: 50%; left: 50%; animation-delay: 1.5s; animation-duration: 24s; }
-        .particle:nth-child(13) { width: 7px; height: 7px; top: 50%; left: 50%; animation-delay: 2.5s; animation-duration: 29s; animation-name: vortexFloatReverse; background: linear-gradient(135deg, var(--morado-claro), #8A2BE2); box-shadow: 0 0 15px var(--morado-claro), 0 0 30px rgba(90, 33, 107, 0.5); }
-        .particle:nth-child(14) { width: 14px; height: 14px; top: 50%; left: 50%; animation-delay: 3.5s; animation-duration: 31s; }
-        .particle:nth-child(15) { width: 10px; height: 10px; top: 50%; left: 50%; animation-delay: 4.5s; animation-duration: 25s; animation-name: vortexFloatReverse; background: linear-gradient(135deg, var(--morado-claro), #8A2BE2); box-shadow: 0 0 15px var(--morado-claro), 0 0 30px rgba(90, 33, 107, 0.5); }
-
-        /* Efecto de estela */
-        .particle::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, 
-                        rgba(255, 255, 255, 0.1) 0%, 
-                        rgba(218, 165, 32, 0.05) 30%, 
-                        transparent 70%);
-            transform: translate(-50%, -50%);
-            z-index: -1;
-            border-radius: 50%;
-            filter: blur(5px);
-        }
-
-        /* Efecto de brillo adicional */
-        @keyframes ambientGlow {
-            0%, 100% {
-                opacity: 0.3;
-            }
-            50% {
-                opacity: 0.5;
-            }
-        }
-
-        .nosotros-hero::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 300px;
-            height: 300px;
-            background: radial-gradient(circle, 
-                        rgba(218, 165, 32, 0.1) 0%,
-                        rgba(90, 33, 107, 0.05) 30%,
-                        transparent 70%);
-            transform: translate(-50%, -50%);
-            z-index: 1;
-            animation: ambientGlow 4s ease-in-out infinite;
-        }
+        /* Posicionamiento de partículas de amor */
+        .love-particle:nth-child(1) { left: 10%; animation-delay: 0s; animation-duration: 18s; }
+        .love-particle:nth-child(2) { left: 25%; animation-delay: 2s; animation-duration: 22s; }
+        .love-particle:nth-child(3) { left: 40%; animation-delay: 4s; animation-duration: 20s; }
+        .love-particle:nth-child(4) { left: 60%; animation-delay: 1s; animation-duration: 25s; }
+        .love-particle:nth-child(5) { left: 75%; animation-delay: 3s; animation-duration: 19s; }
+        .love-particle:nth-child(6) { left: 90%; animation-delay: 5s; animation-duration: 21s; }
         
-        /* ========== ANIMACIONES AL HACER SCROLL ========== */
-        .historia-contenido,
-        .mision-card,
-        .vision-card,
-        .valor-item,
-        .miembro {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s ease-out;
+        @media (max-width: 768px) {
+            .nosotros-hero {
+                padding: 100px 20px 70px;
+                min-height: 500px;
+            }
+            
+            .nosotros-hero h1 {
+                font-size: 3em;
+            }
+            
+            .nosotros-hero p {
+                font-size: 1.2em;
+            }
+            
+            .love-particle:nth-child(n+4) {
+                display: none;
+            }
         }
 
-        .historia-contenido.visible,
-        .mision-card.visible,
-        .vision-card.visible,
-        .valor-item.visible,
-        .miembro.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Retrasos para animaciones escalonadas */
-        .valor-item:nth-child(1) { transition-delay: 0.1s; }
-        .valor-item:nth-child(2) { transition-delay: 0.2s; }
-        .valor-item:nth-child(3) { transition-delay: 0.3s; }
-        .valor-item:nth-child(4) { transition-delay: 0.4s; }
-
-        .miembro:nth-child(1) { transition-delay: 0.1s; }
-        .miembro:nth-child(2) { transition-delay: 0.2s; }
-        .miembro:nth-child(3) { transition-delay: 0.3s; }
-        .miembro:nth-child(4) { transition-delay: 0.4s; }
-        
-        /* ========== CONTENIDO PRINCIPAL ========== */
+        /* ========== CONTENIDO PRINCIPAL (MANTENIDO) ========== */
         .historia {
-            max-width: 1000px;
-            margin: 60px auto;
+            max-width: 1200px;
+            margin: 80px auto;
             padding: 0 20px;
         }
-        
-        .historia-contenido {
+
+        .historia h2 {
+            text-align: center;
+            font-size: 2.8em;
+            color: var(--morado);
+            margin-bottom: 40px;
+            position: relative;
+            padding-bottom: 20px;
+        }
+
+        .historia h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, transparent, var(--dorado), transparent);
+        }
+
+        .historia-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 50px;
             align-items: center;
-            margin-bottom: 60px;
         }
-        
+
         @media (max-width: 768px) {
-            .historia-contenido {
+            .historia-grid {
                 grid-template-columns: 1fr;
             }
-            
-            .nosotros-hero {
-                padding: 70px 20px 60px;
-                min-height: 400px;
-            }
-            
-            .nosotros-hero h1 {
-                font-size: 2.5em;
-            }
-            
-            .nosotros-hero p {
-                font-size: 1.1em;
-            }
-
-            /* Reducir cantidad de partículas en móviles */
-            .particle:nth-child(n+12) {
-                display: none;
-            }
-            
-            .particle {
-                opacity: 0.5;
-            }
         }
-        
-        .historia-imagen {
-            border-radius: 20px;
+
+        .historia-imagen-container {
+            position: relative;
+            border-radius: 30px;
             overflow: hidden;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
-            transform: perspective(1000px) rotateY(-10deg);
-            transition: transform 0.6s ease;
+            box-shadow: 0 20px 40px rgba(90, 33, 107, 0.3);
+            transition: transform 0.3s ease;
         }
 
-        .historia-imagen:hover {
-            transform: perspective(1000px) rotateY(0deg);
+        .historia-imagen-container:hover {
+            transform: scale(1.02);
         }
-        
-        .historia-imagen img {
+
+        .historia-imagen {
             width: 100%;
-            height: 400px;
+            height: 500px;
             object-fit: cover;
             display: block;
             transition: transform 0.5s ease;
         }
 
-        .historia-imagen:hover img {
-            transform: scale(1.05);
-        }
-        
-        .historia-texto h2 {
-            font-size: 2.5em;
-            margin-bottom: 20px;
-            color: var(--morado);
-            position: relative;
-            padding-bottom: 15px;
+        .historia-imagen-container:hover .historia-imagen {
+            transform: scale(1.1);
         }
 
-        .historia-texto h2::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 80px;
-            height: 4px;
-            background: var(--dorado);
-            border-radius: 2px;
+        .historia-texto h3 {
+            font-size: 2.2em;
+            color: var(--morado);
+            margin-bottom: 20px;
         }
-        
+
         .historia-texto p {
             font-size: 1.1em;
             line-height: 1.8;
             color: var(--gris);
             margin-bottom: 20px;
         }
-        
-        .mision-vision-detallada {
+
+        .mision-vision {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
-            margin: 60px 0;
+            margin: 60px auto;
+            padding: 0 20px;
+            max-width: 1200px;
         }
-        
+
         .mision-card, .vision-card {
             background: white;
             padding: 40px;
             border-radius: 20px;
             box-shadow: 0 10px 30px rgba(90, 33, 107, 0.1);
             text-align: center;
-            position: relative;
-            overflow: hidden;
-            border: 2px solid transparent;
-            transition: all 0.4s ease;
+            transition: all 0.3s ease;
         }
 
         .mision-card:hover, .vision-card:hover {
             transform: translateY(-10px);
             box-shadow: 0 20px 40px rgba(90, 33, 107, 0.15);
-            border-color: var(--dorado);
         }
 
-        .mision-card::before, .vision-card::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(45deg, 
-                        transparent 30%, 
-                        rgba(218, 165, 32, 0.1) 50%, 
-                        transparent 70%);
-            transform: rotate(45deg);
-            animation: shine 3s infinite linear;
-        }
-
-        @keyframes shine {
-            0% {
-                transform: rotate(45deg) translateX(-100%);
-            }
-            100% {
-                transform: rotate(45deg) translateX(100%);
-            }
-        }
-        
         .mision-card i, .vision-card i {
             font-size: 3em;
             color: var(--dorado);
             margin-bottom: 20px;
-            position: relative;
-            z-index: 2;
         }
-        
-        .mision-card h3, .vision-card h3 {
-            font-size: 2em;
-            margin-bottom: 20px;
-            color: var(--morado);
-            position: relative;
-            z-index: 2;
-        }
-        
+
         .valores {
             background: var(--gris-claro);
             padding: 60px 20px;
-            margin-top: 60px;
+            margin-top: 40px;
         }
-        
+
         .valores h2 {
             text-align: center;
             font-size: 2.5em;
             margin-bottom: 40px;
             color: var(--morado);
         }
-        
+
         .grid-valores {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -481,108 +414,68 @@
             max-width: 1200px;
             margin: 0 auto;
         }
-        
+
         .valor-item {
             text-align: center;
             padding: 30px;
             background: white;
             border-radius: 15px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            transition: all 0.4s ease;
+            transition: transform 0.3s ease;
         }
 
         .valor-item:hover {
             transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(90, 33, 107, 0.1);
         }
-        
+
         .valor-item i {
             font-size: 2.5em;
             color: var(--dorado);
             margin-bottom: 20px;
-            transition: transform 0.3s ease;
         }
 
-        .valor-item:hover i {
-            transform: scale(1.2);
-        }
-        
         .equipo {
             max-width: 1200px;
             margin: 60px auto;
             padding: 0 20px;
         }
-        
+
         .equipo h2 {
             text-align: center;
             font-size: 2.5em;
             margin-bottom: 40px;
             color: var(--morado);
         }
-        
+
         .miembros-equipo {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-        }
-        
-        .miembro {
-            text-align: center;
-            transition: all 0.4s ease;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+            justify-content: center;
         }
 
-        .miembro:hover {
-            transform: translateY(-10px);
+        .miembro {
+            text-align: center;
         }
-        
+
         .miembro-imagen {
-            width: 200px;
-            height: 200px;
+            width: 220px;
+            height: 220px;
             border-radius: 50%;
             overflow: hidden;
             margin: 0 auto 20px;
             border: 5px solid var(--dorado);
-            position: relative;
+            transition: transform 0.3s ease;
         }
 
-        .miembro-imagen::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(45deg, 
-                        rgba(218, 165, 32, 0.3), 
-                        rgba(90, 33, 107, 0.3));
-            opacity: 0;
-            transition: opacity 0.4s ease;
-            border-radius: 50%;
+        .miembro:hover .miembro-imagen {
+            transform: scale(1.05);
         }
 
-        .miembro:hover .miembro-imagen::before {
-            opacity: 1;
-        }
-        
         .miembro-imagen img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.4s ease;
-        }
-
-        .miembro:hover .miembro-imagen img {
-            transform: scale(1.1);
-        }
-        
-        .miembro h4 {
-            font-size: 1.5em;
-            margin-bottom: 10px;
-            color: var(--morado);
-        }
-        
-        .miembro p {
-            color: var(--gris);
         }
     </style>
 </head>
@@ -650,7 +543,7 @@
             </a>
             <a href="reconocimientos.html">
                 <i class="fas fa-award"></i> Reconocimientos
-            
+            </a>
         </nav>
         
         <div class="mobile-social">
@@ -697,65 +590,58 @@
         </a>
     </div>
     
-    <!-- HERO NOSOTROS -->
+    <!-- HERO NOSOTROS - MISMO ESTILO QUE CASOS.HTML -->
     <section class="nosotros-hero">
-        <!-- Contenedor de partículas -->
-        <div class="particles-container">
-            <!-- 15 partículas doradas y moradas -->
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
-        </div>
+        <!-- Elementos decorativos animados - IGUAL QUE CASOS -->
+        <div class="love-particle heart">❤</div>
+        <div class="love-particle heart">❤</div>
+        <div class="love-particle paw">🐾</div>
+        <div class="love-particle star">★</div>
+        <div class="love-particle heart">❤</div>
+        <div class="love-particle paw">🐾</div>
+        <div class="love-waves"></div>
         
-        <h1>Nuestra Historia</h1>
-        <p>Desde el corazón de Antioquia, creamos productos que cuidan a quienes más amas.</p>
+        <h1>Sobre Nosotros</h1>
+        <p>Conoce la historia, misión y valores que hacen de PelusasPet una familia dedicada al cuidado natural de tus mascotas.</p>
     </section>
     
     <!-- HISTORIA -->
     <section class="historia">
-        <div class="historia-contenido">
-            <div class="historia-imagen">
-                <img src="img\perros.png" alt="Fundadora de PelusasPet con mascotas">
-            </div>
-            <div class="historia-texto">
-                <h2>El inicio de un sueño</h2>
-                <p>PelusasPet nació del sueño compartido de dos hermanas, unidas por un amor intenso hacia los animales. Con mil ideas en la mente y un solo propósito en el corazón, emprendieron el viaje de crear productos que realmente hicieran la diferencia en la vida de las mascotas. Cada fórmula surge de esa conexión especial que solo quienes aman profundamente a los animales pueden entender.</p>
-                <p>Lo que comenzó como una búsqueda personal por aliviar las alergias, se transformó en una misión compartida: ofrecer alternativas naturales, seguras y efectivas para todas esas familias que, como ellas, buscan solo lo mejor para sus compañeros de cuatro patas.</p>
-                <p>Hoy, mantenemos viva esa esencia familiar, elaborando cada producto con el mismo cuidado, dedicación y amor con el que todo comenzó, porque creemos que los mejores resultados nacen cuando la pasión y la ciencia se encuentran.</p>
-            </div>
-        </div>
+        <h2>Nuestra Historia</h2>
         
-        <!-- MISIÓN Y VISIÓN -->
-        <div class="mision-vision-detallada">
-            <div class="mision-card">
-                <i class="fas fa-bullseye"></i>
-                <h3>Nuestra Misión</h3>
-                <p>Proporcionar productos de cuidado natural de la más alta calidad que mejoren la salud y bienestar de las mascotas, mientras promovemos prácticas sostenibles y respetuosas con el medio ambiente.</p>
+        <div class="historia-grid">
+            <div class="historia-imagen-container">
+                <img src="img/perros.png" alt="Historia PelusasPet" class="historia-imagen">
             </div>
             
-            <div class="vision-card">
-                <i class="fas fa-eye"></i>
-                <h3>Nuestra Visión</h3>
-                <p>Ser la marca líder en Colombia en cosmética natural para mascotas, reconocida por nuestra innovación, calidad y compromiso con el bienestar animal y la sostenibilidad.</p>
+            <div class="historia-texto">
+                <h3>El inicio de un sueño</h3>
+                <p>PelusasPet nació del sueño compartido de dos hermanas, unidas por un amor intenso hacia los animales. Con mil ideas en la mente y un solo propósito en el corazón, emprendieron el viaje de crear productos que realmente hicieran la diferencia en la vida de las mascotas.</p>
+                <p>Cada fórmula surge de esa conexión especial que solo quienes aman profundamente a los animales pueden entender. Lo que comenzó como una búsqueda personal por aliviar las alergias, se transformó en una misión compartida.</p>
+                <p>Hoy, mantenemos viva esa esencia familiar, elaborando cada producto con el mismo cuidado, dedicación y amor con el que todo comenzó, porque creemos que los mejores resultados nacen cuando la pasión y la ciencia se encuentran.</p>
             </div>
         </div>
     </section>
     
+    <!-- MISIÓN Y VISIÓN -->
+    <div class="mision-vision">
+        <div class="mision-card">
+            <i class="fas fa-bullseye"></i>
+            <h3>Nuestra Misión</h3>
+            <p>Proporcionar productos de cuidado natural de la más alta calidad que mejoren la salud y bienestar de las mascotas, mientras promovemos prácticas sostenibles y respetuosas con el medio ambiente.</p>
+        </div>
+        
+        <div class="vision-card">
+            <i class="fas fa-eye"></i>
+            <h3>Nuestra Visión</h3>
+            <p>Ser la marca líder en Colombia en cosmética natural para mascotas, reconocida por nuestra innovación, calidad y compromiso con el bienestar animal y la sostenibilidad.</p>
+        </div>
+    </div>
+    
     <!-- VALORES -->
     <section class="valores">
         <h2>Nuestros Valores</h2>
+        
         <div class="grid-valores">
             <div class="valor-item">
                 <i class="fas fa-leaf"></i>
@@ -786,10 +672,11 @@
     <!-- EQUIPO -->
     <section class="equipo">
         <h2>Nuestro Equipo</h2>
+        
         <div class="miembros-equipo">
             <div class="miembro">
                 <div class="miembro-imagen">
-                    <img src="img\laura-perro.png" alt="Carolina García">
+                    <img src="img/laura-perro.png" alt="Carolina García">
                 </div>
                 <h4>Carolina García</h4>
                 <p>Fundadora & CEO</p>
@@ -797,7 +684,7 @@
             
             <div class="miembro">
                 <div class="miembro-imagen">
-                    <img src="img\carolina-perro.png" alt="Laura García">
+                    <img src="img/carolina-perro.png" alt="Laura García">
                 </div>
                 <h4>Laura García</h4>
                 <p>Fundadora & CEO</p>
@@ -828,102 +715,26 @@
     
     <!-- Scripts -->
     <script src="js/script.js"></script>
-    
+    <script src="js/carrito-unificado.js"></script>
     <script>
-        // Observador de intersección para animaciones al hacer scroll
         document.addEventListener('DOMContentLoaded', function() {
-            const observerOptions = {
-                threshold: 0.1,
-                rootMargin: '0px 0px -100px 0px'
-            };
-
-            const observer = new IntersectionObserver(function(entries) {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                    } else {
-                        // Opcional: Remover la clase cuando ya no es visible
-                        // entry.target.classList.remove('visible');
-                    }
-                });
-            }, observerOptions);
-
-            // Observar todos los elementos con animación
-            const animatedElements = document.querySelectorAll(
-                '.historia-contenido, .mision-card, .vision-card, .valor-item, .miembro'
-            );
-
-            animatedElements.forEach(element => {
-                observer.observe(element);
-            });
-
+            if (typeof window.inicializarCarrito === 'function') {
+                window.inicializarCarrito();
+            }
+            
             // Actualizar badge del carrito
             function actualizarBadgeCarrito() {
                 const badge = document.querySelector('.cart-badge');
                 if (badge) {
-                    const carrito = JSON.parse(localStorage.getItem('pelusaspet_carrito')) || [];
+                    const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
                     const totalItems = carrito.reduce((sum, item) => sum + (item.cantidad || 0), 0);
                     badge.textContent = totalItems;
                     badge.style.display = totalItems > 0 ? 'flex' : 'none';
                 }
             }
-
-            // Inicializar badge al cargar
+            
             actualizarBadgeCarrito();
-
-            // Añadir efecto de scroll suave para enlaces internos
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const targetId = this.getAttribute('href');
-                    if (targetId !== '#') {
-                        const targetElement = document.querySelector(targetId);
-                        if (targetElement) {
-                            window.scrollTo({
-                                top: targetElement.offsetTop - 100,
-                                behavior: 'smooth'
-                            });
-                        }
-                    }
-                });
-            });
-        });
-
-        // Efecto de partículas adicional para el hero
-        window.addEventListener('load', function() {
-            const hero = document.querySelector('.nosotros-hero');
-            if (hero) {
-                // Agregar algunas partículas adicionales dinámicamente
-                const particlesContainer = document.querySelector('.particles-container');
-                if (particlesContainer) {
-                    for (let i = 0; i < 5; i++) {
-                        const particle = document.createElement('div');
-                        particle.className = 'particle';
-                        particle.style.cssText = `
-                            width: ${Math.random() * 8 + 4}px;
-                            height: ${Math.random() * 8 + 4}px;
-                            top: ${Math.random() * 100}%;
-                            left: ${Math.random() * 100}%;
-                            animation-delay: ${Math.random() * 10}s;
-                            animation-duration: ${Math.random() * 10 + 20}s;
-                            opacity: ${Math.random() * 0.3 + 0.4};
-                        `;
-                        particlesContainer.appendChild(particle);
-                    }
-                }
-            }
         });
     </script>
 </body>
 </html>
-
-<!-- Scripts -->
-<script src="js/script.js"></script>
-<script src="js/carrito-unificado.js"></script>
-    // Inicializar cuando el DOM esté listo
-    document.addEventListener('DOMContentLoaded', function() {
-        if (window.inicializarCarrito) {
-            inicializarCarrito();
-        }
-    });
-</script>

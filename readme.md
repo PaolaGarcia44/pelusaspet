@@ -1,35 +1,51 @@
-# PelusasPet - Marketplace de Cosméticos Naturales para Mascotas
+# PelusasPet
 
-## 📁 Estructura del Proyecto
+PelusasPet es una aplicación web con un marketplace que permite a los usuarios explorar y adquirir productos para sus mascotas. Con un diseño sencillo y enfocado en la experiencia del usuario, esta herramienta busca ser una solución integral para amantes de los animales.
 
+## Tecnologías principales
+El proyecto ha sido desarrollado utilizando:
+- **HTML** (72.6%)
+- **CSS** (24.6%)
+- **JavaScript** (2.8%)
 
-## 🚀 Instalación y Uso
+Estas herramientas permiten crear una interfaz atractiva, funcional y adaptable.
 
-1. **Clona o descarga** los archivos
-2. **Abre `index.html`** en tu navegador
-3. **El carrito funciona** con localStorage
-4. **No se necesita servidor** para desarrollo
+## Funcionalidades
+- **Explorar el marketplace:** Descubre productos variados para mascotas.
+- **Diseño responsivo:** Interfaz accesible desde cualquier dispositivo.
+- **Fácil navegabilidad:** Enfoque en la simplicidad y experiencia del usuario.
 
-## ⚙️ Funcionalidades
+## Instalación
+1. Clona el repositorio:
+   ```bash
+   git clone https://github.com/PaolaGarcia44/pelusaspet.git
+   ```
+2. Accede al directorio del proyecto:
+   ```bash
+   cd pelusaspet
+   ```
+3. Abre el archivo `index.html` en tu navegador preferido.
 
-### ✅ Implementadas
-- Sistema de carrito con localStorage
-- Menú responsive (hamburguesa)
-- Formulario mayorista con WhatsApp
-- Página de carrito completa
-- Cálculo de envíos
-- Página de confirmación
-- Notificaciones visuales
+## Contribución
+Si deseas contribuir a este proyecto:
+1. Haz un fork del repositorio.
+2. Crea una rama para tus cambios:
+   ```bash
+   git checkout -b feature/nueva-funcionalidad
+   ```
+3. Realiza tus cambios y haz un commit:
+   ```bash
+   git commit -m 'Añade nueva funcionalidad'
+   ```
+4. Sube tus cambios a tu fork:
+   ```bash
+   git push origin feature/nueva-funcionalidad
+   ```
+5. Crea un pull request en este repositorio.
 
-### 🔄 Pendientes (Opcionales)
-- Integración con Mercado Pago
-- Backend para emails automáticos
-- Base de datos para pedidos
-- Panel admin completo
+## Licencia
+Este proyecto está licenciado bajo los términos de la [MIT License](LICENSE).
 
-## 🔧 Configuración
+---
 
-### WhatsApp de la empresa
-Edita en `js/script.js` línea ~130:
-```javascript
-const numeroWhatsApp = '573197622653'; 
+🐾 ¡Gracias por visitar PelusasPet! Esperamos que disfrutes y contribuyas a hacer crecer la aplicación.

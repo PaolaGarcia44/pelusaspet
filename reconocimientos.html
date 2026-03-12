@@ -18,629 +18,749 @@
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="img/favicon.ico">
     
-  <style>
-    .cart-icon-container {
-        position: relative;
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-    }
-    
-    .cart-badge {
-        position: absolute;
-        top: -8px;
-        right: -8px;
-        background: #DAA520;
-        color: #5A216B;
-        width: 20px;
-        height: 20px;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 12px;
-        font-weight: bold;
-        display: none;
-    }
-    
-    /* ========== EFECTO ESTRELLAS Y TROFEOS ANIMADOS ========== */
-    .reconocimientos-hero {
-        background: 
-            linear-gradient(135deg, 
-                rgba(90, 33, 107, 0.95) 0%,
-                rgba(74, 26, 90, 0.93) 50%,
-                rgba(106, 43, 123, 0.9) 100%),
-            url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><defs><pattern id="awardPattern" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M20,0 L25,15 L40,15 L28,25 L32,40 L20,30 L8,40 L12,25 L0,15 L15,15 Z" fill="rgba(218, 165, 32, 0.1)" /></pattern></defs><rect x="0" y="0" width="100" height="100" fill="url(%23awardPattern)"/></svg>');
-        color: white;
-        padding: 140px 20px 100px;
-        text-align: center;
-        margin-top: 0;
-        position: relative;
-        overflow: hidden;
-        min-height: 600px;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-    }
-
-    /* Efecto de constelación de estrellas */
-    .reconocimientos-hero::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: 
-            radial-gradient(circle at 20% 30%, 
-                rgba(218, 165, 32, 0.15) 0%, 
-                transparent 50%),
-            radial-gradient(circle at 80% 70%, 
-                rgba(255, 255, 255, 0.1) 0%, 
-                transparent 50%),
-            radial-gradient(circle at 50% 50%, 
-                rgba(255, 215, 0, 0.08) 0%, 
-                transparent 60%);
-        z-index: 1;
-        pointer-events: none;
-        animation: awardGlow 10s ease-in-out infinite alternate;
-        filter: blur(30px);
-    }
-
-    @keyframes awardGlow {
-        0% {
-            opacity: 0.3;
-            transform: scale(1);
+    <style>
+        :root {
+            --morado-profundo: #5A216B;
+            --morado-oscuro: #4A1A5A;
+            --morado-medio: #6A2B7B;
+            --morado-claro: #8A4FA3;
+            --destello-dorado: #DAA520;
+            --destello-plateado: #C0C0C0;
+            --verde-menta: #98FB98;
+            --rosa-suave: #FFB6C1;
+            --gris-claro: #F5F5F5;
+            --gris: #666666;
         }
-        100% {
-            opacity: 0.6;
-            transform: scale(1.05);
-        }
-    }
 
-    /* Estrellas brillantes animadas */
-    .reconocimientos-hero::after {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background-image: 
-            radial-gradient(3px 3px at 10% 20%, rgba(255, 215, 0, 0.8), transparent),
-            radial-gradient(2px 2px at 20% 40%, rgba(255, 255, 255, 0.6), transparent),
-            radial-gradient(4px 4px at 30% 60%, rgba(218, 165, 32, 0.7), transparent),
-            radial-gradient(3px 3px at 40% 80%, rgba(255, 215, 0, 0.8), transparent),
-            radial-gradient(2px 2px at 50% 10%, rgba(255, 255, 255, 0.6), transparent),
-            radial-gradient(3px 3px at 60% 30%, rgba(218, 165, 32, 0.7), transparent),
-            radial-gradient(2px 2px at 70% 50%, rgba(255, 215, 0, 0.8), transparent),
-            radial-gradient(4px 4px at 80% 70%, rgba(255, 255, 255, 0.6), transparent);
-        background-size: 300px 300px;
-        z-index: 1;
-        pointer-events: none;
-        animation: starsTwinkle 15s linear infinite, starsMove 30s linear infinite;
-        opacity: 0.5;
-    }
-
-    @keyframes starsTwinkle {
-        0%, 100% {
-            opacity: 0.3;
-        }
-        50% {
-            opacity: 0.8;
-        }
-    }
-
-    @keyframes starsMove {
-        0% {
-            background-position: 0 0;
-        }
-        100% {
-            background-position: 300px 300px;
-        }
-    }
-
-    /* Trophies flotantes animados */
-    .floating-trophy {
-        position: absolute;
-        font-size: 24px;
-        color: rgba(218, 165, 32, 0.6);
-        animation: trophyFloat 20s infinite ease-in-out;
-        z-index: 2;
-        text-shadow: 0 0 10px rgba(218, 165, 32, 0.3);
-    }
-
-    @keyframes trophyFloat {
-        0%, 100% {
-            transform: translateY(0) rotate(0deg);
-            opacity: 0.3;
-        }
-        50% {
-            transform: translateY(-50px) rotate(180deg);
-            opacity: 0.8;
-        }
-    }
-
-    /* Medallas giratorias */
-    .rotating-medal {
-        position: absolute;
-        width: 60px;
-        height: 60px;
-        background: radial-gradient(circle, 
-                    rgba(218, 165, 32, 0.3) 0%,
-                    rgba(255, 215, 0, 0.2) 50%,
-                    transparent 70%);
-        border-radius: 50%;
-        animation: medalSpin 15s infinite linear;
-        z-index: 2;
-        box-shadow: 
-            inset 0 0 20px rgba(218, 165, 32, 0.4),
-            0 0 30px rgba(218, 165, 32, 0.2);
-    }
-
-    @keyframes medalSpin {
-        0% {
-            transform: rotate(0deg) scale(1);
-        }
-        50% {
-            transform: rotate(180deg) scale(1.2);
-        }
-        100% {
-            transform: rotate(360deg) scale(1);
-        }
-    }
-
-    .reconocimientos-hero h1 {
-        color: white;
-        font-size: 4.5em;
-        margin-bottom: 30px;
-        position: relative;
-        z-index: 3;
-        font-family: 'Playfair Display', serif;
-        font-weight: 700;
-        text-shadow: 
-            0 2px 10px rgba(0, 0, 0, 0.3),
-            0 0 30px rgba(218, 165, 32, 0.3),
-            0 0 60px rgba(218, 165, 32, 0.1);
-        animation: titleGlitter 2s ease-out;
-    }
-
-    @keyframes titleGlitter {
-        0% {
-            opacity: 0;
-            transform: translateY(40px) scale(0.95);
-            filter: blur(10px);
-            text-shadow: 0 0 20px rgba(218, 165, 32, 0);
-        }
-        100% {
-            opacity: 1;
-            transform: translateY(0) scale(1);
-            filter: blur(0);
-            text-shadow: 
-                0 2px 10px rgba(0, 0, 0, 0.3),
-                0 0 30px rgba(218, 165, 32, 0.3),
-                0 0 60px rgba(218, 165, 32, 0.1);
-        }
-    }
-
-    .reconocimientos-hero p {
-        max-width: 800px;
-        margin: 0 auto;
-        font-size: 1.5em;
-        opacity: 0.9;
-        position: relative;
-        z-index: 3;
-        animation: textShine 1s ease-out 0.3s both;
-        line-height: 1.6;
-        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
-    }
-
-    @keyframes textShine {
-        from {
-            opacity: 0;
-            transform: translateY(20px);
-        }
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
-
-    /* Contenedor de elementos decorativos */
-    .awards-container {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: 2;
-        pointer-events: none;
-        overflow: hidden;
-    }
-
-    /* Posicionamiento de trofeos y medallas */
-    .floating-trophy:nth-child(1) { top: 20%; left: 15%; animation-delay: 0s; }
-    .floating-trophy:nth-child(2) { top: 40%; left: 75%; animation-delay: 5s; }
-    .floating-trophy:nth-child(3) { top: 70%; left: 25%; animation-delay: 10s; }
-    .floating-trophy:nth-child(4) { top: 30%; left: 60%; animation-delay: 15s; }
-
-    .rotating-medal:nth-child(5) { top: 15%; left: 80%; animation-delay: 0s; }
-    .rotating-medal:nth-child(6) { top: 60%; left: 15%; animation-delay: 7s; }
-    .rotating-medal:nth-child(7) { top: 80%; left: 70%; animation-delay: 14s; }
-
-    /* Efecto de rayos de luz */
-    .light-beam {
-        position: absolute;
-        height: 200px;
-        width: 2px;
-        background: linear-gradient(to bottom, 
-                    transparent, 
-                    rgba(218, 165, 32, 0.3), 
-                    transparent);
-        animation: beamRotate 8s infinite linear;
-        opacity: 0.4;
-        filter: blur(1px);
-    }
-
-    @keyframes beamRotate {
-        0% {
-            transform: rotate(0deg);
-        }
-        100% {
-            transform: rotate(360deg);
-        }
-    }
-
-    .light-beam:nth-child(8) { top: 50%; left: 50%; transform-origin: center; animation-delay: 0s; }
-    .light-beam:nth-child(9) { top: 50%; left: 50%; transform-origin: center; animation-delay: 2s; animation-duration: 12s; }
-    .light-beam:nth-child(10) { top: 50%; left: 50%; transform-origin: center; animation-delay: 4s; animation-duration: 10s; }
-    
-    .certificaciones {
-        max-width: 1200px;
-        margin: 60px auto;
-        padding: 0 20px;
-    }
-    
-    .certificaciones h2 {
-        text-align: center;
-        font-size: 2.5em;
-        margin-bottom: 40px;
-        color: var(--morado);
-    }
-    
-    .grid-certificaciones {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 30px;
-        margin-bottom: 60px;
-    }
-    
-    @media (max-width: 768px) {
-        .reconocimientos-hero {
-            padding: 100px 20px 70px;
-            min-height: 500px;
+        .cart-icon-container {
+            position: relative;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
         }
         
+        .cart-badge {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: var(--destello-dorado);
+            color: var(--morado-profundo);
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: bold;
+            display: none;
+        }
+        
+        /* ========== HERO RECONOCIMIENTOS - MISMO ESTILO QUE PRODUCTOS.HTML ========== */
+        .reconocimientos-hero {
+            background: linear-gradient(135deg, 
+                        rgba(90, 33, 107, 0.95) 0%,
+                        rgba(74, 26, 90, 0.92) 100%);
+            color: white;
+            padding: 120px 20px 90px;
+            text-align: center;
+            margin-top: 0;
+            position: relative;
+            overflow: hidden;
+            min-height: 600px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            isolation: isolate;
+        }
+
+        /* Fondo texturizado sutil - IGUAL QUE PRODUCTOS */
+        .reconocimientos-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                radial-gradient(circle at 25% 25%, 
+                    rgba(138, 79, 163, 0.15) 2%, 
+                    transparent 10%),
+                radial-gradient(circle at 75% 75%, 
+                    rgba(218, 165, 32, 0.1) 2%, 
+                    transparent 10%),
+                radial-gradient(circle at 50% 50%, 
+                    rgba(152, 251, 152, 0.08) 1%, 
+                    transparent 8%);
+            background-size: 200px 200px, 300px 300px, 250px 250px;
+            z-index: 1;
+            pointer-events: none;
+            animation: textureMove 20s linear infinite;
+        }
+
+        @keyframes textureMove {
+            0% { background-position: 0 0, 0 0, 0 0; }
+            100% { background-position: 200px 200px, 300px 300px, 250px 250px; }
+        }
+
         .reconocimientos-hero h1 {
-            font-size: 3em;
+            color: white;
+            font-size: 4.2em;
+            margin-bottom: 25px;
+            position: relative;
+            z-index: 3;
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-shadow: 
+                0 2px 4px rgba(0, 0, 0, 0.3),
+                0 4px 12px rgba(0, 0, 0, 0.2);
+            animation: titleBloom 1.2s ease-out;
+            -webkit-text-fill-color: white;
+            background-clip: text;
+            padding: 0 10px;
+        }
+
+        @keyframes titleBloom {
+            from {
+                opacity: 0;
+                transform: translateY(30px) scale(0.95);
+                filter: blur(5px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+                filter: blur(0);
+            }
+        }
+
+        .reconocimientos-hero p {
+            max-width: 700px;
+            margin: 0 auto 50px;
+            font-size: 1.4em;
+            color: rgba(255, 255, 255, 0.9);
+            position: relative;
+            z-index: 3;
+            line-height: 1.7;
+            font-weight: 300;
+            font-family: 'Montserrat', sans-serif;
+            animation: textFadeIn 1s ease-out 0.4s both;
+            padding: 0 20px;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+        }
+
+        @keyframes textFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Contenedor de flores elegantes - IGUAL QUE PRODUCTOS */
+        .floral-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 2;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        /* Pétalos flotantes */
+        .petal {
+            position: absolute;
+            background: linear-gradient(135deg, 
+                        rgba(255, 255, 255, 0.1), 
+                        rgba(255, 255, 255, 0.05));
+            border-radius: 50% 50% 50% 0;
+            transform: rotate(45deg);
+            animation: petalFloat 20s infinite linear;
+            opacity: 0;
+            filter: blur(0.5px);
+            backdrop-filter: blur(2px);
+        }
+
+        /* Estilos de pétalos */
+        .petal.lavender {
+            background: linear-gradient(135deg, 
+                        rgba(138, 79, 163, 0.15), 
+                        rgba(90, 33, 107, 0.1));
+            box-shadow: 
+                inset 0 0 10px rgba(138, 79, 163, 0.2),
+                0 0 15px rgba(138, 79, 163, 0.1);
+        }
+
+        .petal.gold {
+            background: linear-gradient(135deg, 
+                        rgba(218, 165, 32, 0.15), 
+                        rgba(255, 215, 0, 0.1));
+            box-shadow: 
+                inset 0 0 10px rgba(218, 165, 32, 0.2),
+                0 0 15px rgba(218, 165, 32, 0.1);
+        }
+
+        .petal.mint {
+            background: linear-gradient(135deg, 
+                        rgba(152, 251, 152, 0.15), 
+                        rgba(152, 251, 152, 0.1));
+            box-shadow: 
+                inset 0 0 10px rgba(152, 251, 152, 0.2),
+                0 0 15px rgba(152, 251, 152, 0.1);
+        }
+
+        /* Animación de pétalos flotantes */
+        @keyframes petalFloat {
+            0% {
+                opacity: 0;
+                transform: 
+                    rotate(45deg)
+                    translateY(100vh) 
+                    rotate(0deg)
+                    scale(0.5);
+            }
+            10% {
+                opacity: 0.3;
+            }
+            90% {
+                opacity: 0.3;
+            }
+            100% {
+                opacity: 0;
+                transform: 
+                    rotate(45deg)
+                    translateY(-100px) 
+                    rotate(360deg)
+                    scale(1);
+            }
+        }
+
+        /* Flores completas */
+        .flower {
+            position: absolute;
+            animation: flowerBloom 15s infinite ease-in-out;
+            opacity: 0;
+        }
+
+        /* Flores de lavanda */
+        .flower.lavender .petal {
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            background: rgba(138, 79, 163, 0.15);
+            border-radius: 50%;
+            transform-origin: center;
+        }
+
+        .flower.lavender .petal:nth-child(1) { transform: rotate(0deg) translateX(25px); }
+        .flower.lavender .petal:nth-child(2) { transform: rotate(60deg) translateX(25px); }
+        .flower.lavender .petal:nth-child(3) { transform: rotate(120deg) translateX(25px); }
+        .flower.lavender .petal:nth-child(4) { transform: rotate(180deg) translateX(25px); }
+        .flower.lavender .petal:nth-child(5) { transform: rotate(240deg) translateX(25px); }
+        .flower.lavender .petal:nth-child(6) { transform: rotate(300deg) translateX(25px); }
+
+        .flower.lavender .center {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: rgba(218, 165, 32, 0.2);
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        /* Animación de floración */
+        @keyframes flowerBloom {
+            0%, 100% {
+                opacity: 0;
+                transform: scale(0.5);
+            }
+            50% {
+                opacity: 0.4;
+                transform: scale(1);
+            }
+        }
+
+        /* Líneas de polen sutiles */
+        .pollen-line {
+            position: absolute;
+            height: 1px;
+            background: linear-gradient(90deg, 
+                        transparent, 
+                        rgba(218, 165, 32, 0.2), 
+                        transparent);
+            animation: pollenDrift 10s infinite ease-in-out;
+            filter: blur(0.5px);
+        }
+
+        @keyframes pollenDrift {
+            0%, 100% {
+                opacity: 0;
+                transform: translateX(-100%);
+            }
+            50% {
+                opacity: 0.3;
+                transform: translateX(100%);
+            }
+        }
+
+        /* Olas suaves en la parte inferior */
+        .floral-wave {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 150px;
+            background: 
+                linear-gradient(to top, 
+                    rgba(138, 79, 163, 0.1), 
+                    transparent);
+            mask-image: 
+                radial-gradient(circle at 50% 100%, 
+                    black 30%, 
+                    transparent 70%);
+            -webkit-mask-image: 
+                radial-gradient(circle at 50% 100%, 
+                    black 30%, 
+                    transparent 70%);
+            animation: waveRise 8s infinite ease-in-out;
+        }
+
+        @keyframes waveRise {
+            0%, 100% {
+                transform: translateY(0);
+                opacity: 0.3;
+            }
+            50% {
+                transform: translateY(-20px);
+                opacity: 0.5;
+            }
+        }
+
+        /* Efecto de brillo adicional */
+        @keyframes ambientBloom {
+            0%, 100% {
+                opacity: 0.2;
+                filter: blur(30px);
+            }
+            50% {
+                opacity: 0.4;
+                filter: blur(20px);
+            }
+        }
+
+        .reconocimientos-hero::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, 
+                        rgba(138, 79, 163, 0.15) 0%,
+                        rgba(152, 251, 152, 0.1) 25%,
+                        rgba(218, 165, 32, 0.08) 50%,
+                        transparent 70%);
+            transform: translate(-50%, -50%);
+            z-index: 1;
+            animation: ambientBloom 10s ease-in-out infinite;
+            border-radius: 50%;
+        }
+
+        /* ========== SECCIONES EXISTENTES (MANTENIDAS) ========== */
+        .certificaciones {
+            max-width: 1200px;
+            margin: 60px auto;
+            padding: 0 20px;
+        }
+        
+        .certificaciones h2 {
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 40px;
+            color: var(--morado);
         }
         
         .grid-certificaciones {
-            grid-template-columns: 1fr;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
         }
         
-        .floating-trophy:nth-child(n+3),
-        .rotating-medal:nth-child(n+6) {
-            display: none;
+        .certificacion-card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px 30px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(90, 33, 107, 0.1);
+            transition: all 0.3s;
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
         }
-    }
-    
-    .certificacion-card {
-        background: white;
-        border-radius: 20px;
-        padding: 40px 30px;
-        text-align: center;
-        box-shadow: 0 10px 30px rgba(90, 33, 107, 0.1);
-        transition: all 0.3s;
-        border: 2px solid transparent;
-        position: relative;
-        overflow: hidden;
-    }
 
-    .certificacion-card::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: -100%;
-        width: 100%;
-        height: 3px;
-        background: linear-gradient(90deg, 
-                    transparent, 
-                    var(--dorado), 
-                    transparent);
-        transition: left 0.6s;
-    }
-
-    .certificacion-card:hover::before {
-        left: 100%;
-    }
-    
-    .certificacion-card:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 15px 40px rgba(90, 33, 107, 0.2);
-        border-color: var(--dorado);
-    }
-    
-    .certificacion-icon {
-        width: 100px;
-        height: 100px;
-        margin: 0 auto 20px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background: linear-gradient(135deg, var(--morado-claro), var(--morado));
-        border-radius: 50%;
-        color: white;
-        font-size: 2.5em;
-        transition: transform 0.3s;
-    }
-
-    .certificacion-card:hover .certificacion-icon {
-        transform: scale(1.1) rotate(15deg);
-    }
-    
-    .certificacion-card h3 {
-        color: var(--morado);
-        margin-bottom: 15px;
-        font-size: 1.5em;
-    }
-    
-    .certificacion-card p {
-        color: var(--gris);
-        line-height: 1.6;
-        margin-bottom: 20px;
-    }
-    
-    .certificacion-fecha {
-        color: var(--dorado);
-        font-weight: 600;
-        font-size: 0.9em;
-    }
-    
-    .premios {
-        background: var(--gris-claro);
-        padding: 60px 20px;
-        margin-top: 40px;
-    }
-    
-    .premios-contenido {
-        max-width: 1200px;
-        margin: 0 auto;
-    }
-    
-    .premios h2 {
-        text-align: center;
-        font-size: 2.5em;
-        margin-bottom: 40px;
-        color: var(--morado);
-    }
-    
-    .timeline-premios {
-        position: relative;
-        max-width: 800px;
-        margin: 0 auto;
-    }
-    
-    .timeline-premios::before {
-        content: '';
-        position: absolute;
-        left: 50%;
-        top: 0;
-        bottom: 0;
-        width: 4px;
-        background: linear-gradient(to bottom, 
-                    var(--dorado), 
-                    var(--morado), 
-                    var(--dorado));
-        transform: translateX(-50%);
-        animation: timelineGlow 3s infinite alternate;
-    }
-
-    @keyframes timelineGlow {
-        0% { opacity: 0.7; }
-        100% { opacity: 1; }
-    }
-    
-    @media (max-width: 768px) {
-        .timeline-premios::before {
-            left: 30px;
+        .certificacion-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, 
+                        transparent, 
+                        var(--destello-dorado), 
+                        transparent);
+            transition: left 0.6s;
         }
-    }
-    
-    .timeline-item {
-        position: relative;
-        margin-bottom: 40px;
-        display: flex;
-        align-items: center;
-    }
-    
-    @media (max-width: 768px) {
+
+        .certificacion-card:hover::before {
+            left: 100%;
+        }
+        
+        .certificacion-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(90, 33, 107, 0.2);
+            border-color: var(--destello-dorado);
+        }
+        
+        .certificacion-icon {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--morado-claro), var(--morado-medio));
+            border-radius: 50%;
+            color: white;
+            font-size: 2.5em;
+            transition: transform 0.3s;
+        }
+
+        .certificacion-card:hover .certificacion-icon {
+            transform: scale(1.1) rotate(15deg);
+        }
+        
+        .certificacion-card h3 {
+            color: var(--morado);
+            margin-bottom: 15px;
+            font-size: 1.5em;
+        }
+        
+        .certificacion-card p {
+            color: var(--gris);
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        
+        .certificacion-fecha {
+            color: var(--destello-dorado);
+            font-weight: 600;
+            font-size: 0.9em;
+        }
+        
+        .premios {
+            background: var(--gris-claro);
+            padding: 60px 20px;
+            margin-top: 40px;
+        }
+        
+        .premios-contenido {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .premios h2 {
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 40px;
+            color: var(--morado);
+        }
+        
+        .timeline-premios {
+  max-width: 600px;
+  margin: 0 auto;
+}
+.tl-item {
+  display: grid;
+  grid-template-columns: 70px 36px 1fr;
+  align-items: start;
+}
+.tl-year {
+  text-align: right;
+  padding-right: 12px;
+  padding-top: 13px;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--destello-dorado);
+}
+.tl-spine {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.tl-dot {
+  width: 16px; height: 16px;
+  border-radius: 50%;
+  background: var(--morado-profundo);
+  border: 3px solid var(--destello-dorado);
+  margin-top: 11px;
+  flex-shrink: 0;
+  box-shadow: 0 0 0 4px rgba(218,165,32,0.15);
+}
+.tl-line {
+  width: 2px; flex: 1; min-height: 24px;
+  background: linear-gradient(to bottom, var(--destello-dorado), rgba(218,165,32,0.15));
+}
+.tl-item:last-child .tl-line { display: none; }
+.tl-card {
+  margin-left: 12px;
+  margin-bottom: 20px;
+  background: white;
+  border: 1px solid rgba(90,33,107,0.1);
+  border-left: 3px solid var(--destello-dorado);
+  border-radius: 0 12px 12px 0;
+  padding: 14px 18px;
+  transition: all 0.3s;
+}
+.tl-card:hover {
+  border-left-color: var(--morado-profundo);
+  box-shadow: 0 4px 16px rgba(90,33,107,0.12);
+  transform: translateX(4px);
+}
+.tl-card-title {
+  font-size: 1.1em;
+  font-weight: 700;
+  color: var(--morado-profundo);
+  margin-bottom: 6px;
+  font-family: 'Playfair Display', serif;
+}
+.tl-card-desc {
+  font-size: 0.9em;
+  color: var(--gris);
+  line-height: 1.6;
+}
+.tl-badge {
+  display: inline-block;
+  font-size: 0.78em;
+  font-weight: 600;
+  padding: 2px 10px;
+  border-radius: 20px;
+  margin-bottom: 8px;
+}
+.badge-oro   { background: rgba(218,165,32,0.15); color: #7a5800; }
+.badge-plata { background: rgba(100,100,100,0.12); color: #444; }
+.badge-bronce{ background: rgba(150,90,40,0.15);  color: #6b3a0f; }
+            
+            /* Reducir cantidad de elementos florales en móviles */
+            .petal:nth-child(n+15),
+            .flower:nth-child(n+4),
+            .pollen-line:nth-child(n+8) {
+                display: none;
+            }
+            
+            .reconocimientos-hero::after {
+                width: 250px;
+                height: 250px;
+            }
+        
+        
         .timeline-item {
-            flex-direction: column;
-            align-items: flex-start;
-            padding-left: 60px;
+            position: relative;
+            margin-bottom: 40px;
+            display: flex;
+            align-items: center;
         }
-    }
-    
-    .timeline-fecha {
-        flex: 0 0 150px;
-        text-align: right;
-        padding-right: 30px;
-        color: var(--dorado);
-        font-weight: 700;
-        font-size: 1.2em;
-    }
-    
-    @media (max-width: 768px) {
+        
+        @media (max-width: 768px) {
+            .timeline-item {
+                flex-direction: column;
+                align-items: flex-start;
+                padding-left: 60px;
+            }
+        }
+        
         .timeline-fecha {
-            text-align: left;
-            padding-right: 0;
+            flex: 0 0 150px;
+            text-align: right;
+            padding-right: 30px;
+            color: var(--destello-dorado);
+            font-weight: 700;
+            font-size: 1.2em;
+        }
+        
+        @media (max-width: 768px) {
+            .timeline-fecha {
+                text-align: left;
+                padding-right: 0;
+                margin-bottom: 10px;
+            }
+        }
+        
+        .timeline-dot {
+            width: 20px;
+            height: 20px;
+            background: var(--morado-medio);
+            border: 4px solid var(--destello-dorado);
+            border-radius: 50%;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1;
+            box-shadow: 0 0 15px rgba(218, 165, 32, 0.3);
+            animation: dotPulse 2s infinite;
+        }
+
+        @keyframes dotPulse {
+            0%, 100% { transform: translateX(-50%) scale(1); }
+            50% { transform: translateX(-50%) scale(1.2); }
+        }
+        
+        @media (max-width: 768px) {
+            .timeline-dot {
+                left: 21px;
+            }
+        }
+        
+        .timeline-contenido {
+            flex: 1;
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            border-left: 4px solid var(--morado-medio);
+            transition: transform 0.3s;
+        }
+
+        .timeline-contenido:hover {
+            transform: translateX(10px);
+            box-shadow: 0 10px 30px rgba(90, 33, 107, 0.2);
+        }
+        
+        @media (max-width: 768px) {
+            .timeline-contenido {
+                width: 100%;
+            }
+        }
+        
+        .timeline-contenido h3 {
+            color: var(--morado);
             margin-bottom: 10px;
         }
-    }
-    
-    .timeline-dot {
-        width: 20px;
-        height: 20px;
-        background: var(--morado);
-        border: 4px solid var(--dorado);
-        border-radius: 50%;
-        position: absolute;
-        left: 50%;
-        transform: translateX(-50%);
-        z-index: 1;
-        box-shadow: 0 0 15px rgba(218, 165, 32, 0.3);
-        animation: dotPulse 2s infinite;
-    }
-
-    @keyframes dotPulse {
-        0%, 100% { transform: translateX(-50%) scale(1); }
-        50% { transform: translateX(-50%) scale(1.2); }
-    }
-    
-    @media (max-width: 768px) {
-        .timeline-dot {
-            left: 21px;
+        
+        .timeline-contenido p {
+            color: var(--gris);
+            line-height: 1.6;
         }
-    }
-    
-    .timeline-contenido {
-        flex: 1;
-        background: white;
-        padding: 25px;
-        border-radius: 15px;
-        box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-        border-left: 4px solid var(--morado);
-        transition: transform 0.3s;
-    }
-
-    .timeline-contenido:hover {
-        transform: translateX(10px);
-        box-shadow: 0 10px 30px rgba(90, 33, 107, 0.2);
-    }
-    
-    @media (max-width: 768px) {
-        .timeline-contenido {
-            width: 100%;
+        
+        .alianzas {
+            max-width: 1200px;
+            margin: 60px auto;
+            padding: 0 20px;
         }
-    }
-    
-    .timeline-contenido h3 {
-        color: var(--morado);
-        margin-bottom: 10px;
-    }
-    
-    .timeline-contenido p {
-        color: var(--gris);
-        line-height: 1.6;
-    }
-    
-    .alianzas {
-        max-width: 1200px;
-        margin: 60px auto;
-        padding: 0 20px;
-    }
-    
-    .alianzas h2 {
-        text-align: center;
-        font-size: 2.5em;
-        margin-bottom: 40px;
-        color: var(--morado);
-    }
-    
-    .grid-alianzas {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: 30px;
-        align-items: center;
-    }
-    
-    .alianza-item {
-        text-align: center;
-        padding: 20px;
-        background: white;
-        border-radius: 15px;
-        box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-        transition: all 0.3s;
-    }
-    
-    .alianza-item:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 10px 25px rgba(90, 33, 107, 0.1);
-    }
-    
-    .alianza-imagen {
-        height: 80px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin-bottom: 15px;
-    }
-    
-    .alianza-imagen img {
-        max-height: 60px;
-        max-width: 150px;
-        object-fit: contain;
-    }
-    
-    .alianza-item h4 {
-        color: var(--morado);
-        font-size: 1.1em;
-    }
-    
-    .garantia-calidad {
-        background: linear-gradient(135deg, var(--dorado), var(--dorado-claro));
-        padding: 60px 20px;
-        text-align: center;
-        color: var(--morado);
-        position: relative;
-        overflow: hidden;
-    }
+        
+        .alianzas h2 {
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 40px;
+            color: var(--morado);
+        }
+        
+        .grid-alianzas {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            align-items: center;
+        }
+        
+        .alianza-item {
+            text-align: center;
+            padding: 20px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s;
+        }
+        
+        .alianza-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(90, 33, 107, 0.1);
+        }
+        
+        .alianza-imagen {
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px;
+        }
+        
+        .alianza-imagen i {
+            font-size: 3em;
+            color: var(--morado-medio);
+        }
+        
+        .alianza-item h4 {
+            color: var(--morado);
+            font-size: 1.1em;
+        }
+        
+        .alianza-item p {
+            color: var(--gris);
+            font-size: 0.9em;
+            margin-top: 5px;
+        }
+        
+        .garantia-calidad {
+            background: linear-gradient(135deg, var(--destello-dorado), #FFD966);
+            padding: 60px 20px;
+            text-align: center;
+            color: var(--morado-profundo);
+            position: relative;
+            overflow: hidden;
+        }
 
-    .garantia-calidad::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M50,10 C70,5 90,15 95,35 C100,55 85,75 65,85 C45,95 25,85 15,65 C5,45 15,25 35,15 C40,12 45,10 50,10 Z" fill="rgba(90, 33, 107, 0.1)"/></svg>');
-        background-size: 80px 80px;
-        opacity: 0.2;
-        animation: badgeFloat 20s linear infinite;
-    }
+        .garantia-calidad::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M50,10 C70,5 90,15 95,35 C100,55 85,75 65,85 C45,95 25,85 15,65 C5,45 15,25 35,15 C40,12 45,10 50,10 Z" fill="rgba(90, 33, 107, 0.1)"/></svg>');
+            background-size: 80px 80px;
+            opacity: 0.2;
+            animation: badgeFloat 20s linear infinite;
+        }
 
-    @keyframes badgeFloat {
-        0% { background-position: 0 0; }
-        100% { background-position: 100px 100px; }
-    }
-    
-    .garantia-calidad h2 {
-        font-size: 2.5em;
-        margin-bottom: 20px;
-        position: relative;
-        z-index: 2;
-    }
-    
-    .garantia-calidad p {
-        max-width: 800px;
-        margin: 0 auto 30px;
-        font-size: 1.2em;
-        position: relative;
-        z-index: 2;
-    }
-</style>
+        @keyframes badgeFloat {
+            0% { background-position: 0 0; }
+            100% { background-position: 100px 100px; }
+        }
+        
+        .garantia-calidad h2 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .garantia-calidad p {
+            max-width: 800px;
+            margin: 0 auto 30px;
+            font-size: 1.2em;
+            position: relative;
+            z-index: 2;
+        }
+    </style>
 </head>
 <body>
     <!-- HEADER IDÉNTICO -->
@@ -707,7 +827,6 @@
             <a href="reconocimientos.html" class="active">
                 <i class="fas fa-award"></i> Reconocimientos
             </a>
-          
         </nav>
         
         <div class="mobile-social">
@@ -754,8 +873,55 @@
         </a>
     </div>
     
-    <!-- HERO RECONOCIMIENTOS -->
+    <!-- HERO RECONOCIMIENTOS - CON MISMO ESTILO QUE PRODUCTOS -->
     <section class="reconocimientos-hero">
+        <!-- Elementos florales decorativos -->
+        <div class="floral-container">
+            <!-- Pétalos sueltos -->
+            <div class="petal lavender" style="width: 20px; height: 20px; top: 10%; left: 5%; animation-delay: 0s;"></div>
+            <div class="petal gold" style="width: 15px; height: 15px; top: 30%; left: 15%; animation-delay: 2s;"></div>
+            <div class="petal mint" style="width: 25px; height: 25px; top: 50%; left: 25%; animation-delay: 4s;"></div>
+            <div class="petal lavender" style="width: 18px; height: 18px; top: 70%; left: 35%; animation-delay: 1s;"></div>
+            <div class="petal gold" style="width: 22px; height: 22px; top: 20%; left: 45%; animation-delay: 3s;"></div>
+            <div class="petal mint" style="width: 16px; height: 16px; top: 40%; left: 55%; animation-delay: 5s;"></div>
+            <div class="petal lavender" style="width: 24px; height: 24px; top: 60%; left: 65%; animation-delay: 0.5s;"></div>
+            <div class="petal gold" style="width: 19px; height: 19px; top: 80%; left: 75%; animation-delay: 2.5s;"></div>
+            <div class="petal mint" style="width: 21px; height: 21px; top: 15%; left: 85%; animation-delay: 4.5s;"></div>
+            <div class="petal lavender" style="width: 17px; height: 17px; top: 45%; left: 95%; animation-delay: 1.5s;"></div>
+            
+            <!-- Flores completas -->
+            <div class="flower lavender" style="top: 15%; left: 10%; animation-delay: 0s;">
+                <div class="petal"></div>
+                <div class="petal"></div>
+                <div class="petal"></div>
+                <div class="petal"></div>
+                <div class="petal"></div>
+                <div class="petal"></div>
+                <div class="center"></div>
+            </div>
+            
+            <div class="flower lavender" style="top: 70%; left: 85%; animation-delay: 3s;">
+                <div class="petal"></div>
+                <div class="petal"></div>
+                <div class="petal"></div>
+                <div class="petal"></div>
+                <div class="petal"></div>
+                <div class="petal"></div>
+                <div class="center"></div>
+            </div>
+            
+            <!-- Líneas de polen -->
+            <div class="pollen-line" style="width: 100px; top: 25%; left: 20%; animation-delay: 0s;"></div>
+            <div class="pollen-line" style="width: 150px; top: 45%; left: 30%; animation-delay: 2s;"></div>
+            <div class="pollen-line" style="width: 80px; top: 65%; left: 40%; animation-delay: 4s;"></div>
+            <div class="pollen-line" style="width: 120px; top: 35%; left: 50%; animation-delay: 1s;"></div>
+            <div class="pollen-line" style="width: 90px; top: 55%; left: 60%; animation-delay: 3s;"></div>
+            <div class="pollen-line" style="width: 110px; top: 75%; left: 70%; animation-delay: 5s;"></div>
+        </div>
+        
+        <!-- Ola floral en la parte inferior -->
+        <div class="floral-wave"></div>
+        
         <h1>Reconocimientos y Certificaciones</h1>
         <p>Nuestro compromiso con la excelencia y la calidad nos ha permitido obtener importantes reconocimientos en el sector.</p>
     </section>
@@ -797,54 +963,68 @@
         </div>
     </section>
     
-    <!-- PREMIOS -->
-    <section class="premios">
-        <div class="premios-contenido">
-            <h2>Premios y Reconocimientos</h2>
-            
-            <div class="timeline-premios">
-                <!-- Premio 1 -->
-                <div class="timeline-item">
-                    <div class="timeline-fecha">2024</div>
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-contenido">
-                        <h3>Premio Nacional a la Innovación Pet</h3>
-                        <p>Ganadores del primer lugar en la categoría "Cuidado Natural" por nuestro shampoo de romero y avena.</p>
-                    </div>
-                </div>
-                
-                <!-- Premio 2 -->
-                <div class="timeline-item">
-                    <div class="timeline-fecha">2023</div>
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-contenido">
-                        <h3>Mejor Emprendimiento Antioqueño</h3>
-                        <p>Reconocimiento de la Cámara de Comercio de Medellín por nuestro impacto social y ambiental.</p>
-                    </div>
-                </div>
-                
-                <!-- Premio 3 -->
-                <div class="timeline-item">
-                    <div class="timeline-fecha">2022</div>
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-contenido">
-                        <h3>Sello de Calidad Exportador</h3>
-                        <p>Certificación ProColombia para exportación de nuestros productos a mercados internacionales.</p>
-                    </div>
-                </div>
-                
-                <!-- Premio 4 -->
-                <div class="timeline-item">
-                    <div class="timeline-fecha">2021</div>
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-contenido">
-                        <h3>Premio al Mejor Producto Natural</h3>
-                        <p>Reconocimiento en la Feria Pet Bogotá por nuestra línea de cuidado natural para mascotas.</p>
-                    </div>
-                </div>
-            </div>
+   <!-- PREMIOS -->
+<section class="premios">
+  <div class="premios-contenido">
+    <h2>Premios y Reconocimientos</h2>
+
+    <div class="timeline-premios">
+
+      <div class="tl-item">
+        <div class="tl-year">2024</div>
+        <div class="tl-spine">
+          <div class="tl-dot"></div>
+          <div class="tl-line"></div>
         </div>
-    </section>
+        <div class="tl-card">
+          <span class="tl-badge badge-oro">🏆 Primer lugar</span>
+          <div class="tl-card-title">Premio Nacional a la Innovación Pet</div>
+          <div class="tl-card-desc">Ganadores en la categoría "Cuidado Natural" por el shampoo de romero y avena.</div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-year">2023</div>
+        <div class="tl-spine">
+          <div class="tl-dot"></div>
+          <div class="tl-line"></div>
+        </div>
+        <div class="tl-card">
+          <span class="tl-badge badge-plata">⭐ Reconocimiento</span>
+          <div class="tl-card-title">Mejor Emprendimiento Antioqueño</div>
+          <div class="tl-card-desc">Reconocimiento de la Cámara de Comercio de Medellín por impacto social y ambiental.</div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-year">2022</div>
+        <div class="tl-spine">
+          <div class="tl-dot"></div>
+          <div class="tl-line"></div>
+        </div>
+        <div class="tl-card">
+          <span class="tl-badge badge-plata">🌎 Exportación</span>
+          <div class="tl-card-title">Sello de Calidad Exportador</div>
+          <div class="tl-card-desc">Certificación ProColombia para exportación a mercados internacionales.</div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-year">2021</div>
+        <div class="tl-spine">
+          <div class="tl-dot"></div>
+          <div class="tl-line"></div>
+        </div>
+        <div class="tl-card">
+          <span class="tl-badge badge-bronce">🌿 Feria Pet</span>
+          <div class="tl-card-title">Premio al Mejor Producto Natural</div>
+          <div class="tl-card-desc">Reconocimiento en la Feria Pet Bogotá por la línea de cuidado natural para mascotas.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
     
     <!-- ALIANZAS -->
     <section class="alianzas">
@@ -854,7 +1034,7 @@
             <!-- Alianza 1 -->
             <div class="alianza-item">
                 <div class="alianza-imagen">
-                    <i class="fas fa-hospital" style="font-size: 3em; color: var(--morado);"></i>
+                    <i class="fas fa-hospital"></i>
                 </div>
                 <h4>Colegio de Veterinarios</h4>
                 <p>Alianza académica y de investigación</p>
@@ -863,7 +1043,7 @@
             <!-- Alianza 2 -->
             <div class="alianza-item">
                 <div class="alianza-imagen">
-                    <i class="fas fa-paw" style="font-size: 3em; color: var(--morado);"></i>
+                    <i class="fas fa-paw"></i>
                 </div>
                 <h4>Refugio Animal Antioquia</h4>
                 <p>Programa de apoyo a animales en situación de calle</p>
@@ -872,7 +1052,7 @@
             <!-- Alianza 3 -->
             <div class="alianza-item">
                 <div class="alianza-imagen">
-                    <i class="fas fa-university" style="font-size: 3em; color: var(--morado);"></i>
+                    <i class="fas fa-university"></i>
                 </div>
                 <h4>Universidad Nacional</h4>
                 <p>Investigación conjunta en dermatología animal</p>
@@ -881,7 +1061,7 @@
             <!-- Alianza 4 -->
             <div class="alianza-item">
                 <div class="alianza-imagen">
-                    <i class="fas fa-truck" style="font-size: 3em; color: var(--morado);"></i>
+                    <i class="fas fa-truck"></i>
                 </div>
                 <h4>Logística Verde</h4>
                 <p>Distribución ecológica a nivel nacional</p>
@@ -919,16 +1099,27 @@
     
     <!-- Scripts -->
     <script src="js/script.js"></script>
+    <script src="js/carrito-unificado.js"></script>
+    <script>
+        // Inicializar cuando el DOM esté listo
+        document.addEventListener('DOMContentLoaded', function() {
+            if (typeof window.inicializarCarrito === 'function') {
+                window.inicializarCarrito();
+            }
+            
+            // Actualizar badge del carrito
+            function actualizarBadgeCarrito() {
+                const badge = document.querySelector('.cart-badge');
+                if (badge) {
+                    const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+                    const totalItems = carrito.reduce((sum, item) => sum + (item.cantidad || 0), 0);
+                    badge.textContent = totalItems;
+                    badge.style.display = totalItems > 0 ? 'flex' : 'none';
+                }
+            }
+            
+            actualizarBadgeCarrito();
+        });
+    </script>
 </body>
 </html>
-
-<!-- Scripts -->
-<script src="js/script.js"></script>
-<script src="js/carrito-unificado.js"></script>
-    // Inicializar cuando el DOM esté listo
-    document.addEventListener('DOMContentLoaded', function() {
-        if (window.inicializarCarrito) {
-            inicializarCarrito();
-        }
-    });
-</script>

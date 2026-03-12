@@ -311,10 +311,10 @@ header {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 60px;
-    height: 60px;
+    width: 42px;
+    height: 42px;
     border-radius: 50%;
-    font-size: 1.8em;
+    font-size: 1.2em;
     color: var(--blanco);
     box-shadow: 0 5px 15px rgba(0,0,0,0.3);
     transition: all 0.3s;
@@ -352,7 +352,7 @@ header {
     color: var(--blanco);
     padding: 8px 15px;
     border-radius: 8px;
-    font-size: 0.9em;
+    font-size: 0.6em;
     white-space: nowrap;
     opacity: 0;
     visibility: hidden;
@@ -374,7 +374,7 @@ header {
 
 /* ========== HERO ========== */
 .hero {
-    padding: 60px 20px;
+    padding: 20px 20px 60px;  /* antes 60px arriba, ahora 20px */
 }
 
 @media (max-width: 768px) {
@@ -544,6 +544,8 @@ header {
     box-shadow: 0 5px 15px rgba(0,0,0,0.1);
     transition: all 0.3s;
     padding: 25px;
+    display: flex;
+    flex-direction: column;
 }
 
 .card:hover {
@@ -576,6 +578,7 @@ header {
     font-size: 0.95em;
     line-height: 1.5;
     margin-bottom: 20px;
+      flex-grow: 1; 
 }
 
 .price {

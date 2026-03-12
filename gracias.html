@@ -282,42 +282,64 @@
         <p>Todos los derechos reservados</p>
     </footer>
     
-    <!-- Script -->
+   <!-- Scripts -->
     <script src="js/script.js"></script>
-    
+    <script src="js/carrito-unificado.js"></script>
     <script>
-        // Obtener ID del pedido de la URL
-        const urlParams = new URLSearchParams(window.location.search);
-        const pedidoId = urlParams.get('pedido') || 'PED_' + Date.now();
-        
-        // Mostrar información del pedido
-        document.getElementById('pedido-id').textContent = pedidoId;
-        document.getElementById('pedido-fecha').textContent = new Date().toLocaleDateString('es-ES', {
-            weekday: 'long',
-            year: 'numeric',
-            month: 'long',
-            day: 'numeric',
-            hour: '2-digit',
-            minute: '2-digit'
-        });
-        
-        // Guardar pedido en localStorage
         document.addEventListener('DOMContentLoaded', function() {
+            // Verificar si existe la función del carrito y ejecutarla
+            if (typeof window.inicializarCarrito === 'function') {
+                inicializarCarrito();
+            }
+            
+            // Obtener ID del pedido de la URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const pedidoId = urlParams.get('pedido') || 'PED_' + Date.now();
+            
+            // Mostrar información del pedido (verificar que los elementos existen)
+            const pedidoIdElement = document.getElementById('pedido-id');
+            if (pedidoIdElement) {
+                pedidoIdElement.textContent = pedidoId;
+            }
+            
+            const pedidoFechaElement = document.getElementById('pedido-fecha');
+            if (pedidoFechaElement) {
+                pedidoFechaElement.textContent = new Date().toLocaleDateString('es-ES', {
+                    weekday: 'long',
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric',
+                    hour: '2-digit',
+                    minute: '2-digit'
+                });
+            }
+            
+            // Guardar pedido en localStorage
             const pedido = {
                 id: pedidoId,
                 fecha: new Date().toISOString(),
                 estado: 'confirmado'
             };
             
-            // Actualizar badge del carrito (debe estar vacío después de compra)
-            const badge = document.querySelector('.cart-badge');
-            if (badge) {
-                badge.textContent = '0';
-                badge.style.display = 'none';
+            // Guardar pedido en historial (opcional)
+            localStorage.setItem('ultimo_pedido', JSON.stringify(pedido));
+            
+            // VACIAR CARRITO - Usando la misma clave que carrito-unificado.js
+            localStorage.setItem('carrito', JSON.stringify([]));
+            
+            // Actualizar badge usando la función del carrito-unificado.js
+            if (typeof window.actualizarBadgeGlobal === 'function') {
+                window.actualizarBadgeGlobal();
+            } else {
+                // Fallback: actualizar badge manualmente
+                const badge = document.querySelector('.cart-badge');
+                if (badge) {
+                    badge.textContent = '0';
+                    badge.style.display = 'none';
+                }
             }
             
-            // Vaciar carrito si aún tiene items
-            localStorage.setItem('pelusaspet_carrito', JSON.stringify([]));
+            console.log('Carrito vaciado correctamente después de la compra');
         });
     </script>
 </body>
