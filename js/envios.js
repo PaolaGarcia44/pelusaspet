@@ -50,3 +50,30 @@ document.addEventListener('DOMContentLoaded', function() {
         console.log('Select de envíos inicializado');
     }
 });
+
+function enviarPedidoEmail(pedido) {
+
+    emailjs.send(
+        "service_xy3w3rx",
+        "template_4yvqmur",
+        {
+            pedido_id: pedido.id,
+            fecha: new Date().toLocaleDateString(),
+            estado: "En preparación",
+            total: pedido.total,
+
+            nombre_cliente: pedido.nombre,
+            telefono: pedido.telefono,
+            email_cliente: pedido.email,
+
+            direccion: pedido.direccion,
+            informacion_adicional: pedido.notasa,
+            ciudad: pedido.ciudad,
+            departamento: pedido.departamento,
+
+            productos: pedido.productos
+        }
+    )
+    .then(res => console.log("✅ Email enviado", res))
+    .catch(err => console.log("❌ Error email", err));
+}

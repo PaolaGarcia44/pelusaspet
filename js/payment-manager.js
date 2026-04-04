@@ -493,3 +493,26 @@ if (typeof window.paymentManager === 'undefined') {
     window.paymentManager = new PaymentManager();
     console.log('PaymentManager creado globalmente');
 }
+
+async function procesarPedido(pedido) {
+
+    try {
+        // 1. Guardar en backend
+        await fetch("api/guardar-pedido.php", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(pedido)
+        });
+
+        // 2. Enviar email
+        enviarPedidoEmail(pedido);
+
+        // 3. Ir a pagar
+        pagarConWompi(pedido.total);
+
+    } catch (error) {
+        console.error("Error en pedido", error);
+    }
+}

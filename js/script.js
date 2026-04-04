@@ -362,24 +362,6 @@ ${formData.productos.length > 0 ? formData.productos.map(p => `• ${p}`).join('
     // Configurar sincronización
     configurarSincronizacionCarrito();
     
-    // ========== 8. VERIFICAR Y CORREGIR HUELLITAS ==========
-    function verificarHuellitas() {
-        console.log('Verificando huellitas...');
-        
-        const footprintsTracker = document.querySelector('.footprints-tracker');
-        if (!footprintsTracker) {
-            console.warn('No se encontró .footprints-tracker en el HTML');
-            return;
-        }
-        
-        console.log('Footprints tracker encontrado ✓');
-        
-        const footprints = footprintsTracker.querySelectorAll('.footprint-track');
-        console.log(`Número de huellitas: ${footprints.length}`);
-    }
-    
-    // Verificar después de un breve delay
-    setTimeout(verificarHuellitas, 100);
     
     // ========== 9. MIGRAR DATOS VIEJOS (si existen) ==========
     function migrarDatosCarritoViejo() {
