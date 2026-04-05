@@ -1011,7 +1011,7 @@
                     </div>
                     <div class="form-group">
                         <label>Notas adicionales</label>
-                        <textarea id="notas" rows="2" placeholder="Instrucciones de entrega"></textarea>
+                        <textarea id="notas" rows="2" placeholder="Instrucciones de entrega (ej: llamar antes de entregar, piso, etc.)"></textarea>
                     </div>
                     <div class="metodos-pago">
                         <div class="metodos-titulo">
@@ -1290,7 +1290,6 @@
         actualizandoDesdeManual = true;
         
         const envioManualSelect = document.getElementById('envio-manual');
-        const ciudadInput = document.getElementById('ciudad');
         
         if (envioManualSelect) {
             const envioSeleccionado = parseInt(envioManualSelect.value) || 0;
@@ -1298,12 +1297,6 @@
             
             // Actualizar totales
             actualizarTotales();
-            
-            // Opcional: Mostrar un indicador de que se está usando selección manual
-            if (envioSeleccionado > 0 && ciudadInput && ciudadInput.value.trim() !== "") {
-                // No modificamos la ciudad, solo mostramos el costo manual
-                console.log("Usando costo de envío manual");
-            }
         }
         
         actualizandoDesdeManual = false;
@@ -1533,7 +1526,21 @@
             const direccion = document.getElementById("direccion").value.trim();
             const ciudad = document.getElementById("ciudad").value.trim();
             const departamento = document.getElementById("departamento").value;
-            const notasa = document.getElementById("notas")?.value.trim() || "Sin notas";
+            const codigoPostalInput = document.getElementById("codigo-postal");
+            // Obtener código postal si existe, si no dejar vacío
+            let codigoPostal = "";
+            if (codigoPostalInput) {
+                codigoPostal = codigoPostalInput.value.trim();
+            }
+            const notasTextarea = document.getElementById("notas");
+            // Asegurar que notas sea un string, no un objeto
+            let notas = "";
+            if (notasTextarea) {
+                notas = notasTextarea.value.trim();
+            }
+            if (notas === "") {
+                notas = "Sin notas adicionales";
+            }
             const metodoPago = document.querySelector('input[name="payment-method"]:checked')?.value || "No especificado";
             
             let subtotal = 0;
@@ -1549,21 +1556,27 @@
             const total = subtotal + envio;
             const fecha = new Date().toLocaleString('es-CO');
             
-            await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
-                pedido_id: pedidoId,
-                fecha: fecha,
-                estado: "Confirmado - Pago pendiente",
-                total: formatearPrecio(total),
-                nombre_cliente: nombre,
-                telefono: telefono,
-                email_cliente: email,
-                direccion: direccion,
-                ciudad: ciudad,
-                departamento: departamento,
-                productos: productosTexto,
-                metodo_pago: metodoPago,
-                notasa: notas
-            });
+            // Preparar los datos para EmailJS - Asegurar que todo sea string
+            const templateParams = {
+                pedido_id: String(pedidoId),
+                fecha: String(fecha),
+                estado: "Pago confirmado",
+                total: String(formatearPrecio(total)),
+                nombre_cliente: String(nombre),
+                telefono: String(telefono),
+                email_cliente: String(email),
+                direccion: String(direccion),
+                ciudad: String(ciudad),
+                departamento: String(departamento),
+                codigo_postal: String(codigoPostal || "No especificado"),
+                productos: String(productosTexto),
+                metodo_pago: String(metodoPago),
+                notasa: String(notas)
+            };
+            
+            console.log("Enviando datos:", templateParams); // Para depuración
+            
+            await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams);
             
             localStorage.setItem("ultimo_pedido", JSON.stringify({ id: pedidoId, fecha: fecha }));
             localStorage.setItem("carrito", JSON.stringify([]));

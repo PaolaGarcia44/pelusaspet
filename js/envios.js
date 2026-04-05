@@ -51,7 +51,12 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
+// ========== FUNCIÓN ACTUALIZADA CON CÓDIGO POSTAL ==========
 function enviarPedidoEmail(pedido) {
+    // Asegurar que codigo_postal existe, si no, poner "No especificado"
+    const codigoPostal = pedido.codigo_postal && pedido.codigo_postal.trim() !== "" 
+        ? pedido.codigo_postal 
+        : "No especificado";
 
     emailjs.send(
         "service_xy3w3rx",
@@ -70,6 +75,7 @@ function enviarPedidoEmail(pedido) {
             informacion_adicional: pedido.notasa,
             ciudad: pedido.ciudad,
             departamento: pedido.departamento,
+            codigo_postal: codigoPostal,  // ← NUEVO CAMPO AGREGADO
 
             productos: pedido.productos
         }
