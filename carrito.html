@@ -44,7 +44,59 @@
             line-height: 1.5;
         }
 
-        /* ========== CART BADGE MEJORADO ========== */
+        /* ========== HEADER Y NAVEGACIÓN ========== */
+        header {
+            background: white;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 30px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.08);
+            z-index: 1000;
+        }
+
+        .logo img {
+            height: 60px;
+            transition: transform 0.3s;
+        }
+
+        .logo img:hover {
+            transform: scale(1.02);
+        }
+
+        /* Navegación desktop */
+        .desktop-nav {
+            display: flex;
+            gap: 32px;
+        }
+
+        .desktop-nav a {
+            text-decoration: none;
+            color: var(--morado);
+            font-weight: 500;
+            font-size: 0.95em;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .desktop-nav a:hover {
+            color: var(--dorado);
+            transform: translateY(-2px);
+        }
+
+        /* Iconos header */
+        .icons {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
         .cart-icon-container {
             position: relative;
             cursor: pointer;
@@ -91,6 +143,87 @@
             0% { transform: scale(1); }
             50% { transform: scale(1.3); }
             100% { transform: scale(1); }
+        }
+
+        /* Hamburguesa (solo móvil) */
+        .hamburger-container {
+            display: none;
+        }
+
+        .hamburger {
+            background: none;
+            border: none;
+            font-size: 1.5em;
+            color: var(--morado);
+            cursor: pointer;
+            padding: 5px;
+        }
+
+        /* Menú móvil overlay */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 80%;
+            max-width: 350px;
+            height: 100%;
+            background: white;
+            box-shadow: -5px 0 30px rgba(0,0,0,0.15);
+            z-index: 2000;
+            transition: right 0.3s ease;
+            padding: 20px;
+            overflow-y: auto;
+        }
+
+        .mobile-menu.open {
+            right: 0;
+        }
+
+        .mobile-menu-header {
+            display: flex;
+            justify-content: flex-end;
+            margin-bottom: 30px;
+        }
+
+        .close-menu {
+            background: none;
+            border: none;
+            font-size: 1.5em;
+            color: var(--morado);
+            cursor: pointer;
+        }
+
+        .mobile-nav {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .mobile-nav a {
+            text-decoration: none;
+            color: var(--morado);
+            font-weight: 500;
+            font-size: 1.1em;
+            padding: 10px 0;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border-bottom: 1px solid var(--borde);
+        }
+
+        @media (max-width: 768px) {
+            .desktop-nav {
+                display: none;
+            }
+            .hamburger-container {
+                display: block;
+            }
+            header {
+                padding: 12px 20px;
+            }
+            .logo img {
+                height: 50px;
+            }
         }
 
         /* ========== CONTADOR DE PRODUCTOS EN EL PANEL ========== */
@@ -781,7 +914,6 @@
             color: var(--morado);
         }
 
-        /* Estilos para el select manual de envío */
         .envio-manual-select {
             width: 100%;
             padding: 10px 12px;
@@ -867,11 +999,11 @@
         footer {
             text-align: center;
             padding: 40px 20px;
-            background: var(--morado);
-            color: white;
+            background: white;
+            color: var(--texto);
         }
 
-        footer a { color: var(--dorado); margin: 0 10px; font-size: 24px; }
+        footer a { color: var(--morado); margin: 0 10px; font-size: 24px; text-decoration: none; }
 
         @media (max-width: 600px) {
             .carrito-item {
@@ -893,21 +1025,68 @@
             <img src="img/logo pelusaspet.png" alt="PelusasPet">
         </a>
     </div>
-    <nav class="desktop-nav">
-        <a href="index.html">Inicio</a>
-        <a href="productos.html">Productos</a>
-        <a href="nosotros.html">Nosotros</a>
-        <a href="casos.html">Casos Reales</a>
-        <a href="reconocimientos.html">Reconocimientos</a>
-    </nav>
+
+    <!-- Menú de navegación principal -->
+   <nav class="desktop-nav" id="menu">
+    <a href="index.html">
+        <i class="fas fa-home"></i> <strong>Inicio</strong>
+    </a>
+    <a href="productos.html">
+        <i class="fas fa-paw"></i> <strong>Productos</strong>
+    </a>
+    <a href="nosotros.html">
+        <i class="fas fa-users"></i> <strong>Nosotros</strong>
+    </a>
+    <a href="casos.html">
+        <i class="fas fa-heart"></i> <strong>Casos Reales</strong>
+    </a>
+    <a href="reconocimientos.html">
+        <i class="fas fa-award"></i> <strong>Reconocimientos</strong>
+    </a>
+</nav>
+
     <div class="icons">
+        <!-- Carrito -->
         <div class="cart-icon-container" id="cartIcon">
-            <i class="fas fa-shopping-cart"></i>
+            <i class="fas fa-shopping-cart" title="Carrito de compras"></i>
             <span class="cart-badge">0</span>
         </div>
-        <button class="hamburger" id="hamburger"><i class="fas fa-bars"></i></button>
+        
+        <!-- Hamburguesa (solo móvil) -->
+        <div class="hamburger-container">
+            <button class="hamburger" id="hamburger" aria-label="Menú">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
     </div>
 </header>
+
+<!-- Menú móvil (overlay) -->
+<div class="mobile-menu" id="mobileMenu">
+    <div class="mobile-menu-header">
+        <button class="close-menu" id="closeMenu" aria-label="Cerrar menú">
+            <i class="fas fa-times"></i>
+        </button>
+    </div>
+    
+    <nav class="mobile-nav">
+        <a href="index.html">
+            <i class="fas fa-home"></i> Inicio
+        </a>
+        <a href="productos.html">
+            <i class="fas fa-paw"></i> Productos 
+        </a>
+        <a href="nosotros.html">
+            <i class="fas fa-users"></i> Sobre Nosotros
+        </a>
+        <a href="casos.html">
+            <i class="fas fa-heart"></i> Casos Reales
+        </a>
+        <a href="reconocimientos.html">
+            <i class="fas fa-award"></i> Reconocimientos
+        </a>
+    </nav>
+</div>
 
 <div class="carrito-hero">
     <h1><i class="fas fa-shopping-cart"></i> Tu Carrito</h1>
@@ -1019,57 +1198,61 @@
                                 <i class="fas fa-lock"></i>
                                 <span>Método de pago</span>
                             </div>
-                            <div class="metodos-badge">
-                                <i class="fas fa-shield-alt"></i> 100% Seguro
-                            </div>
+                            <div class="metodos-badge"><i class="fas fa-check"></i> Selecciona tu método de pago preferido</div>
                         </div>
                         
-                        <label class="method-option">
-                            <input type="radio" name="payment-method" value="Tarjeta Débito/Crédito" checked>
-                            <div class="method-card">
-                                <div class="method-text">
-                                    <h4>Tarjeta Débito / Crédito</h4>
-                                    <p>Visa • Mastercard • American Express</p>
-                                    <div class="card-brands">
-                                        <i class="fab fa-cc-visa"></i>
-                                        <i class="fab fa-cc-mastercard"></i>
-                                        <i class="fab fa-cc-amex"></i>
-                                    </div>
-                                </div>
-                                <div class="method-check">
-                                    <i class="fas fa-check"></i>
-                                </div>
-                            </div>
-                        </label>
-                        
-                        <label class="method-option">
-                            <input type="radio" name="payment-method" value="PSE">
-                            <div class="method-card">
-                                <div class="method-icon">
-                                    <div class="icon-circle-bg">
-                                        <img src="img/pse.png" alt="PSE" class="payment-icon">
-                                    </div>
-                                    <div class="icon-bg-effect"></div>
-                                </div>
-                                <div class="method-text">
-                                    <h4>PSE - Pagos en Línea</h4>
-                                    <p>Paga directamente desde tu banco</p>
-                                    <div class="bank-list">
-                                        <span>Bancolombia</span>
-                                        <span>Davivienda</span>
-                                        <span>+20 bancos</span>
-                                    </div>
-                                </div>
-                                <div class="method-check">
-                                    <i class="fas fa-check"></i>
-                                </div>
-                            </div>
-                        </label>
+                        <!-- Tarjeta Débito/Crédito -->
+<label class="method-option">
+    <input type="radio" name="payment-method" value="Tarjeta Débito/Crédito" checked>
+    <div class="method-card">
+        <div class="method-icon">
+            <div class="icon-circle-bg">
+                <img src="img\logo credito.png" alt="Tarjeta" class="payment-icon">
+            </div>
+        </div>
+        <div class="method-text">
+            <h4>Tarjeta Débito / Crédito</h4>
+            <p>Visa • Mastercard • American Express</p>
+            <div class="card-brands">
+                <i class="fab fa-cc-visa"></i>
+                <i class="fab fa-cc-mastercard"></i>
+                <i class="fab fa-cc-amex"></i>
+            </div>
+        </div>
+        <div class="method-check">
+            <i class="fas fa-check"></i>
+        </div>
+    </div>
+</label>
+
+<!-- PSE -->
+<label class="method-option">
+    <input type="radio" name="payment-method" value="PSE">
+    <div class="method-card">
+        <div class="method-icon">
+            <div class="icon-circle-bg">
+                <img src="img/pse.png" alt="PSE" class="payment-icon">
+            </div>
+        </div>
+        <div class="method-text">
+            <h4>PSE - Pagos en Línea</h4>
+            <p>Paga directamente desde tu banco</p>
+            <div class="bank-list">
+                <span>Bancolombia</span>
+                <span>Davivienda</span>
+                <span>+20 bancos</span>
+            </div>
+        </div>
+        <div class="method-check">
+            <i class="fas fa-check"></i>
+        </div>
+    </div>
+</label>
                     </div>
                     <button type="submit" class="btn-pagar" id="btn-pagar">
                         <i class="fas fa-lock"></i> Confirmar y pagar
                     </button>
-                    <div class="secure-badge"><i class="fas fa-shield-alt"></i> Pago 100% seguro</div>
+                    
                 </form>
             </div>
         </div>
@@ -1085,7 +1268,6 @@
                     <span>Subtotal</span>
                     <span id="subtotal">$0</span>
                 </div>
-                <!-- Ciudad seleccionada en el resumen -->
                 <div class="ciudad-resumen" id="ciudad-resumen">
                     <span class="label"><i class="fas fa-map-marker-alt"></i> Ciudad:</span>
                     <span class="ciudad-nombre" id="ciudad-seleccionada">No seleccionada</span>
@@ -1134,6 +1316,36 @@
 <script src="js/carrito-unificado.js"></script>
 
 <script>
+    // ========== MENÚ MÓVIL ==========
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const closeMenu = document.getElementById('closeMenu');
+
+    if (hamburger && mobileMenu) {
+        hamburger.addEventListener('click', () => {
+            mobileMenu.classList.add('open');
+            document.body.style.overflow = 'hidden';
+        });
+    }
+
+    if (closeMenu && mobileMenu) {
+        closeMenu.addEventListener('click', () => {
+            mobileMenu.classList.remove('open');
+            document.body.style.overflow = '';
+        });
+    }
+
+    // Cerrar menú al hacer clic en un enlace
+    const mobileLinks = document.querySelectorAll('.mobile-nav a');
+    mobileLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            if (mobileMenu) {
+                mobileMenu.classList.remove('open');
+                document.body.style.overflow = '';
+            }
+        });
+    });
+
     // Inicializar EmailJS
     (function() {
         emailjs.init("8C74msHxteN2DF8NL");
@@ -1158,7 +1370,7 @@
         'combo-scooby': 'img/combo-scooby.webp'
     };
 
-    // ========== MAPA DE COSTOS DE ENVÍO POR CIUDAD (AUTO) ==========
+    // MAPA DE COSTOS DE ENVÍO POR CIUDAD (AUTO)
     const costosEnvio = {
         'bogota': 8000,
         'bogotá': 8000,
@@ -1171,9 +1383,7 @@
     };
     const COSTO_OTRAS_CIUDADES = 15000;
 
-    // Variable para controlar si estamos actualizando desde el select manual
     let actualizandoDesdeManual = false;
-    // Variable para controlar si estamos actualizando desde el campo ciudad
     let actualizandoDesdeCiudad = false;
 
     function extraerPrecio(producto) {
@@ -1225,13 +1435,11 @@
         }
     }
 
-    // ========== FUNCIÓN PARA CALCULAR COSTO DE ENVÍO SEGÚN CIUDAD ==========
     function calcularCostoEnvio(ciudad) {
         if (!ciudad || ciudad.trim() === "") return 0;
         
         const ciudadLower = ciudad.toLowerCase().trim();
         
-        // Buscar en el mapa de costos
         for (const [key, costo] of Object.entries(costosEnvio)) {
             if (ciudadLower.includes(key) || key.includes(ciudadLower)) {
                 return costo;
@@ -1241,9 +1449,7 @@
         return COSTO_OTRAS_CIUDADES;
     }
 
-    // ========== FUNCIÓN PARA ACTUALIZAR CIUDAD Y ENVÍO EN RESUMEN ==========
     function actualizarCiudadYEnvio() {
-        // Evitar bucles infinitos
         if (actualizandoDesdeManual) return;
         
         actualizandoDesdeCiudad = true;
@@ -1255,7 +1461,6 @@
         if (ciudadInput) {
             const ciudadValor = ciudadInput.value.trim();
             
-            // Actualizar ciudad en resumen
             if (ciudadResumenSpan) {
                 if (ciudadValor === "") {
                     ciudadResumenSpan.textContent = "No seleccionada";
@@ -1266,25 +1471,20 @@
                 }
             }
             
-            // Calcular y actualizar costo de envío automático
             const costoEnvio = calcularCostoEnvio(ciudadValor);
             window.costoEnvioActual = costoEnvio;
             
-            // Resetear el select manual a la opción por defecto
             if (envioManualSelect) {
                 envioManualSelect.value = "0";
             }
             
-            // Actualizar totales
             actualizarTotales();
         }
         
         actualizandoDesdeCiudad = false;
     }
 
-    // ========== FUNCIÓN PARA ACTUALIZAR DESDE EL SELECT MANUAL ==========
     function actualizarDesdeSelectManual() {
-        // Evitar bucles infinitos
         if (actualizandoDesdeCiudad) return;
         
         actualizandoDesdeManual = true;
@@ -1294,15 +1494,12 @@
         if (envioManualSelect) {
             const envioSeleccionado = parseInt(envioManualSelect.value) || 0;
             window.costoEnvioActual = envioSeleccionado;
-            
-            // Actualizar totales
             actualizarTotales();
         }
         
         actualizandoDesdeManual = false;
     }
 
-    // Renderizar carrito
     function renderizarCarrito() {
         const carrito = obtenerCarritoLimpio();
         const contenedor = document.getElementById('lista-carrito');
@@ -1442,7 +1639,7 @@
         if (totalElem) totalElem.textContent = formatearPrecio(total);
     }
     
-    // ========== EVENTOS ==========
+    // EVENTOS
     const ciudadInput = document.getElementById('ciudad');
     if (ciudadInput) {
         ciudadInput.addEventListener('input', function() {
@@ -1460,7 +1657,6 @@
         });
     }
     
-    // Validaciones
     function validarCampo(id, regex, errorId) {
         const campo = document.getElementById(id);
         if (!campo) return true;
@@ -1497,7 +1693,6 @@
         });
     });
     
-    // Submit
     document.getElementById("formulario-checkout")?.addEventListener("submit", async function(e) {
         e.preventDefault();
         
@@ -1527,13 +1722,11 @@
             const ciudad = document.getElementById("ciudad").value.trim();
             const departamento = document.getElementById("departamento").value;
             const codigoPostalInput = document.getElementById("codigo-postal");
-            // Obtener código postal si existe, si no dejar vacío
             let codigoPostal = "";
             if (codigoPostalInput) {
                 codigoPostal = codigoPostalInput.value.trim();
             }
             const notasTextarea = document.getElementById("notas");
-            // Asegurar que notas sea un string, no un objeto
             let notas = "";
             if (notasTextarea) {
                 notas = notasTextarea.value.trim();
@@ -1556,7 +1749,6 @@
             const total = subtotal + envio;
             const fecha = new Date().toLocaleString('es-CO');
             
-            // Preparar los datos para EmailJS - Asegurar que todo sea string
             const templateParams = {
                 pedido_id: String(pedidoId),
                 fecha: String(fecha),
@@ -1574,7 +1766,7 @@
                 notasa: String(notas)
             };
             
-            console.log("Enviando datos:", templateParams); // Para depuración
+            console.log("Enviando datos:", templateParams);
             
             await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams);
             
@@ -1596,7 +1788,7 @@
     document.addEventListener('DOMContentLoaded', () => {
         renderizarCarrito();
         actualizarBadge();
-        actualizarCiudadYEnvio(); // Mostrar ciudad inicial y calcular envío
+        actualizarCiudadYEnvio();
         if (window.inicializarCarrito) inicializarCarrito();
     });
 </script>

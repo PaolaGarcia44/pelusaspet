@@ -16,10 +16,6 @@
   <!-- CSS -->
   <link rel="stylesheet" href="css/styles.css">
   
-
-
- 
-  
   <style>
     .cart-icon-container {
       position: relative;
@@ -43,6 +39,393 @@
       font-size: 12px;
       font-weight: bold;
       display: none;
+    }
+
+    /* ========== HERO SECTION MEJORADO ========== */
+    .hero {
+      position: relative;
+      min-height: 90vh;
+      display: flex;
+      align-items: center;
+      background: linear-gradient(135deg, #fefaf5 0%, #fff0e0 100%);
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -30%;
+      width: 80%;
+      height: 150%;
+      background: radial-gradient(circle, rgba(218,165,32,0.08), transparent);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .hero-container {
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 0 40px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 50px;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* ========== IMAGEN CON EFECTOS PREMIUM ========== */
+    .hero-image {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .hero-image-wrapper {
+      position: relative;
+      width: 100%;
+      max-width: 480px;
+    }
+
+    .image-container {
+      position: relative;
+      border-radius: 50%;
+      overflow: hidden;
+      box-shadow: 0 30px 50px rgba(90, 33, 107, 0.2);
+      transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .hero-img {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .image-container:hover .hero-img {
+      transform: scale(1.05);
+    }
+
+    .image-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at 30% 40%, rgba(218,165,32,0.15), rgba(90,33,107,0.05));
+      opacity: 0;
+      transition: opacity 0.5s ease;
+      pointer-events: none;
+    }
+
+    .image-container:hover .image-overlay {
+      opacity: 1;
+    }
+
+    .image-shine {
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+      transition: left 0.6s ease;
+      pointer-events: none;
+    }
+
+    .image-container:hover .image-shine {
+      left: 100%;
+    }
+
+    .hero-glow {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 110%;
+      height: 110%;
+      transform: translate(-50%, -50%);
+      background: radial-gradient(circle, rgba(218,165,32,0.15), rgba(90,33,107,0.05), transparent);
+      border-radius: 50%;
+      filter: blur(30px);
+      z-index: -1;
+      animation: pulseGlow 3s ease-in-out infinite;
+    }
+
+    @keyframes pulseGlow {
+      0%, 100% { opacity: 0.5; width: 110%; height: 110%; }
+      50% { opacity: 1; width: 120%; height: 120%; }
+    }
+
+    /* Anillo giratorio */
+    .rotating-ring {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 100%;
+      height: 100%;
+      max-width: 520px;
+      max-height: 520px;
+      pointer-events: none;
+      z-index: 2;
+      animation: rotateRing 12s linear infinite;
+    }
+
+    .rotating-ring svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    @keyframes rotateRing {
+      from { transform: translate(-50%, -50%) rotate(0deg); }
+      to { transform: translate(-50%, -50%) rotate(360deg); }
+    }
+
+    /* Partículas de luz */
+    .light-particles {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 3;
+    }
+
+    .light-particle {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background: radial-gradient(circle, #DAA520, transparent);
+      border-radius: 50%;
+      opacity: 0;
+      animation: floatLight 4s ease-in-out infinite;
+    }
+
+    .light-particle:nth-child(1) { top: 15%; left: 10%; animation-delay: 0s; width: 6px; height: 6px; }
+    .light-particle:nth-child(2) { top: 25%; right: 15%; animation-delay: 0.5s; width: 4px; height: 4px; background: radial-gradient(circle, #5A216B, transparent); }
+    .light-particle:nth-child(3) { bottom: 20%; left: 15%; animation-delay: 1s; width: 5px; height: 5px; }
+    .light-particle:nth-child(4) { top: 50%; right: 10%; animation-delay: 1.5s; width: 3px; height: 3px; }
+    .light-particle:nth-child(5) { bottom: 30%; right: 20%; animation-delay: 2s; width: 7px; height: 7px; background: radial-gradient(circle, #DAA520, transparent); }
+    .light-particle:nth-child(6) { top: 70%; left: 20%; animation-delay: 2.5s; width: 4px; height: 4px; }
+
+    @keyframes floatLight {
+      0% { opacity: 0; transform: translateY(0) scale(0); }
+      30% { opacity: 1; transform: translateY(-15px) scale(1); }
+      70% { opacity: 0.6; transform: translateY(-30px) scale(0.8); }
+      100% { opacity: 0; transform: translateY(-45px) scale(0); }
+    }
+
+    .image-container:hover ~ .light-particles .light-particle,
+    .hero-image-wrapper:hover .light-particle {
+      animation: floatLight 4s ease-in-out infinite;
+    }
+
+    /* Sello de calidad */
+    .quality-seal {
+      position: absolute;
+      bottom: 8%;
+      left: -5%;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(10px);
+      color: #5A216B;
+      padding: 8px 18px;
+      border-radius: 40px;
+      font-size: 0.75em;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+      z-index: 10;
+      transform: translateX(-20px) scale(0.9);
+      opacity: 0;
+      transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      border: 1px solid rgba(218,165,32,0.3);
+    }
+
+    .quality-seal i {
+      font-size: 1em;
+      color: #4CAF50;
+    }
+
+    .hero-image-wrapper:hover .quality-seal {
+      transform: translateX(0) scale(1);
+      opacity: 1;
+    }
+
+    /* ========== CONTENIDO ========== */
+    .hero-content {
+      text-align: left;
+    }
+
+    .hero-content h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.8em;
+      font-weight: 700;
+      line-height: 1.2;
+      color: #2d1b3e;
+      margin-bottom: 35px;
+    }
+
+    .hero-content h1 .text-gold {
+      color: #DAA520;
+      position: relative;
+      display: inline-block;
+    }
+
+    .hero-content h1 .text-gold::after {
+      content: '';
+      position: absolute;
+      bottom: 8px;
+      left: 0;
+      width: 100%;
+      height: 10px;
+      background: rgba(218,165,32,0.25);
+      border-radius: 5px;
+      z-index: -1;
+    }
+
+    /* Botón principal */
+    .hero-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: linear-gradient(135deg, #5A216B, #3a1246);
+      color: white;
+      padding: 16px 35px;
+      border-radius: 60px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.1em;
+      transition: all 0.3s ease;
+      box-shadow: 0 10px 25px rgba(90,33,107,0.3);
+      margin-bottom: 50px;
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .hero-btn i:first-child {
+      font-size: 1.1em;
+    }
+
+    .hero-btn i:last-child {
+      transition: transform 0.3s ease;
+    }
+
+    .hero-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 30px rgba(90,33,107,0.4);
+      gap: 15px;
+    }
+
+    .hero-btn:hover i:last-child {
+      transform: translateX(5px);
+    }
+
+    /* Features minimalistas */
+    .hero-features {
+      display: flex;
+      gap: 30px;
+    }
+
+    .feature {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.9em;
+      color: #5A216B;
+      font-weight: 500;
+    }
+
+    .feature i {
+      font-size: 1.2em;
+      color: #DAA520;
+    }
+
+    /* Animación de entrada */
+    @keyframes softZoom {
+      0% { opacity: 0; transform: scale(0.95); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+
+    .image-container {
+      animation: softZoom 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    }
+
+    /* ========== RESPONSIVE ========== */
+    @media (max-width: 900px) {
+      .hero-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 30px;
+        padding: 40px 20px;
+      }
+      
+      .hero-content {
+        text-align: center;
+      }
+      
+      .hero-content h1 {
+        font-size: 2.8em;
+      }
+      
+      .hero-features {
+        justify-content: center;
+      }
+      
+      .hero-image-wrapper {
+        max-width: 350px;
+        margin: 0 auto;
+      }
+      
+      .quality-seal {
+        bottom: 5%;
+        left: -10%;
+        padding: 6px 14px;
+        font-size: 0.65em;
+      }
+      
+      .rotating-ring {
+        max-width: 400px;
+        max-height: 400px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero-content h1 {
+        font-size: 2.2em;
+      }
+      
+      .hero-btn {
+        padding: 12px 28px;
+        font-size: 1em;
+      }
+      
+      .hero-features {
+        gap: 20px;
+        flex-wrap: wrap;
+      }
+      
+      .feature {
+        font-size: 0.8em;
+      }
+      
+      .hero-image-wrapper {
+        max-width: 280px;
+      }
+      
+      .quality-seal {
+        bottom: 2%;
+        left: -15%;
+        padding: 5px 12px;
+        font-size: 0.6em;
+      }
+      
+      .rotating-ring {
+        max-width: 300px;
+        max-height: 300px;
+      }
     }
   </style>
 </head>
@@ -160,44 +543,82 @@
   </a>
 </div>
 
-<!-- HERO COMPACTO -->
+<!-- HERO PORTADA MEJORADA -->
 <section class="hero">
   <div class="hero-container">
     
-    <!-- Columna izquierda: Imagen -->
-    <div class="hero-image-column">
-      <div class="hero-image-container">
-        <img src="img/perro-hero.png" alt="Perro feliz - PelusasPet" class="hero-main-image">
-        <div class="hero-image-overlay"></div>
+    <!-- Columna izquierda: Imagen principal con efectos premium -->
+    <div class="hero-image">
+      <div class="hero-image-wrapper">
+        
+        <!-- Contenedor de imagen con efectos -->
+        <div class="image-container">
+          <img src="img/perro-hero.png" alt="PelusasPet" class="hero-img">
+          <div class="image-overlay"></div>
+          <div class="image-shine"></div>
+        </div>
+        
+        <!-- Efecto de brillo exterior -->
+        <div class="hero-glow"></div>
+        
+        <!-- Anillo decorativo giratorio -->
+        <div class="rotating-ring">
+          <svg viewBox="0 0 200 200">
+            <circle cx="100" cy="100" r="95" fill="none" stroke="url(#ringGradient)" stroke-width="2" stroke-dasharray="300 600"/>
+            <defs>
+              <linearGradient id="ringGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#DAA520"/>
+                <stop offset="50%" stop-color="#5A216B"/>
+                <stop offset="100%" stop-color="#DAA520"/>
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+        
+        <!-- Partículas de luz flotantes -->
+        <div class="light-particles">
+          <span class="light-particle"></span>
+          <span class="light-particle"></span>
+          <span class="light-particle"></span>
+          <span class="light-particle"></span>
+          <span class="light-particle"></span>
+          <span class="light-particle"></span>
+        </div>
+        
+        <!-- Sello de calidad -->
+        <div class="quality-seal">
+          <i class="fas fa-check-circle"></i>
+          <span>Calidad Premium</span>
+        </div>
+        
       </div>
     </div>
     
-    <!-- Columna derecha: Contenido -->
-    <div class="hero-content-column">
-      <div class="hero-content">
-        <h1>Cuidado Natural Premium</h1>
-        <p>Productos 100% naturales para el bienestar de tus mascotas. Ingredientes seguros y de alta calidad.</p>
-        
-        <a href="productos.html" class="hero-cta-button">
-          <i class="fas fa-paw"></i> Ver Productos
-        </a>
-        
-        <div class="hero-features">
-          <div class="feature-item">
-            <i class="fas fa-leaf"></i>
-            <span>100% Natural</span>
-          </div>
-          <div class="feature-item">
-            <i class="fas fa-award"></i>
-            <span>Premium</span>
-          </div>
-          <div class="feature-item">
-            <i class="fas fa-heart"></i>
-            <span>Hecho con Amor</span>
-          </div>
+    <!-- Columna derecha: Contenido principal -->
+    <div class="hero-content">
+      <h1>Cuidado <span class="text-gold">Natural</span><br>para tu Mascota</h1>
+      
+      <a href="productos.html" class="hero-btn">
+        <i class="fas fa-paw"></i> Ver Productos
+        <i class="fas fa-arrow-right"></i>
+      </a>
+      
+      <div class="hero-features">
+        <div class="feature">
+          <i class="fas fa-leaf"></i>
+          <span>Natural</span>
+        </div>
+        <div class="feature">
+          <i class="fas fa-award"></i>
+          <span>Premium</span>
+        </div>
+        <div class="feature">
+          <i class="fas fa-heart"></i>
+          <span>Amor</span>
         </div>
       </div>
     </div>
+    
   </div>
 </section>
 
@@ -270,7 +691,6 @@
 
 <section class="contact-hero">
   <div class="footprints-tracker">
-    <!-- Grupo 1: 10 partículas (mantén las que tienes) -->
     <div class="footprint-track footprint-super-gigante"></div>
     <div class="footprint-track footprint-giant"></div>
     <div class="footprint-track footprint-enorme"></div>
@@ -283,7 +703,6 @@
     <div class="footprint-track footprint-massive"></div>
     <div class="footprint-track footprint-huge"></div>
     
-    <!-- Grupo 2: 10 partículas adicionales -->
     <div class="footprint-track footprint-small-1"></div>
     <div class="footprint-track footprint-small-2"></div>
     <div class="footprint-track footprint-small-3"></div>
@@ -295,7 +714,6 @@
     <div class="footprint-track footprint-small-9"></div>
     <div class="footprint-track footprint-small-10"></div>
     
-    <!-- Grupo 3: 10 partículas más -->
     <div class="footprint-track footprint-tiny-1"></div>
     <div class="footprint-track footprint-tiny-2"></div>
     <div class="footprint-track footprint-tiny-3"></div>
@@ -307,7 +725,6 @@
     <div class="footprint-track footprint-tiny-9"></div>
     <div class="footprint-track footprint-tiny-10"></div>
     
-    <!-- Grupo 4: 10 partículas extra -->
     <div class="footprint-track footprint-extra-1"></div>
     <div class="footprint-track footprint-extra-2"></div>
     <div class="footprint-track footprint-extra-3"></div>
@@ -319,7 +736,8 @@
     <div class="footprint-track footprint-extra-9"></div>
     <div class="footprint-track footprint-extra-10"></div>
   </div>
- <div class="footprints-tracker">
+  
+  <div class="footprints-tracker">
     <div class="footprint-track footprint-super-gigante"></div>
     <div class="footprint-track footprint-giant"></div>
     <div class="footprint-track footprint-enorme"></div>
@@ -332,7 +750,6 @@
     <div class="footprint-track footprint-massive"></div>
     <div class="footprint-track footprint-huge"></div>
     
-    <!-- Dientes de león flotantes (semillas de diente de león) -->
     <div class="dandelion dandelion-1"></div>
     <div class="dandelion dandelion-2"></div>
     <div class="dandelion dandelion-3"></div>
@@ -344,7 +761,6 @@
     <div class="dandelion dandelion-9"></div>
     <div class="dandelion dandelion-10"></div>
     
-    <!-- Semillas sueltas de diente de león -->
     <div class="dandelion-seed seed-1"></div>
     <div class="dandelion-seed seed-2"></div>
     <div class="dandelion-seed seed-3"></div>
@@ -357,9 +773,7 @@
     <div class="dandelion-seed seed-10"></div>
   </div>
   
-  
   <div class="contact-hero-container">
-    <!-- Columna izquierda: Información de contacto -->
     <div class="contact-hero-content">
       <h1>Contacto</h1>
       <p class="contact-subtitle">Estamos aquí para ayudarte. Contáctanos para cualquier consulta sobre nuestros productos o el cuidado de tu mascota.</p>
@@ -393,7 +807,6 @@
       </div>
     </div>
     
-    <!-- Columna derecha: Imagen -->
     <div class="contact-hero-image">
       <img src="img\gatoperro.jpg" alt="Mascotas felices - PelusasPet" class="contact-main-image">
     </div>
@@ -527,16 +940,63 @@
   <p>© 2024 Pelusas Pet.</p>
   <p>Todos los derechos reservados</p>
 </footer>
-</body>
-</html>  
+
 <!-- Scripts -->
 <script src="js/script.js"></script>
 <script src="js/carrito-unificado.js"></script>
+
 <script>
-    // Inicializar cuando el DOM esté listo
     document.addEventListener('DOMContentLoaded', function() {
         if (window.inicializarCarrito) {
             inicializarCarrito();
         }
     });
+
+    document.getElementById('wholesaleForm')?.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const termsCheckbox = document.querySelector('input[name="terms"]');
+        if (!termsCheckbox || !termsCheckbox.checked) {
+            alert('Por favor acepta los términos para continuar.');
+            return;
+        }
+        
+        const empresa = document.getElementById('businessName')?.value || 'No especificado';
+        const tipoSelect = document.getElementById('businessType');
+        const tipo = tipoSelect?.options[tipoSelect.selectedIndex]?.text || 'No especificado';
+        const contacto = document.getElementById('contactPerson')?.value || 'No especificado';
+        const telefono = document.getElementById('phone')?.value || 'No especificado';
+        const email = document.getElementById('email')?.value || 'No especificado';
+        const ubicacion = document.getElementById('location')?.value || 'No especificado';
+        
+        const productosLista = [];
+        document.querySelectorAll('input[name="products[]"]:checked').forEach(cb => {
+            const label = cb.parentElement.textContent.trim();
+            productosLista.push(`• ${label}`);
+        });
+        const productos = productosLista.length ? productosLista.join('\n') : '• No especificado';
+        
+        const volumenSelect = document.getElementById('quantity');
+        const volumen = volumenSelect?.options[volumenSelect.selectedIndex]?.text || 'No especificado';
+        const mensaje = document.getElementById('message')?.value || 'Ninguno';
+        
+        const mensajeTexto = ` *NUEVA SOLICITUD MAYORISTA PELUSASPET*\n\n` +
+            `*Empresa:* ${empresa}\n` +
+            ` *Tipo:* ${tipo}\n` +
+            ` *Contacto:* ${contacto}\n` +
+            ` *Teléfono:* ${telefono}\n` +
+            ` *Email:* ${email}\n` +
+            ` *Ubicación:* ${ubicacion}\n\n` +
+            ` *Productos de interés:*\n${productos}\n\n` +
+            ` *Volumen:* ${volumen}\n` +
+            ` *Mensaje adicional:* ${mensaje}\n\n` +
+            ` *URGENTE:* Contactar para ofrecer precios mayoristas`;
+        
+        const mensajeCodificado = encodeURIComponent(mensajeTexto);
+        const url = `https://wa.me/573197622653?text=${mensajeCodificado}`;
+        
+        window.open(url, '_blank');
+    });
 </script>
+</body>
+</html>
