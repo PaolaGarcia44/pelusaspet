@@ -28,6 +28,7 @@
         body {
             font-family: 'Inter', sans-serif;
             background: linear-gradient(135deg, #f5f7fa 0%, #e9ecef 100%);
+            padding-top: 90px;
         }
         
         .gracias-container {
@@ -197,6 +198,286 @@
                 min-width: auto;
             }
         }
+
+        /* ========== HEADER Y NAVEGACIÓN ========== */
+        header {
+            background: white;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 30px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.08);
+            z-index: 1000;
+        }
+
+        .logo img {
+            height: 60px;
+            transition: transform 0.3s;
+        }
+
+        .logo img:hover {
+            transform: scale(1.02);
+        }
+
+        /* Navegación desktop */
+        .desktop-nav {
+            display: flex;
+            gap: 32px;
+        }
+
+        .desktop-nav a {
+            text-decoration: none;
+            color: #5A216B;
+            font-weight: 500;
+            font-size: 0.95em;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .desktop-nav a:hover {
+            color: #DAA520;
+            transform: translateY(-2px);
+        }
+
+        /* Iconos header */
+        .icons {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .cart-icon-container {
+            position: relative;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+        }
+
+        .cart-icon-container i {
+            font-size: 1.3em;
+            color: #5A216B;
+            transition: transform 0.2s ease;
+        }
+
+        .cart-icon-container:hover i {
+            transform: scale(1.05);
+        }
+
+        .cart-badge {
+            position: absolute;
+            top: -10px;
+            right: -12px;
+            background: linear-gradient(135deg, #DAA520, #E6B450);
+            color: #4A1A5A;
+            min-width: 20px;
+            height: 20px;
+            border-radius: 30px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: 800;
+            font-family: 'Montserrat', sans-serif;
+            box-shadow: 0 2px 8px rgba(218, 165, 32, 0.4);
+            padding: 0 6px;
+            letter-spacing: -0.5px;
+        }
+
+        /* Hamburguesa (solo móvil) */
+        .hamburger-container {
+            display: none;
+        }
+
+        .hamburger {
+            background: none;
+            border: none;
+            font-size: 1.5em;
+            color: #5A216B;
+            cursor: pointer;
+            padding: 5px;
+        }
+
+        /* Menú móvil overlay */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 80%;
+            max-width: 350px;
+            height: 100%;
+            background: white;
+            box-shadow: -5px 0 30px rgba(0,0,0,0.15);
+            z-index: 2000;
+            transition: right 0.3s ease;
+            padding: 20px;
+            overflow-y: auto;
+        }
+
+        .mobile-menu.open {
+            right: 0;
+        }
+
+        .mobile-menu-header {
+            display: flex;
+            justify-content: flex-end;
+            margin-bottom: 30px;
+        }
+
+        .close-menu {
+            background: none;
+            border: none;
+            font-size: 1.5em;
+            color: #5A216B;
+            cursor: pointer;
+        }
+
+        .mobile-nav {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .mobile-nav a {
+            text-decoration: none;
+            color: #5A216B;
+            font-weight: 500;
+            font-size: 1.1em;
+            padding: 10px 0;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border-bottom: 1px solid #EAE6F0;
+        }
+
+        .mobile-social {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #EAE6F0;
+        }
+
+        .mobile-social a {
+            color: #5A216B;
+            font-size: 1.5em;
+            transition: all 0.3s;
+        }
+
+        .mobile-social a:hover {
+            color: #DAA520;
+            transform: translateY(-3px);
+        }
+
+        @media (max-width: 768px) {
+            .desktop-nav {
+                display: none;
+            }
+            .hamburger-container {
+                display: block;
+            }
+            header {
+                padding: 12px 20px;
+            }
+            .logo img {
+                height: 50px;
+            }
+        }
+
+        /* ========== FOOTER ORGANIZADO ========== */
+        footer {
+            background: #2C1A30;
+            color: #f0e6d0;
+            text-align: center;
+            padding: 50px 20px 35px;
+            margin-top: 40px;
+        }
+
+        footer .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        footer .footer-social {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        footer .footer-social a {
+            color: #DAA520;
+            font-size: 32px;
+            transition: all 0.3s ease;
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            line-height: 50px;
+            border-radius: 50%;
+            background: rgba(218, 165, 32, 0.1);
+        }
+
+        footer .footer-social a:hover {
+            transform: translateY(-5px);
+            color: #f0e6d0;
+            background: rgba(218, 165, 32, 0.25);
+        }
+
+        footer h3 {
+            color: #F9F5F0;
+            margin-bottom: 20px;
+            font-size: 1.3em;
+            font-weight: 500;
+            letter-spacing: 1px;
+        }
+
+        footer .footer-copyright {
+            margin-top: 25px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(218, 165, 32, 0.2);
+        }
+
+        footer p {
+            margin: 8px 0;
+            font-size: 14px;
+            opacity: 0.85;
+            line-height: 1.6;
+        }
+
+        footer .copyright {
+            font-size: 12px;
+            opacity: 0.7;
+            margin-top: 5px;
+        }
+
+        /* Footer responsive */
+        @media (max-width: 768px) {
+            footer {
+                padding: 40px 20px 25px;
+            }
+            
+            footer .footer-social {
+                gap: 20px;
+            }
+            
+            footer .footer-social a {
+                font-size: 28px;
+                width: 45px;
+                height: 45px;
+                line-height: 45px;
+            }
+            
+            footer h3 {
+                font-size: 1.1em;
+                margin-bottom: 15px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -320,30 +601,62 @@
         </div>
     </main>
     
-    <!-- Footer -->
+    <!-- FOOTER ORGANIZADO -->
     <footer>
-        <div style="text-align: center; margin-top: 10px;">
-            <h3 style="font-size: 0.7rem;">También puedes encontrarnos en:</h3>
-            <div style="display: flex; justify-content: center; gap: 20px; margin-top: 20px; font-size: 22px;">
-                <a href="https://wa.me/573197622653?text=Hola%2C%20me%20interesan%20los%20productos%20de%20Pelusas%20Pet" target="_blank" style="color: var(--morado);">
-                    <i class="fab fa-whatsapp" title="whatsapp"></i>
+        <div class="footer-content">
+            <h3>También puedes encontrarnos en:</h3>
+            <div class="footer-social">
+                <a href="https://wa.me/573197622653?text=Hola%2C%20me%20interesan%20los%20productos%20de%20Pelusas%20Pet" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-whatsapp"></i>
                 </a>
-                <a href="https://www.instagram.com/pelusas_pet?igsh=MXY2dXY3OXEwMGJ0aA==" target="_blank" style="color: var(--morado);">
-                    <i class="fab fa-instagram" title="Instagram"></i>
+                <a href="https://www.instagram.com/pelusas_pet?igsh=MXY2dXY3OXEwMGJ0aA==" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-instagram"></i>
                 </a>
-                <a href="https://www.tiktok.com/@pelusaspet?_r=1&_t=ZS-92nusuMsm8m" target="_blank" style="color: var(--morado);">
-                    <i class="fab fa-tiktok" title="tiktok"></i>
+                <a href="https://www.tiktok.com/@pelusaspet?_r=1&_t=ZS-92nusuMsm8m" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-tiktok"></i>
                 </a>
             </div>
+            <div class="footer-copyright">
+                <p>© 2026 Pelusas Pet.</p>
+                <p class="copyright">Todos los derechos reservados</p>
+            </div>
         </div>
-        <br>
-        <p style="font-size: 0.7rem;">© 2024 Pelusas Pet. Todos los derechos reservados</p>
     </footer>
     
    <!-- Scripts -->
     <script src="js/script.js"></script>
     <script src="js/carrito-unificado.js"></script>
     <script>
+        // ========== MENÚ MÓVIL ==========
+        const hamburger = document.getElementById('hamburger');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const closeMenu = document.getElementById('closeMenu');
+
+        if (hamburger && mobileMenu) {
+            hamburger.addEventListener('click', () => {
+                mobileMenu.classList.add('open');
+                document.body.style.overflow = 'hidden';
+            });
+        }
+
+        if (closeMenu && mobileMenu) {
+            closeMenu.addEventListener('click', () => {
+                mobileMenu.classList.remove('open');
+                document.body.style.overflow = '';
+            });
+        }
+
+        // Cerrar menú al hacer clic en un enlace
+        const mobileLinks = document.querySelectorAll('.mobile-nav a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (mobileMenu) {
+                    mobileMenu.classList.remove('open');
+                    document.body.style.overflow = '';
+                }
+            });
+        });
+
         document.addEventListener('DOMContentLoaded', function() {
             // Verificar si existe la función del carrito y ejecutarla
             if (typeof window.inicializarCarrito === 'function') {
