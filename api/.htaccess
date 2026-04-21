@@ -21,3 +21,15 @@ ErrorDocument 404 /api/error.json
     php_value upload_max_filesize 10M
     php_value post_max_size 10M
 </IfModule>
+
+# api/.htaccess
+<FilesMatch "\.(ini|json|config)$">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# Proteger archivos de configuración
+<FilesMatch "wompi-config\.js$">
+    Order allow,deny
+    Deny from all
+</FilesMatch>

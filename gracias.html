@@ -711,6 +711,39 @@
             
             console.log('Carrito vaciado correctamente después de la compra');
         });
+
+        // Verificar estado del pago
+async function verificarPago(pedidoId) {
+    try {
+        const response = await fetch(`/api/verificar-pago.php?pedido=${pedidoId}`);
+        const data = await response.json();
+        
+        if (data.status === 'APPROVED') {
+            // Pago exitoso, enviar correo
+            await enviarCorreoConfirmacion(pedidoId);
+            mostrarMensajeExito();
+        } else if (data.status === 'PENDING') {
+            mostrarMensajePendiente();
+        } else {
+            mostrarMensajeError();
+        }
+    } catch (error) {
+        console.error('Error verificando pago:', error);
+    }
+}
+
+// Llamar a verificación al cargar la página
+document.addEventListener('DOMContentLoaded', () => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const pedidoId = urlParams.get('pedido');
+    
+    if (pedidoId) {
+        verificarPago(pedidoId);
+        // Vaciar carrito
+        localStorage.setItem('carrito', JSON.stringify([]));
+        actualizarBadge();
+    }
+});
     </script>
 </body>
 </html>
